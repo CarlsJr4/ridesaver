@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './stylesheets/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// Goal: build a static version of your app
+// Set up some basic clientside routing 
 
 ReactDOM.render(
   <React.StrictMode>

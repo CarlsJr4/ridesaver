@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* This is all placeholder CSS. Will probably use styled components or SASS later on */
+
+.longTermPlanner {
+	padding: 1rem;
+}
+
+.longTermPlanner__cards {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 100px;
+}
+
+.drivers__header {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	grid-gap: 20px;
+}
+
+.drivers__container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+.drivers__passengerTiles {
+	display: grid;
+	grid-gap: 10px;
+}
+
+.drivers__passengerTiles > div {
+	border: 1px solid gray;
+	padding: 0.5rem;
+	border-radius: 5px;
+}
+
+.drivers__statusBar {
+	list-style-type: none;
+	display: flex;
+	padding-left: 0;
+	border: 1px solid gray
+}
+
+.drivers__statusBar > li:first-child {
+	padding: 0;
+}
+.drivers__statusBar > li {
+	padding: 0 1rem;
+}
+
+nav > ul {
+	padding-left: 0;
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: auto auto auto 1fr;
+	grid-gap: 20px;
+	border: 1px solid gray;
+	justify-content: start;
+	padding: 0.5rem;
+}
+
+
+#nav__logout {
+	justify-self: end;
+}
