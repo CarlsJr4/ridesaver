@@ -7,7 +7,7 @@ const Navbar = () => {
 				<li>Home</li>
 				<li>My Events</li>
 				<li>Profile</li>
-				<li id="nav__logout">Logout</li>
+				<li>Logout</li>
 			</ul>
 		</nav>
 	);

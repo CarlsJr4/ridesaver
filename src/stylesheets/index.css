@@ -12,67 +12,18 @@ code {
     monospace;
 }
 
-/* This is all placeholder CSS. Will probably use styled components or SASS later on */
-
 .longTermPlanner {
 	padding: 1rem;
+	margin: auto 10%;
 }
 
 .longTermPlanner__cards {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-gap: 100px;
+	grid-template-columns: 4fr 1fr;
+	grid-gap: 2rem;
 }
 
-.drivers__header {
-	display: grid;
-	grid-template-columns: 1fr auto auto;
-	grid-gap: 20px;
-}
-
-.drivers__container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 20px;
-}
-
-.drivers__passengerTiles {
-	display: grid;
-	grid-gap: 10px;
-}
-
-.drivers__passengerTiles > div {
+.planner__left {
 	border: 1px solid gray;
-	padding: 0.5rem;
 	border-radius: 5px;
-}
-
-.drivers__statusBar {
-	list-style-type: none;
-	display: flex;
-	padding-left: 0;
-	border: 1px solid gray
-}
-
-.drivers__statusBar > li:first-child {
-	padding: 0;
-}
-.drivers__statusBar > li {
-	padding: 0 1rem;
-}
-
-nav > ul {
-	padding-left: 0;
-	list-style-type: none;
-	display: grid;
-	grid-template-columns: auto auto auto 1fr;
-	grid-gap: 20px;
-	border: 1px solid gray;
-	justify-content: start;
-	padding: 0.5rem;
-}
-
-
-#nav__logout {
-	justify-self: end;
 }

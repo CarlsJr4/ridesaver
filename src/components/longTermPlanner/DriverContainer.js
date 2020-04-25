@@ -2,9 +2,9 @@ import React from 'react';
 import DriverStatusBar from './DriverStatusBar';
 import DriverCard from './DriverCard';
 
-const Drivers = () => {
+const DriverContainer = () => {
 	return (
-		<div>
+		<div className="planner__left">
 			<div className="drivers__header">
 				<h3>Manage Drivers</h3>
 				<p>Link</p>
@@ -21,4 +21,4 @@ const Drivers = () => {
 	);
 }
 
-export default Drivers;
+export default DriverContainer;

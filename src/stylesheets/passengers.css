@@ -1,0 +1,32 @@
+
+.passengersContainer {
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 1rem;
+}
+
+.passengersContainer form {
+	margin: 1rem 0;
+}
+
+.passengerTiles {
+	display: grid;
+	grid-gap: 10px;
+}
+
+.passengerTiles__card {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	cursor: grab;
+	background-color: white;
+}
+
+.passengerTiles__card p {
+	margin: 10px;
+}
+
+.passengerTiles > div {
+	border: 1px solid gray;
+	padding: 0.5rem;
+	border-radius: 5px;
+}

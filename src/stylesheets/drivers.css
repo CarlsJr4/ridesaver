@@ -1,0 +1,55 @@
+.drivers__header {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	grid-gap: 20px;
+	padding: 1rem;
+}
+
+.drivers__container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 20px;
+	padding: 1rem;
+}
+
+.drivers__statusBar {
+	list-style-type: none;
+	display: flex;
+	background-color: lightgray;
+	padding: 1rem;
+}
+
+.drivers__statusBar li:first-child {
+	padding: 0;
+}
+
+.drivers__statusBar li {
+	padding: 0 1rem;
+}
+
+.driversCard {
+	background-color: white;
+	border:1px solid gray;
+	border-radius: 5px;
+	padding: 1rem;
+}
+
+.driversCard__header {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: auto 1fr;
+	justify-content: start;
+	align-items: center;
+	grid-gap: 10px;
+}
+
+.driversCard__header p:nth-child(2) {
+	justify-self: end;
+}
+
+.driversCard__percentBar {
+	width: 100%;
+	background-color: greenyellow;
+	height: 10%;
+	border-radius: 15px;
+}
