@@ -6,7 +6,7 @@ import Navbar from '../general/Navbar'
 const Planner = () => {
 	return (
 		<>
-			<Navbar />
+			{/* <Navbar /> */}
 			<div className="longTermPlanner">
 				<p>Ice Skating With Friends | February 12th, 2020 | 6:00pm</p>
 				<div className="longTermPlanner__cards">

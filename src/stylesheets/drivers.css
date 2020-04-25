@@ -15,7 +15,7 @@
 .drivers__statusBar {
 	list-style-type: none;
 	display: flex;
-	background-color: lightgray;
+	background-color: rgb(233, 233, 233);
 	padding: 1rem;
 }
 
@@ -41,6 +41,11 @@
 	justify-content: start;
 	align-items: center;
 	grid-gap: 10px;
+	margin-bottom: 1rem;
+}
+
+.driversCard__header p {
+	margin: 0;
 }
 
 .driversCard__header p:nth-child(2) {
@@ -50,6 +55,6 @@
 .driversCard__percentBar {
 	width: 100%;
 	background-color: greenyellow;
-	height: 10%;
+	height: 25%;
 	border-radius: 15px;
 }
