@@ -5,7 +5,7 @@ import React from 'react';
 const PassengerTile = () => {
 	return (
 		<div className="passengerTiles__card">
-			<p>Kevin</p>
+			<p><span class="grippy"></span>Kevin</p>
 			<p>X</p>
 		</div>
 	);

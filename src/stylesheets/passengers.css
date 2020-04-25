@@ -9,6 +9,12 @@
 	margin: 1rem 0;
 }
 
+.passengersContainer form input {
+	padding: 0.5rem;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
 .passengerTiles {
 	display: grid;
 	grid-gap: 10px;
@@ -23,6 +29,10 @@
 
 .passengerTiles__card p {
 	margin: 10px;
+}
+
+.passengerTiles__card p:first-child {
+	margin-left: 0;
 }
 
 .passengerTiles > div {
