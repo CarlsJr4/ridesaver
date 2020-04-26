@@ -11,15 +11,15 @@ const DriverCard = () => {
 		</div>
 		<div className="passengerTiles">
 			<div className="passengerTiles__card">
-				<p><span class="grippy"></span>Kevin</p>
+				<p><span className="grippy"></span>Kevin</p>
 				<p>X</p>
 			</div>
 			<div className="passengerTiles__card">
-				<p><span class="grippy"></span>Kevin</p>
+				<p><span className="grippy"></span>Kevin</p>
 				<p>X</p>
 			</div>
 			<div className="passengerTiles__card">
-				<p><span class="grippy"></span>Kevin</p>
+				<p><span className="grippy"></span>Kevin</p>
 				<p>X</p>
 			</div>
 		</div>
