@@ -1,7 +1,7 @@
 import React from 'react';
 import PassengerTile from './PassengerTile';
 
-const Passengers = () => {
+const Passengers = ({passengerList}) => {
 	return (
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
@@ -11,9 +11,12 @@ const Passengers = () => {
 						<button type="submit">Add</button>
 					</form>
 					<div className="passengerTiles">
-						<PassengerTile />
-						<PassengerTile />
-						<PassengerTile />
+						{passengerList.map((passenger, i) => 
+						<PassengerTile
+							key={i}
+							name={passenger}
+						/>
+						)}
 					</div>
 				</div>
 		</div>
