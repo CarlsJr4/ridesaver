@@ -2,28 +2,32 @@ import React, {useState, useEffect} from 'react';
 
 const DriverStatusBar = ({driverList, passengerList}) => {
 	const [seatStatus, updateSeatStatus] = useState({});
+	const [emptyCars, setEmptyCars] = useState(true);
 
 	useEffect(() => {
 		updateSeatStatus(calcSeats(driverList));
+
+		for (let i = 0; i < driverList.length; i++) {
+			if (driverList[i].passengers.length === 0) {
+				setEmptyCars(true);
+				break;
+			} else {
+				setEmptyCars(false);
+			}
+		}
 	}, []);
 
 	// Should we move this to a util folder?
+	// If we want to make this function reusable, we need to make it more generic
 	const calcSeats = (drivers) => {
 		const reducer = (accumulator, currentValue) => accumulator + currentValue;
 		let usedSeats = [];
 		let maxSeats = [];
 		let usedSeatCount = 0;
-		let emptyCars = true;
 		
 		drivers.forEach(driver => {
 			usedSeats.push(...driver.passengers)
 			maxSeats.push(driver.seats)
-
-			if (driver.passengers.length === 0) {
-				emptyCars = true;
-			} else {
-				emptyCars = false;
-			}
 		});
 
 		maxSeats = maxSeats.reduce(reducer);
@@ -32,7 +36,6 @@ const DriverStatusBar = ({driverList, passengerList}) => {
 		return {
 			usedSeatCount,
 			maxSeats,
-			emptyCars
 		}
 	}
 
@@ -43,7 +46,7 @@ const DriverStatusBar = ({driverList, passengerList}) => {
 				seats used
 			</li>
 			<li>
-				{seatStatus.emptyCars ? 'There are empty cars' : 'No empty cars'}
+				{emptyCars ? 'There are empty cars' : 'No empty cars'}
 			</li>
 			<li>
 				<strong>{passengerList.length} </strong>
