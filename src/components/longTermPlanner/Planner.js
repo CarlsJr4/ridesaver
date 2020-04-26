@@ -3,30 +3,20 @@ import DriverContainer from './DriverContainer';
 import PassengerContainer from './PassengerContainer';
 import Navbar from '../general/Navbar';
 
-// Goal: Figure out everything stateful 
-// Refactor components if needed
+// TODO:
+// Set up React Context?
+// Make components drag and drop
+// Delete passengers from driver cards
+// Add passengers by form
+// Edit driver
+// Add driver
+// Display a fake link for users to add their own passengers and drivers
 
-// What do we need to keep track of?
-// Driver names, taken seats (can be calculated with math), and total seats
-// Driver passenger list of names
-// Vacant passenger list of names
-// Controlled components form state
-// Probably need state to be in the Planner component because drivers and passengers components need to communicate with eachother
-
-// We need to be able to update any part of a driver's info at will 
-// Should store driver info in an object, then update its individual keys
-// Probably need to use useReducer for these complex state updates
-
-// Driver
-	// name
-	// seatCount
-	// passengers
-
-const driverList = [
+const fakeDriverList = [
 	{
 	name: 'Driver1',
 	seats: 3,
-	passengers: ['pass1', 'pass2', 'pass3']
+	passengers: ['pass1', 'pass2']
 	},
 	{
 	name: 'Driver2',
@@ -35,9 +25,19 @@ const driverList = [
 	},
 ];
 
-const passengerList = ['pass1', 'pass2', 'pass3'];
+const fakePassengerList = [{name: 'pass1', id: 1}, {name: 'pass2', id: 2}, {name: 'pass3', id: 3}];
 
 const Planner = () => {
+	// Normally, we'd make an API call here and store the data in the state
+	// For now, we will just provide state directly
+
+	const [driverList, updateDriverList] = useState(fakeDriverList);
+	const [passengerList, updatePassengerList] = useState(fakePassengerList);
+
+	const deleteFreePassenger = (id) => {
+		const updatedList = passengerList.filter(item => item.id !== id);
+		updatePassengerList(updatedList)
+	}
 
 	return (
 		<>
@@ -51,6 +51,7 @@ const Planner = () => {
 					/>
 					<PassengerContainer
 						passengerList={passengerList}
+						deleteFreePassenger={deleteFreePassenger}
 					/>
 				</div>
 			</div>
