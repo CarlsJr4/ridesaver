@@ -1,29 +1,24 @@
 import React from 'react';
+import PassengerTile from './PassengerTile';
 
-const DriverCard = () => {
+const DriverCard = ({name, passengers, totalSeats}) => {
 	return (
 		<div className="driversCard">
-		<div className="driversCard__header">
-			<p>Josh</p>
-			<p>edit</p>
-			<p>(3/3)</p>
-			<div className="driversCard__percentBar"></div>
-		</div>
-		<div className="passengerTiles">
-			<div className="passengerTiles__card">
-				<p><span className="grippy"></span>Kevin</p>
-				<p>X</p>
+			<div className="driversCard__header">
+				<p>{name}</p>
+				<p>edit</p>
+				<p>({passengers.length}/{totalSeats})</p>
+				<div className="driversCard__percentBar"></div>
 			</div>
-			<div className="passengerTiles__card">
-				<p><span className="grippy"></span>Kevin</p>
-				<p>X</p>
-			</div>
-			<div className="passengerTiles__card">
-				<p><span className="grippy"></span>Kevin</p>
-				<p>X</p>
+			<div className="passengerTiles">
+				{passengers.map((passenger, i) => 
+					<PassengerTile
+						key={i}
+						name={passenger}
+					/>
+					)}
 			</div>
 		</div>
-	</div>
 	);
 }
 

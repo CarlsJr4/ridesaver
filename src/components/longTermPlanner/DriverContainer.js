@@ -15,10 +15,14 @@ const DriverContainer = ({passengerList, driverList}) => {
 				driverList={driverList}
 			/>
 			<div className="drivers__container">
-				<DriverCard />
-				<DriverCard />
-				<DriverCard />
-				<DriverCard />
+				{driverList.map((driver, i) => 
+					<DriverCard
+						key={i}
+						name={driver.name}
+						passengers={driver.passengers}
+						totalSeats={driver.seats}
+					/>
+				)}
 			</div>
 	</div>
 	);

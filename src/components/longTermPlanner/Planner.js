@@ -26,7 +26,7 @@ const driverList = [
 	{
 	name: 'Driver1',
 	seats: 3,
-	passengers: ['pass', 'pass2', 'pass3']
+	passengers: ['pass1', 'pass2', 'pass3']
 	},
 	{
 	name: 'Driver2',
