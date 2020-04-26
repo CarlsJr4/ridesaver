@@ -52,7 +52,7 @@ const DriverStatusBar = ({driverList, passengerList}) => {
 				<strong>{passengerList.length} </strong>
 				people need rides
 			</li>
-			<button>Auto-assign</button>
+			{/* <button>Auto-assign</button> */}
 		</ul>
 	);
 }

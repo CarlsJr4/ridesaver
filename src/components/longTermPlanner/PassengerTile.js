@@ -6,7 +6,7 @@ const PassengerTile = ({name}) => {
 	return (
 		<div className="passengerTiles__card">
 			<p><span className="grippy"></span>{name}</p>
-			<p>X</p>
+			<button>X</button>
 		</div>
 	);
 }

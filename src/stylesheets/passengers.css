@@ -25,6 +25,7 @@
 	grid-template-columns: 1fr auto;
 	cursor: grab;
 	background-color: white;
+	align-items: center;
 }
 
 .passengerTiles__card p {

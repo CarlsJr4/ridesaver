@@ -10,7 +10,7 @@ const DriverCard = ({name, passengers, totalSeats}) => {
 		<div className="driversCard">
 			<div className="driversCard__header">
 				<p>{name}</p>
-				<p>edit</p>
+				<button>edit</button>
 				<p>({passengers.length}/{totalSeats})</p>
 				<div 
 					className={`${seatCapacityBar} ` < 100 ? 'driversCard__percentBar--incomplete' : 'driversCard__percentBar--complete' }

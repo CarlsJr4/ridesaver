@@ -3,6 +3,7 @@
 	grid-template-columns: 1fr auto auto;
 	grid-gap: 20px;
 	padding: 1rem;
+	align-items: center;
 }
 
 .drivers__container {
@@ -48,20 +49,20 @@
 	margin: 0;
 }
 
-.driversCard__header p:nth-child(2) {
+.driversCard__header button {
 	justify-self: end;
 }
 
 .driversCard__percentBar--incomplete {
 	height: 25%;
 	border-radius: 15px;
-	background-color: greenyellow;
+	background-color: yellowgreen;
 	transition: 300ms;
 }
 
 .driversCard__percentBar--complete {
 	height: 25%;
 	border-radius: 15px;
-	background-color: green;
+	background-color: #7597CE;
 	transition: 400ms;
 }

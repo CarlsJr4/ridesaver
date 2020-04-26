@@ -7,8 +7,8 @@ const DriverContainer = ({passengerList, driverList}) => {
 		<div className="planner__left">
 			<div className="drivers__header">
 				<h3>Manage Drivers</h3>
-				<p>Link</p>
-				<p>Add</p>
+				<button>Link</button>
+				<button>Add</button>
 			</div>
 			<DriverStatusBar 
 				passengerList={passengerList}
