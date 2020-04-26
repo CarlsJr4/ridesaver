@@ -52,9 +52,16 @@
 	justify-self: end;
 }
 
-.driversCard__percentBar {
-	width: 100%;
-	background-color: greenyellow;
+.driversCard__percentBar--incomplete {
 	height: 25%;
 	border-radius: 15px;
+	background-color: greenyellow;
+	transition: 300ms;
+}
+
+.driversCard__percentBar--complete {
+	height: 25%;
+	border-radius: 15px;
+	background-color: green;
+	transition: 400ms;
 }
