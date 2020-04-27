@@ -1,0 +1,74 @@
+// The left panel of the application
+.drivers {
+	&__header {
+		display: grid;
+		grid-template-columns: 1fr auto auto;
+		grid-gap: 20px;
+		padding: 1rem;
+		align-items: center;
+	}
+
+	&__statusBar {
+		list-style-type: none;
+		display: flex;
+		background-color: rgb(233, 233, 233);
+		padding: 1rem;
+
+		li {
+			padding: 0 1rem;
+
+			&:first-child {
+				padding: 0
+			}
+
+		}
+	}
+
+	&__container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		grid-gap: 20px;
+		padding: 1rem;
+	}
+}
+
+// Individual driver cards
+.driversCard {
+	background-color: white;
+	border:1px solid gray;
+	border-radius: 5px;
+	padding: 1rem;
+
+	&__header {
+		display: grid;
+		grid-template-rows: auto auto;
+		grid-template-columns: auto 1fr;
+		justify-content: start;
+		align-items: center;
+		grid-gap: 10px;
+		margin-bottom: 1rem;
+
+		p {
+			margin: 0;
+		}
+
+		button {
+			justify-self: end;
+		}
+	}
+
+	&__percentBar {
+		&__incomplete {
+			height: 25%;
+			border-radius: 15px;
+			background-color: yellowgreen;
+			transition: 300ms;
+		}
+		&__complete {
+			height: 25%;
+			border-radius: 15px;
+			background-color: #7597CE;
+			transition: 400ms;
+		}
+	}
+}

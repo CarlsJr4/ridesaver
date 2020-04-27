@@ -1,0 +1,54 @@
+
+// The right side of the application
+.passengersContainer {
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 1rem;
+
+	form {
+	margin: 1rem 0;
+
+	input {
+		padding: 0.5rem;
+		border-radius: 5px;
+		margin-right: 10px;
+		}
+	}
+}
+
+// All passenger cards in the application
+.passengerTiles {
+	display: grid;
+	grid-gap: 10px;
+
+	// The contents of the cards
+	&__card {
+		border: 1px solid gray;
+		padding: 0.5rem;
+		border-radius: 5px;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		cursor: grab;
+		background-color: white;
+		align-items: center;
+
+		p {
+			margin: 10px;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		button {
+			opacity: 0;
+		}
+
+		// Show buttons on hover
+		&:hover {
+			button {
+				transition: 300ms;
+				opacity: 1;
+			}
+		}
+	}
+}

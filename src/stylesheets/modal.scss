@@ -1,5 +1,3 @@
-/* We should really set up SASS now. It's getting tiring to type stuff */
-
 .modal {
 	display: none;
 	position: fixed;
@@ -11,21 +9,21 @@
 	flex-direction: column;
 	align-items: center;
 	background-color: rgba(255, 255, 255, 0.80); 
-}
 
-.modal__content {
-	background-color: white;
-	margin: 15% auto;
-	border: 1px solid gray;
-	border-radius: 5px;
-	width: 80%;
-	display: flex;
-	flex-direction: column;
-	padding: 1rem;
-}
+	&__content {
+		background-color: white;
+		margin: 15% auto;
+		border: 1px solid gray;
+		border-radius: 5px;
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+	}
 
-.modal__close {
+	&__close {
 	align-self: flex-end;
+	}
 }
 
 .modal__close:hover,
