@@ -5,7 +5,7 @@ import PassengerTileContainer from './PassengerTileContainer';
 const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) => {
 	// To conditionally update the progress bar's width styling
 	const [seatCapacityBar, updateCapacityBar] = useState(0);
-	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100));
+	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
 
 	return (
 		<div className="driversCard">

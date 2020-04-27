@@ -15,7 +15,7 @@ const DriverStatusBar = ({driverList, passengerList}) => {
 				setEmptyCars(false);
 			}
 		}
-	}, []);
+	}, [driverList]);
 
 	// Should we move this to a util folder?
 	// If we want to make this function reusable, we need to make it more generic
