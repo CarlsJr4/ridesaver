@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PassengerTileContainer from './PassengerTileContainer';
+import IconButton from '../reusable/IconButton';
 
 // How do we pass the driver's ID to the passenger tile container?
 const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) => {
@@ -11,7 +12,9 @@ const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) =
 		<div className="driversCard">
 			<div className="driversCard__header">
 				<p>{name}</p>
-				<button>edit</button>
+				<IconButton
+					icon="user-edit"
+				/>
 				<p>({passengers.length}/{totalSeats})</p>
 				<div 
 					className={`${seatCapacityBar} ` < 100 ? 'driversCard__percentBar--incomplete' : 'driversCard__percentBar--complete' }

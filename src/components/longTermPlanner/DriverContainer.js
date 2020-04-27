@@ -1,14 +1,19 @@
 import React from 'react';
 import DriverStatusBar from './DriverStatusBar';
 import DriverCard from './DriverCard';
+import IconButton from '../reusable/IconButton';
 
 const DriverContainer = ({passengerList, driverList, handleDelete}) => {
 	return (
 		<div className="planner__left">
 			<div className="drivers__header">
 				<h3>Manage Drivers</h3>
-				<button>Link</button>
-				<button>Add</button>
+				<IconButton
+					icon="link"	
+				/>
+				<IconButton 
+					icon="plus"
+				/>
 			</div>
 			<DriverStatusBar 
 				passengerList={passengerList}

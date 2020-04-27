@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+.iconButton {
+	border: 0;
+	background-color: white;
+	padding: 0.5rem;
+	border-radius: 5px;
+}
+
 .longTermPlanner {
 	padding: 1rem;
 	margin: auto 10%;
