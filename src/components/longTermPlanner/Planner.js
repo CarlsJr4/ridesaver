@@ -38,16 +38,18 @@ const Planner = () => {
 
 	const deleteUnseatedPassenger = (id) => {
 		const updatedList = passengerList.filter(item => item.id !== id);
-		updatePassengerList(updatedList)
+		updatePassengerList(updatedList);
 	}
 
-	const deleteSeatedPassenger = (id, driverIndex) => {
-		const updatedDrivers = [...driverList]; // Clone the state array
-		let driver = updatedDrivers[driverIndex]; // Reference the driver
-		let updatedPassengers = driver.passengers; // Reference the driver's passengers
-		updatedPassengers = updatedPassengers.filter(item => item.id !== id); // Filter the passengers array
-		driver.passengers = updatedPassengers // Reassign with dot notation
-		updateDriverList(updatedDrivers); // Update the state
+	const deleteSeatedPassenger = (id, index) => {
+		const drivers = [...driverList]; 
+
+		let updatedPassengers = drivers[index].passengers; 
+		updatedPassengers = updatedPassengers.filter(item => item.id !== id); 
+
+		drivers[index] = {...drivers[index], passengers: updatedPassengers}
+
+		updateDriverList(drivers); 
 	}
 
 	return (
