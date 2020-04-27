@@ -28,6 +28,15 @@
 	align-items: center;
 }
 
+.passengerTiles__card:hover button {
+	transition: 300ms;
+	opacity: 1;
+}
+ 
+.passengerTiles__card button {
+	opacity: 0;
+}
+
 .passengerTiles__card p {
 	margin: 10px;
 }
