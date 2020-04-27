@@ -4,17 +4,19 @@ import './stylesheets/index.css';
 import './stylesheets/drivers.css';
 import './stylesheets/passengers.css';
 import './stylesheets/nav.css';
+import './stylesheets/modal.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash, faUserEdit, faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faUserEdit, faLink, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
 	faTrash, 
 	faUserEdit, 
 	faLink,
-	faPlus
+	faPlus,
+	faTimes
 	);
 
 ReactDOM.render(
