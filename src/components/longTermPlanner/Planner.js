@@ -16,11 +16,13 @@ const fakeDriverList = [
 	{
 	name: 'Driver1',
 	seats: 3,
+	id: 100,
 	passengers: [{name: 'pass1', id: 4}, {name: 'pass2', id: 5}]
 	},
 	{
 	name: 'Driver2',
 	seats: 3,
+	id: 200,
 	passengers: [{name: 'pass1', id: 6}, {name: 'pass2', id: 7}, {name: 'pass3', id: 8}]
 	},
 ];
@@ -34,9 +36,18 @@ const Planner = () => {
 	const [driverList, updateDriverList] = useState(fakeDriverList);
 	const [passengerList, updatePassengerList] = useState(fakePassengerList);
 
-	const deleteFreePassenger = (id) => {
+	const deleteUnseatedPassenger = (id) => {
 		const updatedList = passengerList.filter(item => item.id !== id);
 		updatePassengerList(updatedList)
+	}
+
+	const deleteSeatedPassenger = (id, driverIndex) => {
+		const updatedDrivers = [...driverList]; // Clone the state array
+		let driver = updatedDrivers[driverIndex]; // Reference the driver
+		let updatedPassengers = driver.passengers; // Reference the driver's passengers
+		updatedPassengers = updatedPassengers.filter(item => item.id !== id); // Filter the passengers array
+		driver.passengers = updatedPassengers // Reassign with dot notation
+		updateDriverList(updatedDrivers); // Update the state
 	}
 
 	return (
@@ -48,10 +59,11 @@ const Planner = () => {
 					<DriverContainer
 						driverList={driverList}
 						passengerList={passengerList}
+						handleDelete={deleteSeatedPassenger}
 					/>
 					<PassengerContainer
 						passengerList={passengerList}
-						deleteFreePassenger={deleteFreePassenger}
+						handleDelete={deleteUnseatedPassenger}
 					/>
 				</div>
 			</div>

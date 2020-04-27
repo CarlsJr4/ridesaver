@@ -1,7 +1,8 @@
 import React from 'react';
 
 // Eventually we will need to wrap the div in a draggable component
-const PassengerTileContainer = ({passengers}) => {
+// driverIndex is an optional prop, including it will allow you to delete from a certain list, but not including it will not cause any errors
+const PassengerTileContainer = ({passengers, handleDelete, driverIndex}) => {
 	return (
 		<div className="passengerTiles">
 				{passengers.map((passenger) =>
@@ -14,7 +15,7 @@ const PassengerTileContainer = ({passengers}) => {
 								<span className="grippy"></span>
 								{passenger.name}
 							</p>
-							<button>
+							<button onClick={() => handleDelete(passenger.id, driverIndex)}>
 								X
 							</button>
 						</div> 

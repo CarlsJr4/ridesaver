@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PassengerTileContainer from './PassengerTileContainer';
 
-const DriverCard = ({name, passengers, totalSeats}) => {
+// How do we pass the driver's ID to the passenger tile container?
+const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) => {
 	// To conditionally update the progress bar's width styling
 	const [seatCapacityBar, updateCapacityBar] = useState(0);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100));
@@ -21,6 +22,8 @@ const DriverCard = ({name, passengers, totalSeats}) => {
 			</div>
 			<PassengerTileContainer
 				passengers={passengers}
+				handleDelete={handleDelete}
+				driverIndex={driverIndex}
 			/>
 		</div>
 	);

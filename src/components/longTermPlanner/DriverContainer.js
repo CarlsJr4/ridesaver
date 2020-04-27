@@ -2,7 +2,7 @@ import React from 'react';
 import DriverStatusBar from './DriverStatusBar';
 import DriverCard from './DriverCard';
 
-const DriverContainer = ({passengerList, driverList}) => {
+const DriverContainer = ({passengerList, driverList, handleDelete}) => {
 	return (
 		<div className="planner__left">
 			<div className="drivers__header">
@@ -17,10 +17,13 @@ const DriverContainer = ({passengerList, driverList}) => {
 			<div className="drivers__container">
 				{driverList.map((driver, i) => 
 					<DriverCard
-						key={i}
+						key={driver.id}
+						id={driver.id}
+						driverIndex={i}
 						name={driver.name}
 						passengers={driver.passengers}
 						totalSeats={driver.seats}
+						handleDelete={handleDelete}
 					/>
 				)}
 			</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PassengerTileContainer from './PassengerTileContainer';
 
-const Passengers = ({passengerList}) => {
+const Passengers = ({passengerList, handleDelete}) => {
 	return (
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
@@ -12,6 +12,7 @@ const Passengers = ({passengerList}) => {
 					</form>
 					<PassengerTileContainer
 						passengers={passengerList} 
+						handleDelete={handleDelete}
 					/>
 				</div>
 		</div>
