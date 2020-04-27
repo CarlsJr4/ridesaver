@@ -1,9 +1,7 @@
 
 // The right side of the application
 .passengersContainer {
-	border: 1px solid gray;
-	border-radius: 5px;
-	padding: 1rem;
+	@extend %placeholder-card-styling;
 
 	form {
 	margin: 1rem 0;
@@ -23,9 +21,8 @@
 
 	// The contents of the cards
 	&__card {
-		border: 1px solid gray;
+		@extend %placeholder-card-styling;
 		padding: 0.5rem;
-		border-radius: 5px;
 		display: grid;
 		grid-template-columns: 1fr auto;
 		cursor: grab;

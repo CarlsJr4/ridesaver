@@ -34,10 +34,7 @@
 
 // Individual driver cards
 .driversCard {
-	background-color: white;
-	border:1px solid gray;
-	border-radius: 5px;
-	padding: 1rem;
+	@extend %placeholder-card-styling;
 
 	&__header {
 		display: grid;
@@ -58,17 +55,13 @@
 	}
 
 	&__percentBar {
-		&__incomplete {
-			height: 25%;
-			border-radius: 15px;
+		&--incomplete {
+			@extend %percent-bar-shared;
 			background-color: yellowgreen;
-			transition: 300ms;
 		}
-		&__complete {
-			height: 25%;
-			border-radius: 15px;
+		&--complete {
+			@extend %percent-bar-shared;
 			background-color: #7597CE;
-			transition: 400ms;
 		}
 	}
 }

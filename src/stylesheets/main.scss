@@ -7,31 +7,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.longTermPlanner {
+	padding: 1rem;
+	margin: auto 10%;
+
+	&__cards {
+		display: grid;
+		grid-template-columns: 4fr 1fr;
+		grid-gap: 2rem;
+	}
+}
+
+.planner__left {
+	@extend %placeholder-card-styling;
+	padding: 0;
 }
 
 .iconButton {
 	border: 0;
 	background-color: white;
 	padding: 0.5rem;
-	border-radius: 5px;
-}
-
-.longTermPlanner {
-	padding: 1rem;
-	margin: auto 10%;
-}
-
-.longTermPlanner__cards {
-	display: grid;
-	grid-template-columns: 4fr 1fr;
-	grid-gap: 2rem;
-}
-
-.planner__left {
-	border: 1px solid gray;
 	border-radius: 5px;
 }
 
