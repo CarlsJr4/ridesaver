@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PassengerTile from './PassengerTile';
+import PassengerTileContainer from './PassengerTileContainer';
 
 const DriverCard = ({name, passengers, totalSeats}) => {
 	// To conditionally update the progress bar's width styling
@@ -19,14 +19,9 @@ const DriverCard = ({name, passengers, totalSeats}) => {
 					}}>
 				</div>
 			</div>
-			<div className="passengerTiles">
-				{passengers.map((passenger, i) => 
-					<PassengerTile
-						key={i}
-						name={passenger}
-					/>
-					)}
-			</div>
+			<PassengerTileContainer
+				passengers={passengers}
+			/>
 		</div>
 	);
 }

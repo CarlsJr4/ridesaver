@@ -16,12 +16,12 @@ const fakeDriverList = [
 	{
 	name: 'Driver1',
 	seats: 3,
-	passengers: ['pass1', 'pass2']
+	passengers: [{name: 'pass1', id: 4}, {name: 'pass2', id: 5}]
 	},
 	{
 	name: 'Driver2',
 	seats: 3,
-	passengers: ['pass1', 'pass2', 'pass3']
+	passengers: [{name: 'pass1', id: 6}, {name: 'pass2', id: 7}, {name: 'pass3', id: 8}]
 	},
 ];
 
