@@ -7,6 +7,11 @@ import './stylesheets/nav.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTrash)
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

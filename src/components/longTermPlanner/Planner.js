@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DriverContainer from './DriverContainer';
 import PassengerContainer from './PassengerContainer';
-import Navbar from '../general/Navbar';
+import Navbar from '../reusable/Navbar';
 
 // TODO:
 // Set up React Context?
