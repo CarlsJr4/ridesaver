@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PassengerTileContainer from './PassengerTileContainer';
-import IconButton from '../reusable/IconButton';
+import PassengerTileContainer from '../passengerPanel/PassengerTileContainer';
+import IconButton from '../../reusable/IconButton';
 
 // How do we pass the driver's ID to the passenger tile container?
 const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) => {

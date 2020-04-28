@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import DriverContainer from './DriverContainer';
-import PassengerContainer from './PassengerContainer';
+import DriverContainer from './driverPanel/DriverContainer';
+import PassengerContainer from './passengerPanel/PassengerContainer';
+import IconButton from '../reusable/IconButton';
 import Navbar from '../reusable/Navbar';
+import Modal from '../reusable/Modal';
 
 // TODO:
-// Set up React Context?
 // Make components drag and drop
-// Delete passengers from driver cards
 // Add passengers by form
 // Edit driver
 // Add driver
@@ -56,7 +56,7 @@ const Planner = () => {
 		<>
 			{/* <Navbar /> */}
 			<div className="longTermPlanner">
-				<p>Ice Skating With Friends | February 12th, 2020 | 6:00pm</p>
+				<p>Ice Skating With Friends | February 12th, 2020 | 6:00pm {/* <span><IconButton icon="user-edit"/></span> */}</p>
 				<div className="longTermPlanner__cards">
 					<DriverContainer
 						driverList={driverList}
