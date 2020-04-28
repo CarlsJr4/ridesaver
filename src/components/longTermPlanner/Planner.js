@@ -5,7 +5,9 @@ import PassengerContainer from './passengerPanel/PassengerContainer';
 // import Navbar from '../reusable/Navbar';
 
 // TODO:
-// Make components drag and drop
+// Edit driver
+// Drag and drop
+// Deploy and get critiqued
 
 const fakeDriverList = [
 	{
@@ -43,6 +45,18 @@ const Planner = () => {
 		updateDriverList(updatedList);
 	}
 
+	const addPassenger = (e, formData) =>{
+		console.log(e, formData);
+		e.target.reset();
+		e.preventDefault();
+		const updatedList = [...passengerList];
+		updatedList.push({
+			name: formData.passengerName,
+			id: passengerList.length + 1
+		});
+		updatePassengerList(updatedList);
+	}
+
 	const deleteUnseatedPassenger = (id) => {
 		const updatedList = passengerList.filter(item => item.id !== id);
 		updatePassengerList(updatedList);
@@ -74,6 +88,7 @@ const Planner = () => {
 					<PassengerContainer
 						passengerList={passengerList}
 						handleDelete={deleteUnseatedPassenger}
+						handleAddPassenger={addPassenger}
 					/>
 				</div>
 			</div>

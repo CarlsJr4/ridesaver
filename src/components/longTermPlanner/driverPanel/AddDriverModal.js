@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../../reusable/Modal';
 import useFormData from '../../../hooks/useFormData';
 
