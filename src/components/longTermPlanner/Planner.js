@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import DriverContainer from './driverPanel/DriverContainer';
 import PassengerContainer from './passengerPanel/PassengerContainer';
-import IconButton from '../reusable/IconButton';
-import Navbar from '../reusable/Navbar';
-import Modal from '../reusable/Modal';
+// import IconButton from '../reusable/IconButton';
+// import Navbar from '../reusable/Navbar';
 
 // TODO:
 // Make components drag and drop
-// Add passengers by form
-// Edit driver
-// Add driver
-// Display a fake link for users to add their own passengers and drivers
 
 const fakeDriverList = [
 	{
@@ -35,6 +30,18 @@ const Planner = () => {
 
 	const [driverList, updateDriverList] = useState(fakeDriverList);
 	const [passengerList, updatePassengerList] = useState(fakePassengerList);
+	
+	const addDriver = (e, formData) => {
+		e.preventDefault();
+		const updatedList = [...driverList];
+		updatedList.push({
+			name: formData.driverName,
+			seats: parseInt(formData.driverSeats),
+			id: driverList.length + 1,
+			passengers: []
+		});
+		updateDriverList(updatedList);
+	}
 
 	const deleteUnseatedPassenger = (id) => {
 		const updatedList = passengerList.filter(item => item.id !== id);
@@ -62,6 +69,7 @@ const Planner = () => {
 						driverList={driverList}
 						passengerList={passengerList}
 						handleDelete={deleteSeatedPassenger}
+						handleAddDriver={addDriver}
 					/>
 					<PassengerContainer
 						passengerList={passengerList}

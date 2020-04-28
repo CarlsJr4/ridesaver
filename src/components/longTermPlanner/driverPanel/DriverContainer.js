@@ -6,7 +6,7 @@ import AddDriverModal from './AddDriverModal';
 import LinkModal from './LinkModal';
 import EditDriverModal from './EditDriverModal';
 
-const DriverContainer = ({passengerList, driverList, handleDelete}) => {
+const DriverContainer = ({passengerList, driverList, handleDelete, handleAddDriver}) => {
 	const [isAddingDriver, toggleAddModal] = useState(false);
 	const [isViewingRestLink, toggleRestLink] = useState(false);
 	const [isEditingDriver, toggleEditDriver] = useState(false);
@@ -16,6 +16,7 @@ const DriverContainer = ({passengerList, driverList, handleDelete}) => {
 			<AddDriverModal
 				isVisible={isAddingDriver}
 				handleVisibility={toggleAddModal}
+				handleAddDriver={handleAddDriver}
 			/>
 			<LinkModal 
 				isVisible={isViewingRestLink}
