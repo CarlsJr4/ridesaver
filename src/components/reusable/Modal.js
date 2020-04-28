@@ -1,16 +1,24 @@
 import React from 'react';
 import IconButton from './IconButton';
 
-const Modal = ({children}) => {
+const Modal = ({children, isEditing, handleVisibility}) => {
 	return (
-		<div className="modal">
-			<div className="modal__content">
-				<div className="modal__close">
-					<IconButton icon="times" />
+		<div 
+			className={isEditing ? 'modal--visible' : 'modal'} 
+			onClick={() => handleVisibility(false)}
+		>
+			<div 
+				className="modal__content"
+			>
+				<div 
+					className="modal__close" 
+					onClick={() => handleVisibility(false)}
+				>
+					<IconButton 
+						icon="times" 
+					/>
 				</div>
-				<h1>This is just a test</h1>
-				<p>This is also just a test</p>
-				{children}
+					{children}
 			</div>
 		</div>
 	);
