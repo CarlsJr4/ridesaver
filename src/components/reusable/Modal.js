@@ -5,7 +5,6 @@ const Modal = ({children, isEditing, handleVisibility}) => {
 	return (
 		<div 
 			className={isEditing ? 'modal--visible' : 'modal'} 
-			onClick={() => handleVisibility(false)}
 		>
 			<div 
 				className="modal__content"
