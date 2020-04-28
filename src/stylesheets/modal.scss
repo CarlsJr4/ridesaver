@@ -22,16 +22,31 @@
 
 	&__content {
 		@extend %placeholder-card-styling;
-		width: 40%;
+		position: relative;
+		z-index: 2;
+		width: 25%;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		margin-top: 5%;
 		margin-right: 15%;
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;		
+
+			input, select {
+				margin-bottom: 1rem;
+			}
+		}
+
 	}
 
 	&__close {
 	align-self: flex-end;
 	}
+
 }
 
 .modal__close:hover,
