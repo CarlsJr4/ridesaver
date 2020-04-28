@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PassengerTileContainer from './PassengerTileContainer';
 import useFormData from '../../../hooks/useFormData';
+import { CarpoolContext } from '../../context/GlobalState';
 
-const Passengers = ({passengerList, handleDelete, handleAddPassenger}) => {
-	const {formData, setFormData, handleInputChange} = useFormData();
+const Passengers = () => {
+	const { formData, setFormData, handleInputChange } = useFormData();
+	const { addPassenger, deleteUnseatedPassenger, passengerList } = useContext(CarpoolContext)
 
 	return (
 		<div className="passengersContainer">
@@ -12,7 +14,7 @@ const Passengers = ({passengerList, handleDelete, handleAddPassenger}) => {
 					<form
 						onSubmit={(e) => {
 							setFormData({});
-							return handleAddPassenger(e, formData);
+							return addPassenger(e, formData);
 						}}
 					>
 						<input 
@@ -25,9 +27,9 @@ const Passengers = ({passengerList, handleDelete, handleAddPassenger}) => {
 						/>
 						<button type="submit">Add</button>
 					</form>
-					<PassengerTileContainer
-						passengers={passengerList} 
-						handleDelete={handleDelete}
+					<PassengerTileContainer 
+						handleDelete={deleteUnseatedPassenger} 
+						passengers={passengerList}
 					/>
 				</div>
 		</div>

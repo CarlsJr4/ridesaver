@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { CarpoolContext } from '../../context/GlobalState';
 
-const DriverStatusBar = ({driverList, passengerList}) => {
+const DriverStatusBar = () => {
 	const [seatStatus, updateSeatStatus] = useState({});
 	const [emptyCars, setEmptyCars] = useState(true);
+
+	const {driverList, passengerList} = useContext(CarpoolContext);
 
 	useEffect(() => {
 		updateSeatStatus(calcSeats(driverList));

@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import DriverStatusBar from './DriverStatusBar';
 import DriverCard from './DriverCard';
 import IconButton from '../../reusable/IconButton';
 import AddDriverModal from './AddDriverModal';
 import LinkModal from './LinkModal';
 import EditDriverModal from './EditDriverModal';
+import { CarpoolContext } from '../../context/GlobalState';
 
-const DriverContainer = ({passengerList, driverList, handleDelete, handleAddDriver}) => {
+const DriverContainer = () => {
 	const [isAddingDriver, toggleAddModal] = useState(false);
 	const [isViewingRestLink, toggleRestLink] = useState(false);
 	const [isEditingDriver, toggleEditDriver] = useState(false);
+
+	const { driverList, addDriver } = useContext(CarpoolContext);
 
 	return (
 		<div className="planner__left">
 			<AddDriverModal
 				isVisible={isAddingDriver}
 				handleVisibility={toggleAddModal}
-				handleAddDriver={handleAddDriver}
+				handleAddDriver={addDriver}
 			/>
 			<LinkModal 
 				isVisible={isViewingRestLink}
@@ -37,10 +40,7 @@ const DriverContainer = ({passengerList, driverList, handleDelete, handleAddDriv
 					handleClick={() => toggleAddModal(true)}	
 				/>
 			</div>
-			<DriverStatusBar 
-				passengerList={passengerList}
-				driverList={driverList}
-			/>
+			<DriverStatusBar />
 			<div className="drivers__container">
 				{driverList.map((driver, i) => 
 					<DriverCard
@@ -50,7 +50,6 @@ const DriverContainer = ({passengerList, driverList, handleDelete, handleAddDriv
 						name={driver.name}
 						passengers={driver.passengers}
 						totalSeats={driver.seats}
-						handleDelete={handleDelete}
 						toggleEditDriver={toggleEditDriver}
 					/>
 				)}

@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PassengerTileContainer from '../passengerPanel/PassengerTileContainer';
 import IconButton from '../../reusable/IconButton';
+import { CarpoolContext } from '../../context/GlobalState';
 
-// How do we pass the driver's ID to the passenger tile container?
-const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex, toggleEditDriver}) => {
-	// To conditionally update the progress bar's width styling
-	const [seatCapacityBar, updateCapacityBar] = useState(0);
+// How can we get a driverCard to send the driver's ID to the modal?
+const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver}) => {
+	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
+	const {deleteSeatedPassenger} = useContext(CarpoolContext);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
 
 	return (
@@ -26,7 +27,7 @@ const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex, to
 			</div>
 			<PassengerTileContainer
 				passengers={passengers}
-				handleDelete={handleDelete}
+				handleDelete={deleteSeatedPassenger}
 				driverIndex={driverIndex}
 			/>
 		</div>

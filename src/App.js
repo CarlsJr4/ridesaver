@@ -1,11 +1,13 @@
 import React from 'react';
 import Planner from './components/longTermPlanner/Planner';
-
+import GlobalState from './components/context/GlobalState';
 // Eventually, this app will house your many routes
 
 function App() {
   return (
-		<Planner />
+		<GlobalState>
+			<Planner />
+		</GlobalState>
   );
 }
 
