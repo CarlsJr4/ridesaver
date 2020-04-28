@@ -3,7 +3,7 @@ import PassengerTileContainer from '../passengerPanel/PassengerTileContainer';
 import IconButton from '../../reusable/IconButton';
 
 // How do we pass the driver's ID to the passenger tile container?
-const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) => {
+const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex, toggleEditDriver}) => {
 	// To conditionally update the progress bar's width styling
 	const [seatCapacityBar, updateCapacityBar] = useState(0);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
@@ -14,6 +14,7 @@ const DriverCard = ({name, passengers, totalSeats, handleDelete, driverIndex}) =
 				<p>{name}</p>
 				<IconButton
 					icon="user-edit"
+					handleClick={() => toggleEditDriver(true)}
 				/>
 				<p>({passengers.length}/{totalSeats})</p>
 				<div 

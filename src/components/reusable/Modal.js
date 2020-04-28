@@ -1,10 +1,10 @@
 import React from 'react';
 import IconButton from './IconButton';
 
-const Modal = ({children, isEditing, handleVisibility}) => {
+const Modal = ({children, isVisible, handleVisibility}) => {
 	return (
 		<div 
-			className={isEditing ? 'modal--visible' : 'modal'} 
+			className={isVisible ? 'modal--visible' : 'modal'} 
 		>
 			<div 
 				className="modal__content"

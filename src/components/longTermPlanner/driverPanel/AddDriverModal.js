@@ -1,0 +1,30 @@
+import React from 'react';
+import Modal from '../../reusable/Modal';
+
+const AddDriverModal = ({isVisible, handleVisibility}) => {
+	return (
+		<Modal 
+				isVisible={isVisible} 
+				handleVisibility={handleVisibility}
+			>
+				<h1>Add Driver</h1>
+				<form>
+					<label htmlFor="driverName">Driver's name: </label>
+					<input type="text" name="driverName" id="driverName" required/>
+					<label htmlFor="driverSeats">Number of available seats: </label>
+					<select name="driverSeats" id="driverSeats">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+					<input type="submit" value="Add"/>
+				</form>	
+			</Modal>
+	);
+}
+
+export default AddDriverModal;
