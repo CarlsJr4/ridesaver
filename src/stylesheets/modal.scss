@@ -1,20 +1,32 @@
-.modal {
-	display: none;
+%modal-base-styling {
 	position: fixed;
 	height: 100%;
 	width: 100%;
 	z-index: 1;
 	left: 0;
 	top: 0;
-	flex-direction: column;
-	align-items: center;
-	background-color: rgba(255, 255, 255, 0.80); 
+	background-color: rgba(255, 255, 255, 0.80);
+}
+
+.modal {
+	@extend %modal-base-styling;
+	display: none;
+
+	
+	&--visible {
+		@extend %modal-base-styling;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
 	&__content {
 		@extend %placeholder-card-styling;
-		width: 80%;
+		width: 40%;
 		display: flex;
 		flex-direction: column;
+		margin-top: 5%;
+		margin-right: 15%;
 	}
 
 	&__close {
