@@ -5,22 +5,24 @@ import { CarpoolContext } from '../../context/GlobalState';
 
 const Passengers = () => {
 	const { formData, setFormData, handleInputChange } = useFormData();
-	const { updatePassengerList, passengerList } = useContext(CarpoolContext)
+	const { updatePassengerList, passengerList } = useContext(CarpoolContext);
+
+	function handleAdd(e) {
+		setFormData({});
+		e.preventDefault();
+		e.target.reset();
+		return updatePassengerList({
+			type: 'ADD', 
+			formData 
+		});
+	}
 
 	return (
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
 				<div>
 					<form
-						onSubmit={(e) => {
-							setFormData({});
-							e.preventDefault();
-							e.target.reset();
-							return updatePassengerList({
-								type: 'ADD', 
-								formData 
-							});
-						}}
+						onSubmit={(e) => handleAdd(e)}
 					>
 						<input 
 							type="text" 

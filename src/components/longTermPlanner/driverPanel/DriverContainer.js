@@ -8,11 +8,9 @@ import EditDriverModal from './modals/EditDriverModal';
 import { CarpoolContext } from '../../context/GlobalState';
 
 const DriverContainer = () => {
-	// Toggle visibility of modals - This is OK for now. But if we had like 6 modals, it would be good to use a reducer. 
 	const [isAddingDriver, toggleAddModal] = useState(false);
 	const [isViewingRestLink, toggleRestLink] = useState(false);
 	const [isEditingDriver, toggleEditDriver] = useState(false);
-	
 	const [driverBeingEdited, updateDriverBeingEdited] = useState({});
 
 	const { driverList, updateDriverList } = useContext(CarpoolContext);

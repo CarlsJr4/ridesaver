@@ -4,8 +4,8 @@ import Modal from '../../../reusable/Modal'
 const LinkModal = ({isVisible, handleVisibility}) => {
 	return (
 		<Modal 
-		isVisible={isVisible} 
-		handleVisibility={handleVisibility}
+			isVisible={isVisible} 
+			handleVisibility={handleVisibility}
 		>
 			<div className="modalMessage">
 				<h1>Sit back and relax.</h1>

@@ -3,10 +3,10 @@ import Modal from '../../../reusable/Modal';
 import useFormData from '../../../../hooks/useFormData';
 import { CarpoolContext } from '../../../context/GlobalState';
 
-// The whole data flow of this is kind of confusing. Can we refactor this?
 const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();
 
+	// Auto-fill the form with the selected driver's data
 	useEffect(() => setFormData({
 		driverName: driver.name,
 		driverSeats: driver.totalSeats
@@ -14,26 +14,38 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 
 	const { updateDriverList } = useContext(CarpoolContext);
 
+	function handleSubmit(e) {
+		e.preventDefault();
+		setFormData({});
+		handleVisibility(false);
+		updateDriverList({type: 'EDIT', index: driver.driverIndex, formData})
+	}
+
+	function handleDeleteDriver() {
+		setFormData({});
+		handleVisibility(false); // Immediately close the modal for better UX
+		updateDriverList({type: 'DELETE', id: driver.id})
+	}
+
 	return (
 		<Modal 
 			isVisible={isVisible} 
 			handleVisibility={handleVisibility}
 			>
-			<h1>Edit Driver</h1>
+			<h1>
+				Edit Driver
+			</h1>
 			<form
-				onSubmit={(e) => {
-					e.preventDefault();
-					setFormData({});
-					handleVisibility(false);
-					updateDriverList({type: 'EDIT', index: driver.driverIndex, formData})
-				}}
+				onSubmit={(e) => handleSubmit(e)}
 			>
-				<label htmlFor="driverName">Driver's name: </label>
+				<label htmlFor="driverName">
+					Driver's name: 
+				</label>
 				<input 
 					type="text" 
 					name="driverName" 
 					id="driverName" 
-					value={formData.driverName || ''} 
+					value={formData.driverName || ''} // There is an || operator here to keep the component controlled
 					onChange={handleInputChange}
 					required
 				/>
@@ -57,15 +69,13 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 					<option value="6">6</option>
 					<option value="7">7</option>
 				</select>
-				<input type="submit" value="Update"/>
+				<input 
+					type="submit" 
+					value="Update"
+				/>
 				<button
-					// We set type to button so that the browser doesn't submit an unvalidated form and throw an error 
-				  type="button"
-					onClick={() => {
-						setFormData({});
-						handleVisibility(false);
-						updateDriverList({type: 'DELETE', id: driver.id})
-						}}>
+				  type="button" // We set type to button so that the browser doesn't submit an unvalidated form and throw an error 
+					onClick={handleDeleteDriver}>
 							Delete Driver
 					</button>
 			</form>	

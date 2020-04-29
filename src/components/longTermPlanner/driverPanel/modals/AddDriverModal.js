@@ -5,18 +5,20 @@ import useFormData from '../../../../hooks/useFormData';
 const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();
 
+	function handleSubmit(e) {
+		e.preventDefault()
+		e.target.reset();
+		setFormData({});
+		return handleAdd({type: 'ADD', formData});
+	}
+
 	return (
 		<Modal 
 				isVisible={isVisible} 
 				handleVisibility={handleVisibility}
 			>
 				<h1>Add Drivers</h1>
-				<form onSubmit={(e) => {
-					e.preventDefault()
-					e.target.reset();
-					setFormData({});
-					return handleAdd({type: 'ADD', formData});
-				}}>
+				<form onSubmit={(e) => handleSubmit(e)}>
 					<label htmlFor="driverName">Driver's name: </label>
 					<input 
 						type="text" 

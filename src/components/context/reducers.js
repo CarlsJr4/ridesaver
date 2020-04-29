@@ -1,3 +1,4 @@
+// CRUD Drivers
 export function driverReducer(state, action) {
 	let drivers = [...state];
 	switch (action.type) {
@@ -32,6 +33,7 @@ export function driverReducer(state, action) {
 	}
 }
 
+// Status bar updates
 export function statusReducer(state, action) {
 	const drivers = action.drivers;
 	switch(action.type) {
@@ -49,11 +51,10 @@ export function statusReducer(state, action) {
 				maxSeats = [0]
 			}
 
-			// Loop through the drivers array, stop when you find an empty car
 			for (let i = 0; i < drivers.length; i++) {
 				if (drivers[i].passengers.length === 0) {
 					emptyCars = true;
-					break;
+					break; // so that this value doesn't get reassigned if nonempty cars exist 
 				} else {
 					emptyCars = false;
 				}
@@ -70,6 +71,7 @@ export function statusReducer(state, action) {
 	}
 }
 
+// Add and delete passengers
 export function passengerReducer(state, action) {
 	let passengers = [...state];
 	switch (action.type) {

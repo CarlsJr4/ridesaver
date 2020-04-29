@@ -5,7 +5,6 @@ import PassengerContainer from './passengerPanel/PassengerContainer';
 // import Navbar from '../reusable/Navbar';
 
 // TODO:
-// Delete driver
 // Drag and drop
 // Deploy and get critiqued
 // Form validation (after critique)
