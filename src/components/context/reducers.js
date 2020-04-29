@@ -8,13 +8,21 @@ export function driverReducer(state, action) {
 				id: state.length + 1,
 				passengers: []
 			});
-			return drivers
+			return drivers;
+
+		case 'EDIT':
+			drivers[action.index] = {
+				...drivers[action.index],
+				name: action.formData.driverName,
+				seats: parseInt(action.formData.driverSeats)
+			}
+			return drivers;
 
 		case 'DELETE':
 			let passengers = drivers[action.index].passengers; 
 			passengers = passengers.filter(item => item.id !== action.id)
 			drivers[action.index] = {...drivers[action.index], passengers}
-			return drivers
+			return drivers;
 		default:
 			throw new Error();
 	}

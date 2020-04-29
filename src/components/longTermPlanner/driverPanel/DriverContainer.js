@@ -12,6 +12,8 @@ const DriverContainer = () => {
 	const [isAddingDriver, toggleAddModal] = useState(false);
 	const [isViewingRestLink, toggleRestLink] = useState(false);
 	const [isEditingDriver, toggleEditDriver] = useState(false);
+	
+	const [driverBeingEdited, updateDriverBeingEdited] = useState({});
 
 	const { driverList, updateDriverList } = useContext(CarpoolContext);
 
@@ -29,6 +31,7 @@ const DriverContainer = () => {
 			<EditDriverModal 
 				isVisible={isEditingDriver}
 				handleVisibility={toggleEditDriver}
+				driver={driverBeingEdited}
 			/>
 			<div className="drivers__header">
 				<h3>Manage Drivers</h3>
@@ -52,6 +55,7 @@ const DriverContainer = () => {
 						passengers={driver.passengers}
 						totalSeats={driver.seats}
 						toggleEditDriver={toggleEditDriver}
+						updateDriverBeingEdited={updateDriverBeingEdited}
 					/>
 				)}
 			</div>

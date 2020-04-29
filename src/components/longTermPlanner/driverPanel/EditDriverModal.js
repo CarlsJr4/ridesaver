@@ -1,20 +1,53 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import Modal from '../../reusable/Modal';
+import useFormData from '../../../hooks/useFormData';
+import { CarpoolContext } from '../../context/GlobalState';
 
-const EditDriverModal = ({isVisible, handleVisibility}) => {
-	// How can we get the name of the existing driver?
-	// Also, we should fix our naming conventions
+const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
+	const {formData, setFormData, handleInputChange} = useFormData();
+
+	useEffect(() => setFormData({
+		driverName: driver.name,
+		driverSeats: driver.totalSeats
+	}), [driver, setFormData])
+
+	const { updateDriverList } = useContext(CarpoolContext);
+
 	return (
 		<Modal 
 			isVisible={isVisible} 
 			handleVisibility={handleVisibility}
 			>
 			<h1>Edit Driver</h1>
-			<form>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					setFormData({});
+					handleVisibility(false);
+					updateDriverList({type: 'EDIT', index: driver.driverIndex, formData})
+				}}
+			>
 				<label htmlFor="driverName">Driver's name: </label>
-				<input type="text" name="driverName" id="driverName" required/>
-				<label htmlFor="driverSeats">Number of available seats: </label>
-				<select name="driverSeats" id="driverSeats">
+				<input 
+					type="text" 
+					name="driverName" 
+					id="driverName" 
+					value={formData.driverName || ''} 
+					onChange={handleInputChange}
+					required
+				/>
+				<label 
+					htmlFor="driverSeats"
+				>
+					Number of available seats: 
+				</label>
+				<select 
+					name="driverSeats" 
+					id="driverSeats"
+					defaultValue={driver.totalSeats}
+					value={formData.driverSeats}
+					onChange={handleInputChange}
+				>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>

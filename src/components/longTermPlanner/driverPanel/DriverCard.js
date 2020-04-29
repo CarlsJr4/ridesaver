@@ -3,11 +3,22 @@ import PassengerTileContainer from '../passengerPanel/PassengerTileContainer';
 import IconButton from '../../reusable/IconButton';
 import { CarpoolContext } from '../../context/GlobalState';
 
-// How can we get a driverCard to send the driver's ID to the modal?
-const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver}) => {
+// We destructure all these props because we need to assign them to each key
+const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver, updateDriverBeingEdited}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
 	const {updateDriverList} = useContext(CarpoolContext);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
+
+	// When we click the icon button, an external state is set 
+	// We can probably send this data to the parent component's state and render it in the modal
+	function callEditModal() {
+		toggleEditDriver(true);
+		updateDriverBeingEdited({
+			name,
+			totalSeats,
+			driverIndex
+		})
+	}
 
 	return (
 		<div className="driversCard">
@@ -15,7 +26,7 @@ const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver
 				<p>{name}</p>
 				<IconButton
 					icon="user-edit"
-					handleClick={() => toggleEditDriver(true)}
+					handleClick={callEditModal}
 				/>
 				<p>({passengers.length}/{totalSeats})</p>
 				<div 

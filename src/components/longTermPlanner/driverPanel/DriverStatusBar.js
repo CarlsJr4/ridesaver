@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext, useReducer } from 'react';
+import React, { useEffect, useContext, useReducer } from 'react';
 import { CarpoolContext } from '../../context/GlobalState';
 import { statusReducer } from '../../context/reducers';
 
 const DriverStatusBar = () => {
+	// State is maintained here because it only needs to be used by this component
 	const [status, updateStatus] = useReducer(statusReducer, {
 		usedSeatCount: 0,
 		maxSeats: 0,
