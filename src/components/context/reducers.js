@@ -18,7 +18,11 @@ export function driverReducer(state, action) {
 			}
 			return drivers;
 
-		case 'DELETE':
+		case 'DELETE': 
+			drivers = drivers.filter(driver => driver.id !== action.id);
+			return drivers;
+
+		case 'DELETE_PASSENGER':
 			let passengers = drivers[action.index].passengers; 
 			passengers = passengers.filter(item => item.id !== action.id)
 			drivers[action.index] = {...drivers[action.index], passengers}
@@ -31,15 +35,19 @@ export function driverReducer(state, action) {
 export function statusReducer(state, action) {
 	const drivers = action.drivers;
 	switch(action.type) {
-		case 'UPDATE':			
-			let passengerList = []
-			drivers.forEach(driver => passengerList.push(...driver.passengers))
+		case 'UPDATE':	
+			let passengerList = [];
+			drivers.forEach(driver => passengerList.push(...driver.passengers));
 			let usedSeatCount = passengerList.length;
 			let maxSeats = Array.from(drivers, driver => driver.seats);
 			let emptyCars = null;
 
 			const reducer = (accumulator, currentValue) => accumulator + currentValue;
-			maxSeats = maxSeats.reduce(reducer);
+			if (maxSeats.length > 0) {
+				maxSeats = maxSeats.reduce(reducer);
+			} else {
+				maxSeats = [0]
+			}
 
 			// Loop through the drivers array, stop when you find an empty car
 			for (let i = 0; i < drivers.length; i++) {
@@ -72,7 +80,7 @@ export function passengerReducer(state, action) {
 			})
 			return passengers
 
-		case 'DELETE':
+		case 'DELETE_PASSENGER':
 			passengers = passengers.filter(item => item.id !== action.id)
 			return passengers
 		default:

@@ -17,7 +17,7 @@ const PassengerTileContainer = ({handleUpdate, driverIndex, passengers}) => {
 							</p>
 							<IconButton
 							 handleClick={() => handleUpdate({
-								 type: 'DELETE', 
+								 type: 'DELETE_PASSENGER', 
 								 index: driverIndex, 
 								 id: passenger.id 
 								})} 

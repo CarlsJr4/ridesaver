@@ -4,7 +4,7 @@ import IconButton from '../../reusable/IconButton';
 import { CarpoolContext } from '../../context/GlobalState';
 
 // We destructure all these props because we need to assign them to each key
-const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver, updateDriverBeingEdited}) => {
+const DriverCard = ({name, id, passengers, totalSeats, driverIndex, toggleEditDriver, updateDriverBeingEdited}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
 	const {updateDriverList} = useContext(CarpoolContext);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
@@ -16,7 +16,8 @@ const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver
 		updateDriverBeingEdited({
 			name,
 			totalSeats,
-			driverIndex
+			driverIndex,
+			id
 		})
 	}
 

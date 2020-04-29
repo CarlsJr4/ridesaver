@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import Modal from '../../reusable/Modal';
-import useFormData from '../../../hooks/useFormData';
-import { CarpoolContext } from '../../context/GlobalState';
+import Modal from '../../../reusable/Modal';
+import useFormData from '../../../../hooks/useFormData';
+import { CarpoolContext } from '../../../context/GlobalState';
 
+// The whole data flow of this is kind of confusing. Can we refactor this?
 const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();
 
@@ -57,6 +58,16 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 					<option value="7">7</option>
 				</select>
 				<input type="submit" value="Update"/>
+				<button
+					// We set type to button so that the browser doesn't submit an unvalidated form and throw an error 
+				  type="button"
+					onClick={() => {
+						setFormData({});
+						handleVisibility(false);
+						updateDriverList({type: 'DELETE', id: driver.id})
+						}}>
+							Delete Driver
+					</button>
 			</form>	
 		</Modal>
 	);

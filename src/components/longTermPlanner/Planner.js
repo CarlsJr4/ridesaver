@@ -5,9 +5,12 @@ import PassengerContainer from './passengerPanel/PassengerContainer';
 // import Navbar from '../reusable/Navbar';
 
 // TODO:
-// Edit driver
+// Delete driver
 // Drag and drop
 // Deploy and get critiqued
+// Form validation (after critique)
+// Backend
+// Aesthetics
 
 const Planner = () => {
 	// Normally, we'd make an API call here and store the data in the state
