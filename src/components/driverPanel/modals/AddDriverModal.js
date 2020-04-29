@@ -1,6 +1,6 @@
 import React from 'react';
-import Modal from '../../../reusable/Modal';
-import useFormData from '../../../../hooks/useFormData';
+import Modal from '../../reusable/Modal';
+import useFormData from '../../../hooks/useFormData';
 
 const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();

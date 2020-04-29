@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PassengerTileContainer from './PassengerTileContainer';
-import useFormData from '../../../hooks/useFormData';
-import { CarpoolContext } from '../../context/GlobalState';
+import useFormData from '../../hooks/useFormData';
+import { CarpoolContext } from '../context/GlobalState';
 
 const Passengers = () => {
 	const { formData, setFormData, handleInputChange } = useFormData();

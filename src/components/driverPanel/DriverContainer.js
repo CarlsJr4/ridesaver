@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import DriverStatusBar from './DriverStatusBar';
 import DriverCard from './DriverCard';
-import IconButton from '../../reusable/IconButton';
+import IconButton from '../reusable/IconButton';
 import AddDriverModal from './modals/AddDriverModal';
 import LinkModal from './modals/LinkModal';
 import EditDriverModal from './modals/EditDriverModal';
-import { CarpoolContext } from '../../context/GlobalState';
+import { CarpoolContext } from '../context/GlobalState';
 
 const DriverContainer = () => {
 	const [isAddingDriver, toggleAddModal] = useState(false);

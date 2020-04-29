@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
-import Modal from '../../../reusable/Modal';
-import useFormData from '../../../../hooks/useFormData';
-import { CarpoolContext } from '../../../context/GlobalState';
+import Modal from '../../reusable/Modal';
+import useFormData from '../../../hooks/useFormData';
+import { CarpoolContext } from '../../context/GlobalState';
 
 const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();

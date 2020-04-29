@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PassengerTileContainer from '../passengerPanel/PassengerTileContainer';
-import IconButton from '../../reusable/IconButton';
-import { CarpoolContext } from '../../context/GlobalState';
+import IconButton from '../reusable/IconButton';
+import { CarpoolContext } from '../context/GlobalState';
 
 const DriverCard = ({name, id, passengers, totalSeats, driverIndex, toggleEditDriver, updateDriverBeingEdited}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width

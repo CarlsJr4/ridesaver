@@ -1,5 +1,5 @@
 import React from 'react';
-import Planner from './components/longTermPlanner/Planner';
+import Planner from './components/Planner';
 import GlobalState from './components/context/GlobalState';
 // Eventually, this app will house your many routes
 
