@@ -23,22 +23,17 @@ export function driverReducer(state, action) {
 export function statusReducer(state, action) {
 	const drivers = action.drivers;
 	switch(action.type) {
-		// This is all the math needed to generate the statistics bar
-		// Is there any way we can shorten it?
-		case 'UPDATE':
-			const reducer = (accumulator, currentValue) => accumulator + currentValue;
-			let usedSeats = [];
-			let maxSeats = [];
-			let usedSeatCount = 0;
-			let emptyCars = true;
-			drivers.forEach(driver => {
-				usedSeats.push(...driver.passengers)
-				maxSeats.push(driver.seats)
-			});
-	
-			maxSeats = maxSeats.reduce(reducer);
-			usedSeatCount = usedSeats.length;
+		case 'UPDATE':			
+			let passengerList = []
+			drivers.forEach(driver => passengerList.push(...driver.passengers))
+			let usedSeatCount = passengerList.length;
+			let maxSeats = Array.from(drivers, driver => driver.seats);
+			let emptyCars = null;
 
+			const reducer = (accumulator, currentValue) => accumulator + currentValue;
+			maxSeats = maxSeats.reduce(reducer);
+
+			// Loop through the drivers array, stop when you find an empty car
 			for (let i = 0; i < drivers.length; i++) {
 				if (drivers[i].passengers.length === 0) {
 					emptyCars = true;
