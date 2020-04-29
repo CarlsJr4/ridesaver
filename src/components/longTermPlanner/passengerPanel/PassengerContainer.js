@@ -5,7 +5,7 @@ import { CarpoolContext } from '../../context/GlobalState';
 
 const Passengers = () => {
 	const { formData, setFormData, handleInputChange } = useFormData();
-	const { addPassenger, deleteUnseatedPassenger, passengerList } = useContext(CarpoolContext)
+	const { updatePassengerList, passengerList } = useContext(CarpoolContext)
 
 	return (
 		<div className="passengersContainer">
@@ -14,7 +14,12 @@ const Passengers = () => {
 					<form
 						onSubmit={(e) => {
 							setFormData({});
-							return addPassenger(e, formData);
+							e.preventDefault();
+							e.target.reset();
+							return updatePassengerList({
+								type: 'ADD', 
+								formData 
+							});
 						}}
 					>
 						<input 
@@ -28,7 +33,7 @@ const Passengers = () => {
 						<button type="submit">Add</button>
 					</form>
 					<PassengerTileContainer 
-						handleDelete={deleteUnseatedPassenger} 
+						handleUpdate={updatePassengerList}
 						passengers={passengerList}
 					/>
 				</div>

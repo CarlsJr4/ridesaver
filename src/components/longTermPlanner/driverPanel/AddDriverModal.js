@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '../../reusable/Modal';
 import useFormData from '../../../hooks/useFormData';
 
-const AddDriverModal = ({isVisible, handleVisibility, handleAddDriver}) => {
+const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();
 
 	return (
@@ -12,16 +12,17 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAddDriver}) => {
 			>
 				<h1>Add Drivers</h1>
 				<form onSubmit={(e) => {
+					e.preventDefault()
 					e.target.reset();
 					setFormData({});
-					return handleAddDriver(e, formData);
+					return handleAdd({type: 'ADD', formData});
 				}}>
 					<label htmlFor="driverName">Driver's name: </label>
 					<input 
 						type="text" 
 						name="driverName" 
 						id="driverName" 
-						value={formData.driverName} 
+						value={formData.driverName || ''} 
 						onChange={(e) => handleInputChange(e)} 
 						required
 					/>

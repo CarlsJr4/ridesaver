@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import IconButton from '../../reusable/IconButton';
 
-// The passengers prop is either all the unseated passengers or the driver's specific passengers. The type depends on the props. 
-const PassengerTileContainer = ({handleDelete, driverIndex, passengers}) => {
+// The passengers prop is either all the unseated passengers or the driver's specific passengers. The type depends on the props.
+const PassengerTileContainer = ({handleUpdate, driverIndex, passengers}) => {
 	return (
 		<div className="passengerTiles">
 				{passengers.map((passenger) =>
@@ -16,7 +16,11 @@ const PassengerTileContainer = ({handleDelete, driverIndex, passengers}) => {
 								{passenger.name}
 							</p>
 							<IconButton
-							 handleClick={() => handleDelete(passenger.id, driverIndex)} 
+							 handleClick={() => handleUpdate({
+								 type: 'DELETE', 
+								 index: driverIndex, 
+								 id: passenger.id 
+								})} 
 							 icon="trash" 
 							/>
 						</div> 

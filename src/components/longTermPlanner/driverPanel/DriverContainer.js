@@ -8,18 +8,19 @@ import EditDriverModal from './EditDriverModal';
 import { CarpoolContext } from '../../context/GlobalState';
 
 const DriverContainer = () => {
+	// Toggle visibility of modals
 	const [isAddingDriver, toggleAddModal] = useState(false);
 	const [isViewingRestLink, toggleRestLink] = useState(false);
 	const [isEditingDriver, toggleEditDriver] = useState(false);
 
-	const { driverList, addDriver } = useContext(CarpoolContext);
+	const { driverList, updateDriverList } = useContext(CarpoolContext);
 
 	return (
 		<div className="planner__left">
 			<AddDriverModal
 				isVisible={isAddingDriver}
 				handleVisibility={toggleAddModal}
-				handleAddDriver={addDriver}
+				handleAdd={updateDriverList}
 			/>
 			<LinkModal 
 				isVisible={isViewingRestLink}

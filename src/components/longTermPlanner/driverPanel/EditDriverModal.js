@@ -23,7 +23,7 @@ const EditDriverModal = ({isVisible, handleVisibility}) => {
 					<option value="6">6</option>
 					<option value="7">7</option>
 				</select>
-				<input type="submit" value="Add"/>
+				<input type="submit" value="Update"/>
 			</form>	
 		</Modal>
 	);

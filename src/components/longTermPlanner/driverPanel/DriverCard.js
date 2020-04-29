@@ -6,7 +6,7 @@ import { CarpoolContext } from '../../context/GlobalState';
 // How can we get a driverCard to send the driver's ID to the modal?
 const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
-	const {deleteSeatedPassenger} = useContext(CarpoolContext);
+	const {updateDriverList} = useContext(CarpoolContext);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
 
 	return (
@@ -27,7 +27,7 @@ const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver
 			</div>
 			<PassengerTileContainer
 				passengers={passengers}
-				handleDelete={deleteSeatedPassenger}
+				handleUpdate={updateDriverList}
 				driverIndex={driverIndex}
 			/>
 		</div>

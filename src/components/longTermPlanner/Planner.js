@@ -8,7 +8,6 @@ import PassengerContainer from './passengerPanel/PassengerContainer';
 // Edit driver
 // Drag and drop
 // Deploy and get critiqued
-// Determine if its worth setting up React Context or Redux
 
 const Planner = () => {
 	// Normally, we'd make an API call here and store the data in the state
