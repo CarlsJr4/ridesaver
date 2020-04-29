@@ -17,7 +17,7 @@
 // All passenger cards in the application
 .passengerTiles {
 	display: grid;
-	grid-gap: 10px;
+	// grid-gap: 10px;
 
 	// The contents of the cards
 	&__card {
@@ -28,6 +28,7 @@
 		cursor: grab;
 		background-color: white;
 		align-items: center;
+		margin: 5px 0;
 
 		p {
 			margin: 10px;

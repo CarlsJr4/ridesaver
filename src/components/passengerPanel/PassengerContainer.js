@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PassengerTileContainer from './PassengerTileContainer';
 import useFormData from '../../hooks/useFormData';
 import { CarpoolContext } from '../context/GlobalState';
+import { Droppable } from 'react-beautiful-dnd';
 
 const Passengers = () => {
 	const { formData, setFormData, handleInputChange } = useFormData();
@@ -20,25 +21,35 @@ const Passengers = () => {
 	return (
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
-				<div>
-					<form
-						onSubmit={(e) => handleAdd(e)}
-					>
-						<input 
-							type="text" 
-							name="passengerName" 
-							id="passengerName" 
-							placeholder="Passenger's name..."
-							value={formData.name}
-							onChange={handleInputChange}
+			<Droppable
+				droppableId="passengerDroppable"
+			>
+				{(provided) => (
+					<div>
+						<form
+							onSubmit={(e) => handleAdd(e)}
+						>
+							<input 
+								type="text" 
+								name="passengerName" 
+								id="passengerName" 
+								placeholder="Passenger's name..."
+								value={formData.name}
+								onChange={handleInputChange}
+							/>
+							<button type="submit">Add</button>
+						</form>
+						<PassengerTileContainer 
+							{...provided.droppableProps}
+							innerRef={provided.innerRef}
+							handleUpdate={updatePassengerList}
+							passengers={passengerList}
+							placeholder={provided.placeholder}
 						/>
-						<button type="submit">Add</button>
-					</form>
-					<PassengerTileContainer 
-						handleUpdate={updatePassengerList}
-						passengers={passengerList}
-					/>
 				</div>
+				)}
+
+			</Droppable>
 		</div>
 	);
 }
