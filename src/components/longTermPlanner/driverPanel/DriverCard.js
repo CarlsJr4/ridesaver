@@ -22,12 +22,14 @@ const DriverCard = ({name, passengers, totalSeats, driverIndex, toggleEditDriver
 
 	return (
 		<div className="driversCard">
-			<div className="driversCard__header">
+			<div className="driversCard__headerTop">
 				<p>{name}</p>
 				<IconButton
 					icon="user-edit"
 					handleClick={callEditModal}
 				/>
+			</div>
+			<div className="driversCard__headerBottom">
 				<p>({passengers.length}/{totalSeats})</p>
 				<div 
 					className={`${seatCapacityBar} ` < 100 ? 'driversCard__percentBar--incomplete' : 'driversCard__percentBar--complete' }

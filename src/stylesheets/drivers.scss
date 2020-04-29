@@ -36,14 +36,12 @@
 .driversCard {
 	@extend %placeholder-card-styling;
 
-	&__header {
+	// We can probably refactor this to be even cleaner if we can figure out CSS grid
+	&__headerTop {
 		display: grid;
-		grid-template-rows: auto auto;
 		grid-template-columns: auto 1fr;
-		justify-content: start;
 		align-items: center;
 		grid-gap: 10px;
-		margin-bottom: 1rem;
 
 		p {
 			margin: 0;
@@ -53,6 +51,18 @@
 			justify-self: end;
 		}
 	}
+
+	&__headerBottom {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		grid-gap: 10px;
+
+		div {
+			height: 10%;
+		}
+	}
+
 
 	&__percentBar {
 		&--incomplete {
