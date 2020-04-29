@@ -6,6 +6,12 @@ import { CarpoolContext } from '../../../context/GlobalState';
 const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();
 
+	// This block is used for conditional rendering of the delete button
+	let occupied;
+	if (driver.passengers && driver.passengers.length > 0) {
+		occupied = true
+	}
+
 	// Auto-fill the form with the selected driver's data
 	useEffect(() => setFormData({
 		driverName: driver.name,
@@ -73,11 +79,15 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 					type="submit" 
 					value="Update"
 				/>
-				<button
-				  type="button" // We set type to button so that the browser doesn't submit an unvalidated form and throw an error 
-					onClick={handleDeleteDriver}>
+				{occupied ? 
+				<p>To delete this driver, remove their passengers first.</p> :
+					<button
+						type="button" 
+						onClick={handleDeleteDriver}
+						>
 							Delete Driver
 					</button>
+				}
 			</form>	
 		</Modal>
 	);

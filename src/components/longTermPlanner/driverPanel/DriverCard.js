@@ -14,7 +14,8 @@ const DriverCard = ({name, id, passengers, totalSeats, driverIndex, toggleEditDr
 			name,
 			totalSeats,
 			driverIndex,
-			id
+			id,
+			passengers
 		})
 	}
 
