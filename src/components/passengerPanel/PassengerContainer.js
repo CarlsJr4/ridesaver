@@ -21,35 +21,42 @@ const Passengers = () => {
 	return (
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
-			<Droppable
-				droppableId="passengerDroppable"
-			>
-				{(provided) => (
-					<div>
-						<form
-							onSubmit={(e) => handleAdd(e)}
-						>
-							<input 
-								type="text" 
-								name="passengerName" 
-								id="passengerName" 
-								placeholder="Passenger's name..."
-								value={formData.name}
-								onChange={handleInputChange}
-							/>
-							<button type="submit">Add</button>
-						</form>
-						<PassengerTileContainer 
-							{...provided.droppableProps}
-							innerRef={provided.innerRef}
-							handleUpdate={updatePassengerList}
-							passengers={passengerList}
-							placeholder={provided.placeholder}
-						/>
-				</div>
-				)}
-
-			</Droppable>
+			{passengerList.columnOrder.map((columnId) => {
+				const column = passengerList.passengerColumns[columnId];
+				const rows = column.passengerIds.map(passenger => passengerList.passengerRows[passenger]);
+				return (
+					<Droppable
+					droppableId="passengerDroppable"
+					key={columnId}
+				>
+					{(provided) => (
+						<div>
+							<form
+								onSubmit={(e) => handleAdd(e)}
+							>
+								<input 
+									type="text" 
+									name="passengerName" 
+									id="passengerName" 
+									placeholder="Passenger's name..."
+									value={formData.name}
+									onChange={handleInputChange}
+								/>
+								<button type="submit">Add</button>
+							</form>
+									<PassengerTileContainer 
+										{...provided.droppableProps}
+										innerRef={provided.innerRef}
+										handleUpdate={updatePassengerList}
+										passengers={rows}
+										placeholder={provided.placeholder}
+									/>
+					</div>
+					)}
+				</Droppable>
+				)
+			})
+			}
 		</div>
 	);
 }

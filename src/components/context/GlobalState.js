@@ -18,6 +18,7 @@ const fakeDriverList = [
 	},
 ];
 
+// TODO: Assign your free passengers
 const fakePassengerList = [{name: 'pass3', id: 'pass3'}, {name: 'pass4', id: 'pass4'}];
 
 // Only includes state that is read at multiple levels of the app
@@ -27,13 +28,21 @@ const GlobalState = ({children}) => {
 		driverColumns: {},
 		columnOrder: []
 	});
-	const [passengerList, updatePassengerList] = useReducer(passengerReducer, []);
+	const [passengerList, updatePassengerList] = useReducer(passengerReducer, {
+		passengerRows: {},
+		passengerColumns: {},
+		columnOrder: []
+	});
 
 	function fakeApiCall() {
 		// API call would go here, then we'd send the data to our reducer to process
 		updateDriverList({
 			type: 'INIT',
 			drivers: fakeDriverList
+		})
+		updatePassengerList({
+			type: 'INIT',
+			passengers: fakePassengerList
 		})
 	}
 

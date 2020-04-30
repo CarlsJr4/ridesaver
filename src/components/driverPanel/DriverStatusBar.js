@@ -24,7 +24,7 @@ const DriverStatusBar = () => {
 				{status.emptyCars ? 'There are empty cars' : 'No empty cars'}
 			</li>
 			<li>
-				<strong>{passengerList.length} </strong>
+				<strong>{Object.keys(passengerList.passengerRows).length} </strong>
 				people need rides
 			</li>
 			{/* <button>Auto-assign</button> */}

@@ -1,5 +1,3 @@
-// TODO: rename your variables to make more sense
-
 // CRUD Drivers
 export function driverReducer(state, action) {
 	let drivers = {...state};
@@ -100,7 +98,6 @@ export function driverReducer(state, action) {
 // Status bar updates
 export function statusReducer(state, action) {
 	const drivers = action.drivers;
-	console.log(drivers)
 	switch(action.type) {
 		case 'UPDATE':
 			// Handle the case for 0 drivers
@@ -143,19 +140,58 @@ export function statusReducer(state, action) {
 }
 
 // Add and delete passengers
+// Passengers is a whole new list that ReactDnD can update
 export function passengerReducer(state, action) {
-	let passengers = [...state];
+	let passengers = {...state}
+	let column = passengers.passengerColumns["passengerColumn"];
 	switch (action.type) {
-		case 'ADD':
-			passengers.push({
-				name: action.formData.passengerName,
-				id: state.length + 1
-			})
-			return passengers
+		case 'INIT': {
+			const passengerList = [...action.passengers];
 
-		case 'DELETE_PASSENGER':
-			passengers = passengers.filter(item => item.id !== action.id)
+			let passengerRows = {};
+			let passengerIds = [];
+
+			passengerList.forEach(passenger => {
+				passengerRows = {
+					...passengerRows,
+					[passenger.id]: {id: passenger.id, name: passenger.name}
+				}
+
+				passengerIds.push(passenger.id);
+			});
+
+			// Transform the JSON into something React beautiful DnD can easily parse
+			const passengerData = {
+				passengerRows,
+				passengerColumns: {
+					'passengerColumn': {
+						id: 'passengerColumn',
+						passengerIds
+					}
+				},
+				columnOrder: ['passengerColumn']
+			}
+			return passengerData;
+		}
+
+		case 'ADD': {
+			const { passengerName } = action.formData;
+			column.passengerIds.push(passengerName);
+
+			passengers.passengerRows = {
+				...passengers.passengerRows,
+				[passengerName]: {id: passengerName, name: passengerName}
+			}
 			return passengers
+		}
+
+		case 'DELETE_PASSENGER': {
+			let passengerList = column.passengerIds;
+			passengerList = passengerList.filter(item => item !== action.passengerId);
+			column.passengerIds = passengerList;
+			delete passengers.passengerRows[action.passengerId];
+			return passengers;
+		}
 		default:
 			throw new Error();
 	}
