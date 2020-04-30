@@ -4,7 +4,7 @@ import IconButton from '../reusable/IconButton';
 import { CarpoolContext } from '../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
 
-const DriverCard = ({name, id, passengers, totalSeats, driverIndex, toggleEditDriver, updateDriverBeingEdited}) => {
+const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
 	const {updateDriverList} = useContext(CarpoolContext);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
@@ -14,9 +14,8 @@ const DriverCard = ({name, id, passengers, totalSeats, driverIndex, toggleEditDr
 		updateDriverBeingEdited({
 			name,
 			totalSeats,
-			driverIndex,
-			id,
-			passengers
+			passengers,
+			id
 		})
 	}
 
@@ -47,7 +46,7 @@ const DriverCard = ({name, id, passengers, totalSeats, driverIndex, toggleEditDr
 						innerRef={provided.innerRef}
 						passengers={passengers}
 						handleUpdate={updateDriverList}
-						driverIndex={driverIndex}
+						driverId={id}
 						placeholder={provided.placeholder}
 					>
 					</PassengerTileContainer>

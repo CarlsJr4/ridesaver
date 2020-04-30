@@ -1,29 +1,43 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { driverReducer, passengerReducer } from './reducers';
 
 export const CarpoolContext = React.createContext();
 
 const fakeDriverList = [
 	{
-	name: 'Driver1',
+	name: 'driver1',
 	seats: 3,
-	id: 100,
-	passengers: [{name: 'pass1', id: 4}, {name: 'pass2', id: 5}]
+	id: 'driver1',
+	passengers: [{name: 'pass1', id: 'pass1'}, {name: 'pass2', id: 'pass2'}]
 	},
 	{
-	name: 'Driver2',
+	name: 'driver2',
 	seats: 3,
-	id: 200,
-	passengers: [{name: 'pass1', id: 6}, {name: 'pass2', id: 7}, {name: 'pass3', id: 8}]
+	id: 'driver2',
+	passengers: [{name: 'passX', id:'passX'}]
 	},
 ];
 
-const fakePassengerList = [{name: 'pass1', id: 1}, {name: 'pass2', id: 2}, {name: 'pass3', id: 3}];
+const fakePassengerList = [{name: 'pass3', id: 'pass3'}, {name: 'pass4', id: 'pass4'}];
 
 // Only includes state that is read at multiple levels of the app
 const GlobalState = ({children}) => {
-	const [driverList, updateDriverList] = useReducer(driverReducer, fakeDriverList);
-	const [passengerList, updatePassengerList] = useReducer(passengerReducer, fakePassengerList);
+	const [driverList, updateDriverList] = useReducer(driverReducer, {
+		passengerRows: {},
+		driverColumns: {},
+		columnOrder: []
+	});
+	const [passengerList, updatePassengerList] = useReducer(passengerReducer, []);
+
+	function fakeApiCall() {
+		// API call would go here, then we'd send the data to our reducer to process
+		updateDriverList({
+			type: 'INIT',
+			drivers: fakeDriverList
+		})
+	}
+
+	useEffect(() => fakeApiCall(), []);
 
 	return (
 		<CarpoolContext.Provider 

@@ -3,7 +3,7 @@ import IconButton from '../reusable/IconButton';
 import { Draggable } from 'react-beautiful-dnd';
 
 // The passengers prop is either all the unseated passengers or the driver's specific passengers. The type depends on the props.
-const PassengerTileContainer = ({handleUpdate, driverIndex, passengers, innerRef, placeholder}) => {
+const PassengerTileContainer = ({handleUpdate, driverId, passengers, innerRef, placeholder}) => {
 
 	return (
 		<div 
@@ -32,8 +32,8 @@ const PassengerTileContainer = ({handleUpdate, driverIndex, passengers, innerRef
 								<IconButton
 								handleClick={() => handleUpdate({
 									type: 'DELETE_PASSENGER', 
-									index: driverIndex, 
-									id: passenger.id 
+									driverId: driverId, 
+									passengerId: passenger.id 
 									})} 
 								icon="trash" 
 								/>

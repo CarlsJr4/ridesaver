@@ -44,17 +44,22 @@ const DriverContainer = () => {
 			</div>
 			<DriverStatusBar />
 			<div className="drivers__container">
-				{driverList.map((driver, i) => 
-					<DriverCard
-						key={driver.id}
-						id={driver.id}
-						driverIndex={i}
-						name={driver.name}
-						passengers={driver.passengers}
-						totalSeats={driver.seats}
-						toggleEditDriver={toggleEditDriver}
-						updateDriverBeingEdited={updateDriverBeingEdited}
-					/>
+				{driverList.columnOrder.map((columnId) => {
+					const driver = driverList.driverColumns[columnId];
+					const passengers = driver.passengerIds.map(passenger => driverList.passengerRows[passenger]);
+
+					return (
+						<DriverCard
+							key={columnId}
+							id={columnId}
+							name={driver.name}
+							passengers={passengers}
+							totalSeats={driver.seats}
+							toggleEditDriver={toggleEditDriver}
+							updateDriverBeingEdited={updateDriverBeingEdited}
+						/>
+					)
+				}
 				)}
 			</div>
 	</div>
