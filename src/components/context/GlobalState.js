@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
-import { driverReducer, passengerReducer } from './reducers';
+import driverReducer from '../context/reducers/driverReducer';
+import passengerReducer from '../context/reducers/passengerReducer';
 
 export const CarpoolContext = React.createContext();
 

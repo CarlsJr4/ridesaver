@@ -1,5 +1,4 @@
-// CRUD Drivers
-export function driverReducer(state, action) {
+export default function driverReducer(state, action) {
 	let drivers = {...state};
 	switch (action.type) {
 		case 'INIT': {
@@ -90,108 +89,6 @@ export function driverReducer(state, action) {
 			passengers = passengers.filter(item => item !== action.passengerId);
 			driver.passengerIds = passengers;
 			return drivers;
-		default:
-			throw new Error();
-	}
-}
-
-// Status bar updates
-export function statusReducer(state, action) {
-	const drivers = action.drivers;
-	switch(action.type) {
-		case 'UPDATE':
-			// Handle the case for 0 drivers
-			if (drivers.columnOrder.length === 0) {
-				return state
-			} 
-
-			// Calculate the number of used and max seats
-			const reducer = (accumulator, currentValue) => accumulator + currentValue;
-			let seatCountArray = [];
-			let usedSeatsArray = [];
-			drivers.columnOrder.forEach(columnId => {
-				let driverData = drivers.driverColumns[columnId];
-
-				usedSeatsArray.push(driverData.passengerIds.length); // Occupied seat count of each driver
-				seatCountArray.push(parseInt(driverData.seats)); // Max seat count of each driver
-			})
-
-			// Determine if empty cars exist using the usedSeatsArray before reducing it
-			let emptyCars = false;
-			for (const element of usedSeatsArray) {
-				if (element === 0) {
-					emptyCars = true;
-					break
-				}
-			}
-
-			let usedSeatCount = usedSeatsArray.reduce(reducer);
-			let maxSeats = seatCountArray.reduce(reducer);
-
-			return {
-				usedSeatCount,
-				maxSeats,
-				emptyCars
-			}
-
-		default:
-			throw new Error();
-	}
-}
-
-// Add and delete passengers
-// Passengers is a whole new list that ReactDnD can update
-export function passengerReducer(state, action) {
-	let passengers = {...state}
-	let column = passengers.passengerColumns["passengerColumn"];
-	switch (action.type) {
-		case 'INIT': {
-			const passengerList = [...action.passengers];
-
-			let passengerRows = {};
-			let passengerIds = [];
-
-			passengerList.forEach(passenger => {
-				passengerRows = {
-					...passengerRows,
-					[passenger.id]: {id: passenger.id, name: passenger.name}
-				}
-
-				passengerIds.push(passenger.id);
-			});
-
-			// Transform the JSON into something React beautiful DnD can easily parse
-			const passengerData = {
-				passengerRows,
-				passengerColumns: {
-					'passengerColumn': {
-						id: 'passengerColumn',
-						passengerIds
-					}
-				},
-				columnOrder: ['passengerColumn']
-			}
-			return passengerData;
-		}
-
-		case 'ADD': {
-			const { passengerName } = action.formData;
-			column.passengerIds.push(passengerName);
-
-			passengers.passengerRows = {
-				...passengers.passengerRows,
-				[passengerName]: {id: passengerName, name: passengerName}
-			}
-			return passengers
-		}
-
-		case 'DELETE_PASSENGER': {
-			let passengerList = column.passengerIds;
-			passengerList = passengerList.filter(item => item !== action.passengerId);
-			column.passengerIds = passengerList;
-			delete passengers.passengerRows[action.passengerId];
-			return passengers;
-		}
 		default:
 			throw new Error();
 	}

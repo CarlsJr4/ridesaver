@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer } from 'react';
 import { CarpoolContext } from '../context/GlobalState';
-import { statusReducer } from '../context/reducers';
+import statusReducer from '../context/reducers/statusReducer';
 
 const DriverStatusBar = () => {
 	// State is maintained here because it only needs to be used by this component
