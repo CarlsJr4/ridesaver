@@ -91,6 +91,27 @@ export default function driverReducer(state, action) {
 			passengers = passengers.filter(item => item !== action.passengerId);
 			driver.passengerIds = passengers;
 			return drivers;
+
+		case 'REORDER_PASSENGERS': {
+			const column = drivers.driverColumns[action.source.droppableId];
+			const newPassengerIds = Array.from(column.passengerIds);
+			newPassengerIds.splice(action.source.index, 1);
+			newPassengerIds.splice(action.destination.index, 0, action.draggableId);
+
+			// Update the column
+			const newColumn = {
+				...column,
+				passengerIds: newPassengerIds
+			}
+
+			// Update the state
+			drivers.driverColumns = {
+				...drivers.driverColumns,
+				[action.source.droppableId]: newColumn
+			}
+
+			return drivers
+		}
 		default:
 			throw new Error();
 	}

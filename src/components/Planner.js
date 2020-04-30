@@ -15,8 +15,31 @@ import { CarpoolContext } from '../components/context/GlobalState';
 // Aesthetics
 
 const Planner = () => {
+	const { driverList, passengerList, updateDriverList } = useContext(CarpoolContext);
+
 	const onDragEnd = (result) => {
-		return
+		const {source, destination, draggableId} = result;
+		console.log(result, source, destination);
+	
+		// Outside drops
+		if (!destination) {
+			return
+		}
+
+		// Drop in same place
+		if (
+				destination.droppableId === source.droppableId &&
+				destination.index === source.index
+			) {
+				return;
+			}
+
+		updateDriverList({
+			type: 'REORDER_PASSENGERS', 
+			source, 
+			destination,
+			draggableId
+		})
 	}
 
 	return (
