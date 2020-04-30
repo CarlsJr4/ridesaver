@@ -1,4 +1,5 @@
-// Add and delete passengers
+import {v4 as uuidv4} from 'uuid';
+
 // Passengers is a whole new list that ReactDnD can update
 export default function passengerReducer(state, action) {
 	let passengers = {...state}
@@ -35,11 +36,12 @@ export default function passengerReducer(state, action) {
 
 		case 'ADD': {
 			const { passengerName } = action.formData;
-			column.passengerIds.push(passengerName);
+			const id = uuidv4();
+			column.passengerIds.push(id);
 
 			passengers.passengerRows = {
 				...passengers.passengerRows,
-				[passengerName]: {id: passengerName, name: passengerName}
+				[id]: {id, name: passengerName}
 			}
 			return passengers
 		}

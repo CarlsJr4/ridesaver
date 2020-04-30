@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export default function driverReducer(state, action) {
 	let drivers = {...state};
 	switch (action.type) {
@@ -36,15 +38,15 @@ export default function driverReducer(state, action) {
 		}
 
 		case 'ADD': {
-			// Normally, we would get the ID from mongoDB (perform a POST request, and get the passenger's ID)
-			// Currently, ID is being determined by name. We should install UUID later on. 
+			// Normally, we would get the ID from mongoDB (perform a POST request, and get the driver's ID, then assign it to the new driver)
 			let {driverName, driverSeats} = action.formData; // Destructure the form data
 			let allDrivers = drivers.driverColumns; // Get the drivers object of the state
 			let columnOrder = drivers.columnOrder;
+			let id = uuidv4();
 			allDrivers = {
 				...allDrivers,
-				[driverName]: {
-					id: driverName,
+				[id]: {
+					id,
 					name: driverName,
 					passengerIds: [],
 					seats: parseInt(driverSeats)
@@ -54,7 +56,7 @@ export default function driverReducer(state, action) {
 			drivers = {
 				...drivers,
 				driverColumns: allDrivers,
-				columnOrder: [...columnOrder, [driverName]]
+				columnOrder: [...columnOrder, [id]]
 			}
 			return drivers;
 		}

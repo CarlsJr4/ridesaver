@@ -41,6 +41,7 @@ const Passengers = () => {
 									placeholder="Passenger's name..."
 									value={formData.name}
 									onChange={handleInputChange}
+									required
 								/>
 								<button type="submit">Add</button>
 							</form>
