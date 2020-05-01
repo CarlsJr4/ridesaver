@@ -27,13 +27,17 @@ export default function statusReducer(state, action) {
 				}
 			}
 
+			// Count number of unoccupied seats
+			const freePassengers = drivers.driverColumns.freePassengers.passengerIds.length;
+
 			let usedSeatCount = usedSeatsArray.reduce(reducer);
 			let maxSeats = seatCountArray.reduce(reducer);
 
 			return {
 				usedSeatCount,
 				maxSeats,
-				emptyCars
+				emptyCars,
+				freePassengers
 			}
 
 		default:

@@ -6,7 +6,7 @@ import { Droppable } from 'react-beautiful-dnd';
 
 const Passengers = () => {
 	const { formData, setFormData, handleInputChange } = useFormData();
-	const { updatePassengerList, passengerList } = useContext(CarpoolContext);
+	const { updatePassengerList, driverList } = useContext(CarpoolContext);
 
 	function handleAdd(e) {
 		setFormData({});
@@ -18,16 +18,14 @@ const Passengers = () => {
 		});
 	}
 
-	return (
+	const passengerIds = driverList.driverColumns.freePassengers.passengerIds;
+	const passengerData = passengerIds.map(id => driverList.passengerRows[id])
+
+	return ( 
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
-			{passengerList.columnOrder.map((columnId) => {
-				const column = passengerList.passengerColumns[columnId];
-				const rows = column.passengerIds.map(passenger => passengerList.passengerRows[passenger]);
-				return (
-					<Droppable
+				<Droppable
 					droppableId="passengerDroppable"
-					key={columnId}
 				>
 					{(provided) => (
 						<div>
@@ -49,15 +47,12 @@ const Passengers = () => {
 										{...provided.droppableProps}
 										innerRef={provided.innerRef}
 										handleUpdate={updatePassengerList}
-										passengers={rows}
+										passengers={passengerData}
 										placeholder={provided.placeholder}
 									/>
-					</div>
+						</div>
 					)}
 				</Droppable>
-				)
-			})
-			}
 		</div>
 	);
 }

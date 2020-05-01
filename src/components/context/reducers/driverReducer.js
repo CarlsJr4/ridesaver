@@ -4,6 +4,7 @@ export default function driverReducer(state, action) {
 	let drivers = {...state};
 	switch (action.type) {
 		case 'INIT': {
+			// Init will need to convert the data, but exclude the freePassengers column from the column order so it doesn't get mapped
 			const driverList = [...action.drivers];
 			// These will hold the values needed for our datastructure 
 			let passengerData = []; 
@@ -29,10 +30,13 @@ export default function driverReducer(state, action) {
 				}
 			});
 	
+			const columnOrder = Array.from(driverList, driver => driver.id);
+			columnOrder.pop(); // So the column of passengers is not included in the driverList
+
 			const driverData = {
 				passengerRows,
 				driverColumns,
-				columnOrder: Array.from(driverList, driver => driver.id)
+				columnOrder
 			}
 			return driverData;
 		}

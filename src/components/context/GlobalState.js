@@ -1,10 +1,9 @@
 import React, { useReducer, useEffect } from 'react';
 import driverReducer from '../context/reducers/driverReducer';
-import passengerReducer from '../context/reducers/passengerReducer';
 
 export const CarpoolContext = React.createContext();
 
-const fakeDriverList = [
+const initialData = [
 	{
 	name: 'driver1',
 	seats: 3,
@@ -17,21 +16,27 @@ const fakeDriverList = [
 	id: 'driver2',
 	passengers: [{name: 'passX', id:'passX'}]
 	},
+	// This is a unique column. Handle with care!
+	{
+		name: 'freePassengers',
+		seats: null,
+		id: 'freePassengers',
+		passengers: [{name: 'pass3', id: 'pass3'}, {name: 'pass4', id: 'pass4'}]
+	}
 ];
-
-// TODO: Assign your free passengers
-const fakePassengerList = [{name: 'pass3', id: 'pass3'}, {name: 'pass4', id: 'pass4'}];
 
 // Only includes state that is read at multiple levels of the app
 const GlobalState = ({children}) => {
 	const [driverList, updateDriverList] = useReducer(driverReducer, {
 		passengerRows: {},
-		driverColumns: {},
-		columnOrder: []
-	});
-	const [passengerList, updatePassengerList] = useReducer(passengerReducer, {
-		passengerRows: {},
-		passengerColumns: {},
+		// We include this placeholder object so the passengerList can parse through it without returning any errors
+		driverColumns: {
+			freePassengers: {
+				id: "freePassengers",
+				name: "freePassengers",
+				passengerIds: []
+			}
+		},
 		columnOrder: []
 	});
 
@@ -39,11 +44,7 @@ const GlobalState = ({children}) => {
 		// API call would go here, then we'd send the data to our reducer to process
 		updateDriverList({
 			type: 'INIT',
-			drivers: fakeDriverList
-		})
-		updatePassengerList({
-			type: 'INIT',
-			passengers: fakePassengerList
+			drivers: initialData
 		})
 	}
 
@@ -53,9 +54,7 @@ const GlobalState = ({children}) => {
 		<CarpoolContext.Provider 
 			value={{
 				driverList, 
-				passengerList,
 				updateDriverList,
-				updatePassengerList
 			}}
 		>
 			{children}

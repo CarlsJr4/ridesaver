@@ -7,10 +7,11 @@ const DriverStatusBar = () => {
 	const [status, updateStatus] = useReducer(statusReducer, {
 		usedSeatCount: 0,
 		maxSeats: 0,
-		emptyCars: false
+		emptyCars: false,
+		freePassengers: 0
 	})
 
-	const {driverList, passengerList} = useContext(CarpoolContext);
+	const {driverList} = useContext(CarpoolContext);
 
 	useEffect(() => updateStatus({type: 'UPDATE', drivers: driverList}), [driverList]);
 
@@ -24,7 +25,7 @@ const DriverStatusBar = () => {
 				{status.emptyCars ? 'There are empty cars' : 'No empty cars'}
 			</li>
 			<li>
-				<strong>{Object.keys(passengerList.passengerRows).length} </strong>
+				<strong>{status.freePassengers} </strong>
 				people need rides
 			</li>
 			{/* <button>Auto-assign</button> */}
