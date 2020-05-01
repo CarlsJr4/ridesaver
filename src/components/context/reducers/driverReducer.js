@@ -99,40 +99,45 @@ export default function driverReducer(state, action) {
 			return drivers;
 		}
 
-		case 'DELETE': 
+		case 'DELETE': {
 			drivers.columnOrder = drivers.columnOrder.filter(id => id !== action.driverId);
 			delete drivers.driverColumns[action.driverId]
 			// We still have the passengers stored in the passengerRows and we could probably reassign them to the passenger pool
 			return drivers;
+		}
 
-		case 'DELETE_PASSENGER':
+		case 'DELETE_PASSENGER': {
 			// After deleting, we still have the passengers in the passenger rows
 			let driver = drivers.driverColumns[action.driverId];
 			let passengers = driver.passengerIds;
 			passengers = passengers.filter(item => item !== action.passengerId);
 			driver.passengerIds = passengers;
+			
 			return drivers;
+		}
 
 		case 'REORDER_PASSENGERS': {
 			let column = drivers.driverColumns[action.source.droppableId];
-			const newPassengerIds = Array.from(column.passengerIds);
+			const newPassengerIds = column.passengerIds;
 			newPassengerIds.splice(action.source.index, 1);
 			newPassengerIds.splice(action.destination.index, 0, action.draggableId);
 
-			// Update the column
-			const newColumn = {
-				...column,
-				passengerIds: newPassengerIds
-			}
-
-			// Update the state
-			drivers.driverColumns = {
-				...drivers.driverColumns,
-				[action.source.droppableId]: newColumn
-			}
-
-			return drivers
+			return drivers;
 		}
+
+		case 'TRANSFER': {
+			// We fixed the bug with explicit return
+			const {source, destination, draggableId} = action;
+
+			const sourceColumn = drivers.driverColumns[source.droppableId];
+			const endColumn = drivers.driverColumns[destination.droppableId];
+			
+			sourceColumn.passengerIds.splice(source.index, 1);
+			endColumn.passengerIds.splice(destination.index, 0, draggableId);
+
+			return drivers;
+		}
+
 		default:
 			throw new Error();
 	}

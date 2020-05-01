@@ -7,19 +7,16 @@ import { CarpoolContext } from '../components/context/GlobalState';
 // import Navbar from '../reusable/Navbar';
 
 // TODO:
-// Restructure data to be compatible with React Dnd
-// Drag and drop state
 // Deploy and get critiqued
 // Form validation (after critique)
 // Backend
 // Aesthetics
 
 const Planner = () => {
-	const { driverList, passengerList, updateDriverList } = useContext(CarpoolContext);
+	const { updateDriverList } = useContext(CarpoolContext);
 
 	const onDragEnd = (result) => {
 		const {source, destination, draggableId} = result;
-		console.log(result, source, destination);
 	
 		// Outside drops
 		if (!destination) {
@@ -33,6 +30,20 @@ const Planner = () => {
 			) {
 				return;
 			}
+
+		const start = source.droppableId;
+		const end = destination.droppableId;
+
+		// Drop in a different list
+		if (start !== end) {
+				updateDriverList({
+					type: 'TRANSFER',
+					source, 
+					destination,
+					draggableId
+				})
+				return
+		}
 
 		updateDriverList({
 			type: 'REORDER_PASSENGERS', 
