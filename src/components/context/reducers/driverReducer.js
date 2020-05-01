@@ -4,7 +4,6 @@ export default function driverReducer(state, action) {
 	let drivers = {...state};
 	switch (action.type) {
 		case 'INIT': {
-			// Init will need to convert the data, but exclude the freePassengers column from the column order so it doesn't get mapped
 			const driverList = [...action.drivers];
 			// These will hold the values needed for our datastructure 
 			let passengerData = []; 
@@ -41,7 +40,25 @@ export default function driverReducer(state, action) {
 			return driverData;
 		}
 
-		case 'ADD': {
+		case 'ADD_PASSENGER': {
+			const id = uuidv4();
+			const freePassengers = drivers.driverColumns.freePassengers;
+
+			const newPassenger = {
+				id,
+				name: action.name
+			}
+			// Add to passenger pool
+			drivers.passengerRows = {
+				...drivers.passengerRows, 
+				[id]: newPassenger
+			}
+			// Append to passenger column IDs
+			freePassengers.passengerIds.push(id);
+			return drivers
+		}
+
+		case 'ADD_DRIVER': {
 			// Normally, we would get the ID from mongoDB (perform a POST request, and get the driver's ID, then assign it to the new driver)
 			let {driverName, driverSeats} = action.formData; // Destructure the form data
 			let allDrivers = drivers.driverColumns; // Get the drivers object of the state
@@ -97,7 +114,7 @@ export default function driverReducer(state, action) {
 			return drivers;
 
 		case 'REORDER_PASSENGERS': {
-			const column = drivers.driverColumns[action.source.droppableId];
+			let column = drivers.driverColumns[action.source.droppableId];
 			const newPassengerIds = Array.from(column.passengerIds);
 			newPassengerIds.splice(action.source.index, 1);
 			newPassengerIds.splice(action.destination.index, 0, action.draggableId);

@@ -9,7 +9,7 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 		e.preventDefault()
 		e.target.reset();
 		setFormData({});
-		return handleAdd({type: 'ADD', formData});
+		return handleAdd({type: 'ADD_DRIVER', formData});
 	}
 
 	return (

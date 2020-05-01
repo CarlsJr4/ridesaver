@@ -6,26 +6,27 @@ import { Droppable } from 'react-beautiful-dnd';
 
 const Passengers = () => {
 	const { formData, setFormData, handleInputChange } = useFormData();
-	const { updatePassengerList, driverList } = useContext(CarpoolContext);
+	const { updateDriverList, driverList } = useContext(CarpoolContext);
 
 	function handleAdd(e) {
 		setFormData({});
 		e.preventDefault();
 		e.target.reset();
-		return updatePassengerList({
-			type: 'ADD', 
-			formData 
+		return updateDriverList({
+			type: 'ADD_PASSENGER', 
+			name: formData.passengerName 
 		});
 	}
 
 	const passengerIds = driverList.driverColumns.freePassengers.passengerIds;
-	const passengerData = passengerIds.map(id => driverList.passengerRows[id])
+	const passengerData = passengerIds.map(id => driverList.passengerRows[id]);
+	const columnId = "freePassengers";
 
 	return ( 
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
 				<Droppable
-					droppableId="passengerDroppable"
+					droppableId={columnId}
 				>
 					{(provided) => (
 						<div>
@@ -46,9 +47,10 @@ const Passengers = () => {
 									<PassengerTileContainer 
 										{...provided.droppableProps}
 										innerRef={provided.innerRef}
-										handleUpdate={updatePassengerList}
+										handleUpdate={updateDriverList}
 										passengers={passengerData}
 										placeholder={provided.placeholder}
+										driverId={columnId}
 									/>
 						</div>
 					)}
