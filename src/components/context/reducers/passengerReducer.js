@@ -46,23 +46,6 @@ export default function passengerReducer(state, action) {
 			return passengers
 		}
 
-		case 'REORDER': {
-			let column = passengers.passengerColumns["passengerColumn"];
-			const newPassengerIds = Array.from(column.passengerIds);
-			newPassengerIds.splice(action.source.index, 1);
-			newPassengerIds.splice(action.destination.index, 0, action.draggableId);
-
-			const newColumn = {
-				...column,
-				passengerIds: newPassengerIds
-			}
-
-			passengers.passengerColumns = {
-				passengerColumn: newColumn
-			}
-			return passengers
-		}
-
 		case 'DELETE_PASSENGER': {
 			let passengerList = column.passengerIds;
 			passengerList = passengerList.filter(item => item !== action.passengerId);
