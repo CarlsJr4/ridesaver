@@ -3,11 +3,12 @@ import IconButton from '../reusable/IconButton';
 import { Draggable } from 'react-beautiful-dnd';
 
 // The passengers prop is either all the unseated passengers or the driver's specific passengers. The type depends on the props.
-const PassengerTileContainer = ({handleUpdate, driverId, passengers, innerRef, placeholder}) => {
+const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passengers, innerRef, placeholder}) => {
+	console.log(isDraggingOver);
 
 	return (
 		<div 
-			className="passengerTiles"
+			className={isDraggingOver ? "passengerTiles--isDraggingOver" : "passengerTiles"}
 			ref={innerRef}
 		>
 				{passengers.map((passenger, i) =>

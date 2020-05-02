@@ -40,7 +40,7 @@ const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateD
 			<Droppable
 				droppableId={id.toString()}
 			>
-				{(provided) => (
+				{(provided, snapshot) => (
 					<PassengerTileContainer
 						{...provided.droppableProps}
 						innerRef={provided.innerRef}
@@ -48,6 +48,7 @@ const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateD
 						handleUpdate={updateDriverList}
 						driverId={id}
 						placeholder={provided.placeholder}
+						isDraggingOver={snapshot.isDraggingOver}
 					>
 					</PassengerTileContainer>
 				)}

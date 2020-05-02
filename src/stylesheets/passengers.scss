@@ -2,6 +2,8 @@
 // The right side of the application
 .passengersContainer {
 	@extend %placeholder-card-styling;
+	display: flex;
+	flex-direction: column;
 
 	form {
 	margin: 1rem 0;
@@ -15,9 +17,24 @@
 }
 
 // All passenger cards in the application
-.passengerTiles {
+ %passengerTiles-base {
 	display: grid;
-	// grid-gap: 10px;
+	padding: 0.25rem;
+	border-radius: 5px;
+	min-height: 100px;
+	flex: 1;
+	align-content: flex-start;
+	transition: 200ms;
+ }
+
+.passengerTiles {
+	@extend %passengerTiles-base;
+	background-color: white;
+
+	&--isDraggingOver {
+		@extend %passengerTiles-base;
+		background-color: lightgreen;
+	}
 
 	// The contents of the cards
 	&__card {

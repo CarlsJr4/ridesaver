@@ -25,34 +25,33 @@ const Passengers = () => {
 	return ( 
 		<div className="passengersContainer">
 			<h3>Manage Passengers</h3>
+				<form
+					onSubmit={(e) => handleAdd(e)}
+				>
+					<input 
+						type="text" 
+						name="passengerName" 
+						id="passengerName" 
+						placeholder="Passenger's name..."
+						value={formData.name}
+						onChange={handleInputChange}
+						required
+					/>
+					<button type="submit">Add</button>
+				</form>
 				<Droppable
 					droppableId={columnId}
 				>
-					{(provided) => (
-						<div>
-							<form
-								onSubmit={(e) => handleAdd(e)}
-							>
-								<input 
-									type="text" 
-									name="passengerName" 
-									id="passengerName" 
-									placeholder="Passenger's name..."
-									value={formData.name}
-									onChange={handleInputChange}
-									required
-								/>
-								<button type="submit">Add</button>
-							</form>
-									<PassengerTileContainer 
-										{...provided.droppableProps}
-										innerRef={provided.innerRef}
-										handleUpdate={updateDriverList}
-										passengers={passengerData}
-										placeholder={provided.placeholder}
-										driverId={columnId}
-									/>
-						</div>
+					{(provided, snapshot) => (
+						<PassengerTileContainer 
+							{...provided.droppableProps}
+							innerRef={provided.innerRef}
+							handleUpdate={updateDriverList}
+							passengers={passengerData}
+							placeholder={provided.placeholder}
+							driverId={columnId}
+							isDraggingOver={snapshot.isDraggingOver}
+						/>
 					)}
 				</Droppable>
 		</div>

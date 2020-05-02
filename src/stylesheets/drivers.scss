@@ -35,6 +35,9 @@
 // Individual driver cards
 .driversCard {
 	@extend %placeholder-card-styling;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 
 	// We can probably refactor this to be even cleaner if we can figure out CSS grid
 	&__headerTop {
@@ -72,6 +75,7 @@
 		&--complete {
 			@extend %percent-bar-shared;
 			background-color: #7597CE;
+			max-width: 100%;
 		}
 	}
 }
