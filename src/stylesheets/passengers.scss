@@ -4,6 +4,7 @@
 	@extend %placeholder-card-styling;
 	display: flex;
 	flex-direction: column;
+	width: 250px;
 
 	form {
 	margin: 1rem 0;
