@@ -108,6 +108,7 @@ export default function driverReducer(state, action) {
 
 		case 'DELETE_PASSENGER': {
 			// After deleting, we still have the passengers in the passenger rows
+			// TODO: Figure out what to do with them after we get feedback
 			let driver = drivers.driverColumns[action.driverId];
 			let passengers = driver.passengerIds;
 			passengers = passengers.filter(item => item !== action.passengerId);
@@ -126,11 +127,17 @@ export default function driverReducer(state, action) {
 		}
 
 		case 'TRANSFER': {
-			// We fixed the bug with explicit return
 			const {source, destination, draggableId} = action;
 
 			const sourceColumn = drivers.driverColumns[source.droppableId];
 			const endColumn = drivers.driverColumns[destination.droppableId];
+
+			if (destination.droppableId !== "freePassengers" &&
+					endColumn.passengerIds.length === endColumn.seats
+			) {
+				alert('This car is full!');
+				return drivers;
+			}
 			
 			sourceColumn.passengerIds.splice(source.index, 1);
 			endColumn.passengerIds.splice(destination.index, 0, draggableId);
