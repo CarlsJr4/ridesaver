@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import DriverStatusBar from './DriverStatusBar';
-import DriverCard from './DriverCard';
-import IconButton from '../reusable/IconButton';
-import AddDriverModal from './modals/AddDriverModal';
-import LinkModal from './modals/LinkModal';
-import EditDriverModal from './modals/EditDriverModal';
-import { CarpoolContext } from '../context/GlobalState';
+import DriverContainerStatus from './DriverContainerStatus';
+import DriverCard from './DriverContainerCard';
+import IconButton from '../../../reusable_components/IconButton';
+import AddDriverModal from './modals/AddDriver';
+import LinkModal from './modals/Link';
+import EditDriverModal from './modals/EditDriver';
+import { CarpoolContext } from '../../../context/GlobalState';
 
 const DriverContainer = () => {
 	const [isAddingDriver, toggleAddModal] = useState(false);
@@ -42,7 +42,7 @@ const DriverContainer = () => {
 					handleClick={() => toggleAddModal(true)}	
 				/>
 			</div>
-			<DriverStatusBar />
+			<DriverContainerStatus />
 			<div className="drivers__container">
 				{driverList.columnOrder.map((columnId) => {
 					const driver = driverList.driverColumns[columnId];

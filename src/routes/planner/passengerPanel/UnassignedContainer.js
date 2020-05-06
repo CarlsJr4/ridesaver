@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import PassengerTileContainer from './PassengerTileContainer';
-import useFormData from '../../hooks/useFormData';
-import { CarpoolContext } from '../context/GlobalState';
+import PassengerContainer from '../PassengerContainer';
+import useFormData from '../../../custom_hooks/useFormData';
+import { CarpoolContext } from '../../../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
 
 const Passengers = () => {
@@ -43,7 +43,7 @@ const Passengers = () => {
 					droppableId={columnId}
 				>
 					{(provided, snapshot) => (
-						<PassengerTileContainer 
+						<PassengerContainer 
 							{...provided.droppableProps}
 							innerRef={provided.innerRef}
 							handleUpdate={updateDriverList}

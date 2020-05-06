@@ -1,6 +1,6 @@
 import React from 'react';
-import Planner from './components/Planner';
-import GlobalState from './components/context/GlobalState';
+import Planner from './routes/planner/Planner';
+import GlobalState from './context/GlobalState';
 // Eventually, this app will house your many routes
 
 function App() {

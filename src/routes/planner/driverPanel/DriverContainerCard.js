@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import PassengerTileContainer from '../passengerPanel/PassengerTileContainer';
-import IconButton from '../reusable/IconButton';
-import { CarpoolContext } from '../context/GlobalState';
+import PassengerTileContainer from '../PassengerContainer';
+import IconButton from '../../../reusable_components/IconButton';
+import { CarpoolContext } from '../../../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
 
 const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited}) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../reusable/IconButton';
+import IconButton from '../../reusable_components/IconButton';
 import { Draggable } from 'react-beautiful-dnd';
 
 // The passengers prop is either all the unseated passengers or the driver's specific passengers. The type depends on the props.

@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../../reusable/Modal'
+import Modal from '../../../../reusable_components/Modal';
 
 const LinkModal = ({isVisible, handleVisibility}) => {
 	return (

@@ -1,16 +1,13 @@
 import React, { useContext } from 'react';
 import DriverContainer from './driverPanel/DriverContainer';
-import PassengerContainer from './passengerPanel/PassengerContainer';
+import UnassignedContainer from './passengerPanel/UnassignedContainer';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { CarpoolContext } from '../components/context/GlobalState';
+import { CarpoolContext } from '../../context/GlobalState';
 // import IconButton from '../reusable/IconButton';
 // import Navbar from '../reusable/Navbar';
 
 // TODO:
-// Deploy and get critiqued
-// Form validation (after critique)
-// Backend
-// Aesthetics
+// Clean up the code and organization
 
 const Planner = () => {
 	const { updateDriverList } = useContext(CarpoolContext);
@@ -63,7 +60,7 @@ const Planner = () => {
 						onDragEnd={onDragEnd}
 					>
 						<DriverContainer />
-						<PassengerContainer />
+						<UnassignedContainer />
 					</DragDropContext>
 				</div>
 			</div>
