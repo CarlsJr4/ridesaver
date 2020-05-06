@@ -24,7 +24,7 @@ const Passengers = () => {
 
 	return ( 
 		<div className="passengersContainer">
-			<h3>Manage Passengers</h3>
+			<h3>Unassigned Passengers</h3>
 				<form
 					onSubmit={(e) => handleAdd(e)}
 				>
