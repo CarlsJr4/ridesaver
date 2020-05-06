@@ -42,3 +42,55 @@ span.grippy {
 span.grippy::after {
   content: '.. .. .. ..';
 }
+
+// All passenger cards in the application
+%passengerTiles-base {
+	display: grid;
+	padding: 0.25rem;
+	border-radius: 5px;
+	min-height: 100px;
+	flex: 1;
+	align-content: flex-start;
+	transition: 200ms;
+ }
+
+.passengerTiles {
+	@extend %passengerTiles-base;
+	background-color: rgba(211, 211, 211, 0.466);
+
+	&--isDraggingOver {
+		@extend %passengerTiles-base;
+		background-color: lightgreen;
+	}
+
+	// The contents of the cards
+	&__card {
+		@extend %placeholder-card-styling;
+		padding: 0.5rem;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		cursor: grab;
+		background-color: white;
+		align-items: center;
+		margin: 5px 0;
+
+		p {
+			margin: 10px;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		button {
+			opacity: 0;
+		}
+
+		// Show buttons on hover
+		&:hover {
+			button {
+				transition: 300ms;
+				opacity: 1;
+			}
+		}
+	}
+}
