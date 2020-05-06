@@ -2,7 +2,7 @@ import React from 'react';
 import IconButton from '../../reusable_components/IconButton';
 import { Draggable } from 'react-beautiful-dnd';
 
-// The passengers prop is either all the unseated passengers or the driver's specific passengers. The type depends on the props.
+// NOTE: This component is shared beteen the DriverContainer and UnassignedContainer components
 const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passengers, innerRef, placeholder}) => {
 	console.log(isDraggingOver);
 
@@ -34,7 +34,7 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 								handleClick={() => handleUpdate({
 									type: 'DELETE_PASSENGER', 
 									driverId: driverId, 
-									passengerId: passenger.id 
+									passengerId: passenger.id
 									})} 
 								icon="trash" 
 								/>

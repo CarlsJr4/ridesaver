@@ -18,9 +18,9 @@ const Passengers = () => {
 		});
 	}
 
-	const passengerIds = driverList.driverColumns.freePassengers.passengerIds;
+	const passengerIds = driverList.driverColumns.unassignedPassengers.passengerIds;
 	const passengerData = passengerIds.map(id => driverList.passengerRows[id]);
-	const columnId = "freePassengers";
+	const columnId = "unassignedPassengers";
 
 	return ( 
 		<div className="passengersContainer">

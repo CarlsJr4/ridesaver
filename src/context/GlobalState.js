@@ -18,9 +18,9 @@ const initialData = [
 	},
 	// This is a unique column. Handle with care!
 	{
-		name: 'freePassengers',
+		name: 'unassignedPassengers',
 		seats: null,
-		id: 'freePassengers',
+		id: 'unassignedPassengers',
 		passengers: [{name: 'pass3', id: 'pass3'}, {name: 'pass4', id: 'pass4'}]
 	}
 ];
@@ -31,9 +31,9 @@ const GlobalState = ({children}) => {
 		passengerRows: {},
 		// We include this placeholder object so the passengerList can parse through it without returning any errors
 		driverColumns: {
-			freePassengers: {
-				id: "freePassengers",
-				name: "freePassengers",
+			unassignedPassengers: {
+				id: "unassignedPassengers",
+				name: "unassignedPassengers",
 				passengerIds: []
 			}
 		},

@@ -8,7 +8,7 @@ const DriverStatusBar = () => {
 		usedSeatCount: 0,
 		maxSeats: 0,
 		emptyCars: false,
-		freePassengers: 0
+		unassignedPassengers: 0
 	})
 
 	const {driverList} = useContext(CarpoolContext);
@@ -25,7 +25,7 @@ const DriverStatusBar = () => {
 				{status.emptyCars ? 'There are empty cars' : 'No empty cars'}
 			</li>
 			<li>
-				<strong>{status.freePassengers} </strong>
+				<strong>{status.unassignedPassengers} </strong>
 				people need rides
 			</li>
 			{/* <button>Auto-assign</button> */}

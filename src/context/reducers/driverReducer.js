@@ -42,7 +42,7 @@ export default function driverReducer(state, action) {
 
 		case 'ADD_PASSENGER': {
 			const id = uuidv4();
-			const freePassengers = drivers.driverColumns.freePassengers;
+			const unassignedPassengers = drivers.driverColumns.unassignedPassengers;
 
 			const newPassenger = {
 				id,
@@ -54,7 +54,7 @@ export default function driverReducer(state, action) {
 				[id]: newPassenger
 			}
 			// Append to passenger column IDs
-			freePassengers.passengerIds.push(id);
+			unassignedPassengers.passengerIds.push(id);
 			return drivers
 		}
 
@@ -107,12 +107,25 @@ export default function driverReducer(state, action) {
 		}
 
 		case 'DELETE_PASSENGER': {
-			// After deleting, we still have the passengers in the passenger rows
-			// TODO: Figure out what to do with them after we get feedback
-			let driver = drivers.driverColumns[action.driverId];
+			const {passengerId, driverId} = action;
+
+			let driver = drivers.driverColumns[driverId]; 
 			let passengers = driver.passengerIds;
-			passengers = passengers.filter(item => item !== action.passengerId);
+			passengers = passengers.filter(item => item !== passengerId);
 			driver.passengerIds = passengers;
+
+			// Return passenger to list if they came from a driver
+			if (driver.id !== "unassignedPassengers") {
+				const unassignedColumn = drivers.driverColumns.unassignedPassengers;
+				const passengerPool = unassignedColumn.passengerIds;
+				passengerPool.push(passengerId);
+			}
+
+			// Permanent passenger delete if the source is the unassigned passengers column
+			if (driver.id === "unassignedPassengers") {
+				const passengerRows = drivers.passengerRows;
+				delete passengerRows[passengerId];
+			}
 			
 			return drivers;
 		}
@@ -132,7 +145,7 @@ export default function driverReducer(state, action) {
 			const sourceColumn = drivers.driverColumns[source.droppableId];
 			const endColumn = drivers.driverColumns[destination.droppableId];
 
-			if (destination.droppableId !== "freePassengers" &&
+			if (destination.droppableId !== "unassignedPassengers" &&
 					endColumn.passengerIds.length === endColumn.seats
 			) {
 				alert('This car is full!');
