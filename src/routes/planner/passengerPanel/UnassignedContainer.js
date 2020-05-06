@@ -35,6 +35,7 @@ const Passengers = () => {
 						placeholder="Passenger's name..."
 						value={formData.name}
 						onChange={handleInputChange}
+						maxLength="20"
 						required
 					/>
 					<button type="submit">Add</button>

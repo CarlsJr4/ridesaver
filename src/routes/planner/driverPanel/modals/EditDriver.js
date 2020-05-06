@@ -53,6 +53,7 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 					id="driverName" 
 					value={formData.driverName || ''} // There is an || operator here to keep the component controlled
 					onChange={handleInputChange}
+					maxLength="20"
 					required
 				/>
 				<label 

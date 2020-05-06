@@ -27,6 +27,7 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 						value={formData.driverName || ''} 
 						onChange={(e) => handleInputChange(e)} 
 						required
+						maxLength="20"
 					/>
 					<label htmlFor="driverSeats">Number of available seats: </label>
 					<select 

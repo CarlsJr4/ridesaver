@@ -4,7 +4,6 @@ import { Draggable } from 'react-beautiful-dnd';
 
 // NOTE: This component is shared beteen the DriverContainer and UnassignedContainer components
 const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passengers, innerRef, placeholder}) => {
-	console.log(isDraggingOver);
 
 	return (
 		<div 
@@ -26,8 +25,8 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 								id={passenger.id} 
 								className="passengerTiles__card"
 							>
+								<span className="grippy"></span>
 								<p>
-									<span className="grippy"></span>
 									{passenger.name}
 								</p>
 								<IconButton

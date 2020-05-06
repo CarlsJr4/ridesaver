@@ -46,7 +46,7 @@ span.grippy::after {
 // All passenger cards in the application
 %passengerTiles-base {
 	display: grid;
-	padding: 0.25rem;
+	padding: 0.25rem 10px;
 	border-radius: 5px;
 	min-height: 100px;
 	flex: 1;
@@ -68,7 +68,7 @@ span.grippy::after {
 		@extend %placeholder-card-styling;
 		padding: 0.5rem;
 		display: grid;
-		grid-template-columns: 1fr auto;
+		grid-template-columns: auto 1fr auto;
 		cursor: grab;
 		background-color: white;
 		align-items: center;
@@ -76,9 +76,8 @@ span.grippy::after {
 
 		p {
 			margin: 10px;
-			&:first-child {
-				margin-left: 0;
-			}
+			overflow: hidden;
+			margin-left: 0;
 		}
 
 		button {
