@@ -19,13 +19,16 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 						{(provided) => (
 							<div 
 								{...provided.draggableProps}
-								{...provided.dragHandleProps}
 								ref={provided.innerRef}
 								key={passenger.id} 
 								id={passenger.id} 
 								className="passengerTiles__card"
 							>
-								<span className="grippy"></span>
+							<div {...provided.dragHandleProps}>
+								<span
+									className="grippy"
+									/>
+							</div>
 								<p>
 									{passenger.name}
 								</p>

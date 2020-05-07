@@ -22,7 +22,8 @@
 }
 
 span.grippy {
-  content: '....';
+	content: '....';
+	cursor: grab;
   width: 10px;
   height: 20px;
   display: inline-block;
@@ -72,14 +73,14 @@ span.grippy::after {
 		grid-template-areas: 
 			"drag name trash"
 			"drag nickname nickname";
-		cursor: grab;
 		background-color: white;
 		align-items: center;
 		margin: 5px 0;
 
-		.grippy {
+		div:first-child {
 			grid-area: drag;
-			margin-right: 10px;
+			height: 100%;
+			padding: 5px;
 		}
 
 		p:nth-child(2) {
