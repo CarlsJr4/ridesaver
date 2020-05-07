@@ -1,5 +1,6 @@
 import React from 'react';
 import IconButton from './IconButton';
+import PropTypes from 'prop-types';
 
 const Modal = ({children, isVisible, handleVisibility}) => {
 	return (
@@ -21,6 +22,11 @@ const Modal = ({children, isVisible, handleVisibility}) => {
 			</div>
 		</div>
 	);
+}
+
+Modal.propTypes = {
+	isVisible: PropTypes.bool.isRequired,
+	handleVisibility: PropTypes.func.isRequired
 }
 
 export default Modal;
