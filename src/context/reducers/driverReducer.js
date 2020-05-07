@@ -80,7 +80,7 @@ export default function driverReducer(state, action) {
 			drivers = {
 				...drivers,
 				driverColumns: allDrivers,
-				columnOrder: [...columnOrder, [id]]
+				columnOrder: [...columnOrder, id]
 			}
 			return drivers;
 		}
@@ -93,7 +93,7 @@ export default function driverReducer(state, action) {
 				...updatedDriver,
 				name: driverName,
 				nickname: driverNickname,
-				seats: driverSeats
+				seats: parseInt(driverSeats)
 			}
 			// Update state
 			drivers.driverColumns = {
