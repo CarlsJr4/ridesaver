@@ -3,6 +3,7 @@ import PassengerTileContainer from '../PassengerContainer';
 import IconButton from '../../../reusable_components/IconButton';
 import { CarpoolContext } from '../../../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
+import PropTypes from 'prop-types';
 
 const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
@@ -55,6 +56,15 @@ const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateD
 			</Droppable>
 		</div>
 	);
+}
+// name, nickname, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited
+DriverCard.propTypes = {
+	name: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	passengers: PropTypes.array.isRequired,
+	totalSeats: PropTypes.number.isRequired,
+	toggleEditDriver: PropTypes.func.isRequired,
+	updateDriverBeingEdited: PropTypes.func.isRequired
 }
 
 export default DriverCard;
