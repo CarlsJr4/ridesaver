@@ -53,6 +53,7 @@ const DriverContainer = () => {
 							key={columnId}
 							id={columnId}
 							name={driver.name}
+							nickname={driver.nickname}
 							passengers={passengers}
 							totalSeats={driver.seats}
 							toggleEditDriver={toggleEditDriver}

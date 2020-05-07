@@ -5,7 +5,7 @@ import { CarpoolContext } from '../../../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 
-const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited}) => {
+const DriverCard = ({name, nickname, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited}) => {
 	const [seatCapacityBar, updateCapacityBar] = useState(0); // Capacity bar width
 	const {updateDriverList} = useContext(CarpoolContext);
 	useEffect(() => updateCapacityBar((passengers.length / totalSeats) * 100), [passengers.length, totalSeats]);
@@ -14,6 +14,7 @@ const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateD
 		toggleEditDriver(true);
 		updateDriverBeingEdited({
 			name,
+			nickname,
 			totalSeats,
 			passengers,
 			id
@@ -23,11 +24,12 @@ const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateD
 	return (
 		<div className="driversCard">
 			<div className="driversCard__headerTop">
-				<p>{name}</p>
+				<strong>{name}</strong>
 				<IconButton
 					icon="user-edit"
 					handleClick={callEditModal}
-				/>
+					/>
+				{nickname && <p>{nickname}</p>}
 			</div>
 			<div className="driversCard__headerBottom">
 				<p>({passengers.length}/{totalSeats})</p>
@@ -60,6 +62,7 @@ const DriverCard = ({name, id, passengers, totalSeats, toggleEditDriver, updateD
 // name, nickname, id, passengers, totalSeats, toggleEditDriver, updateDriverBeingEdited
 DriverCard.propTypes = {
 	name: PropTypes.string.isRequired,
+	nickname: PropTypes.string,
 	id: PropTypes.string.isRequired,
 	passengers: PropTypes.array.isRequired,
 	totalSeats: PropTypes.number.isRequired,

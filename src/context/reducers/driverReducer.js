@@ -16,6 +16,7 @@ export default function driverReducer(state, action) {
 					[driver.id]: {
 						id: driver.id,
 						name: driver.name,
+						nickname: driver.nickname,
 						seats: driver.seats,
 						passengerIds: Array.from(driver.passengers, passenger => passenger.id)
 					}
@@ -60,7 +61,7 @@ export default function driverReducer(state, action) {
 
 		case 'ADD_DRIVER': {
 			// Normally, we would get the ID from mongoDB (perform a POST request, and get the driver's ID, then assign it to the new driver)
-			let {driverName, driverSeats} = action.formData; // Destructure the form data
+			let {driverName, driverNickname, driverSeats} = action.formData; // Destructure the form data
 			let allDrivers = drivers.driverColumns; // Get the drivers object of the state
 			let columnOrder = drivers.columnOrder;
 			let id = uuidv4();
@@ -69,6 +70,7 @@ export default function driverReducer(state, action) {
 				[id]: {
 					id,
 					name: driverName,
+					nickname: driverNickname,
 					passengerIds: [],
 					seats: parseInt(driverSeats)
 				}
@@ -83,12 +85,13 @@ export default function driverReducer(state, action) {
 		}
 
 		case 'EDIT': {
-			let {driverName, driverSeats} = action.formData; 
+			let {driverName, driverNickname, driverSeats} = action.formData; 
 			let updatedDriver = drivers.driverColumns[action.driverId];
 			// Update driver
 			updatedDriver = {
 				...updatedDriver,
 				name: driverName,
+				nickname: driverNickname,
 				seats: driverSeats
 			}
 			// Update state

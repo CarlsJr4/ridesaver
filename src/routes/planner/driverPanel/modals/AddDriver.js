@@ -19,7 +19,7 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 			>
 				<h1>Add Drivers</h1>
 				<form onSubmit={(e) => handleSubmit(e)}>
-					<label htmlFor="driverName">Driver's name: </label>
+					<label htmlFor="driverName">Name: </label>
 					<input 
 						type="text" 
 						name="driverName" 
@@ -29,6 +29,15 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 						required
 						maxLength="20"
 					/>
+					<label htmlFor="driverNickname">Nickname (optional): </label>
+					<input 
+						type="text" 
+						name="driverNickname" 
+						id="driverNickname"
+						value={formData.driverNickname || ''}
+						onChange={(e) => handleInputChange(e)}
+						maxLength="20"
+						/>
 					<label htmlFor="driverSeats">Number of available seats: </label>
 					<select 
 						name="driverSeats" 
