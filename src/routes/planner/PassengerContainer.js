@@ -37,6 +37,11 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 									})} 
 								icon="trash" 
 								/>
+								{passenger.nickname &&
+									<p>
+										{passenger.nickname}
+									</p>
+								}
 							</div> 
 						)}
 					</Draggable>

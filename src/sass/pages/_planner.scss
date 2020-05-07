@@ -68,23 +68,42 @@ span.grippy::after {
 		@extend %placeholder-card-styling;
 		padding: 0.5rem;
 		display: grid;
-		grid-template-columns: auto 1fr auto;
+		grid-template-columns: auto auto 1fr;
+		grid-template-areas: 
+			"drag name trash"
+			"drag nickname nickname";
 		cursor: grab;
 		background-color: white;
 		align-items: center;
 		margin: 5px 0;
 
+		.grippy {
+			grid-area: drag;
+			margin-right: 10px;
+		}
+
+		p:nth-child(2) {
+			grid-area: name;
+		}
+
+		p:last-child {
+			grid-area: nickname;
+			opacity: 50%;
+		}
+
 		p {
-			margin: 10px;
+			margin: 0;
 			overflow: hidden;
 			margin-left: 0;
 		}
 
+		// Hide trash by default
 		button {
 			opacity: 0;
+			justify-self: end;
 		}
 
-		// Show buttons on hover
+		// Show trash on hover
 		&:hover {
 			button {
 				transition: 300ms;

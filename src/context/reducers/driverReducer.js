@@ -26,7 +26,7 @@ export default function driverReducer(state, action) {
 			passengerData.forEach(passenger => {
 				passengerRows = {
 					...passengerRows,
-					[passenger.id]: {id: passenger.id, name: passenger.name}
+					[passenger.id]: {id: passenger.id, name: passenger.name, nickname: passenger.nickname}
 				}
 			});
 	
@@ -47,7 +47,8 @@ export default function driverReducer(state, action) {
 
 			const newPassenger = {
 				id,
-				name: action.name
+				name: action.name,
+				nickname: action.nickname
 			}
 			// Add to passenger pool
 			drivers.passengerRows = {

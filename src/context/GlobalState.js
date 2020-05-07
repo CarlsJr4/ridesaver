@@ -5,25 +5,25 @@ export const CarpoolContext = React.createContext();
 
 const initialData = [
 	{
-	name: 'driver1',
-	nickname: 'BillyTheDestroyer',
+	name: 'Jim Halpert',
+	nickname: 'William M. Buttlicker',
 	seats: 3,
 	id: 'driver1',
-	passengers: [{name: 'pass1', id: 'pass1'}, {name: 'pass2', id: 'pass2'}]
+	passengers: [{name: 'Michael Scott', nickname: 'Prison Mike', id: 'pass1'}, {name: 'pass2', nickname: null, id: 'pass2'}]
 	},
 	{
 	name: 'driver2',
 	nickname: null,
 	seats: 3,
 	id: 'driver2',
-	passengers: [{name: 'passX', id:'passX'}]
+	passengers: [{name: 'passX', nickname: null, id:'passX'}]
 	},
 	// This is a unique column. Handle with care!
 	{
 		name: 'unassignedPassengers',
 		seats: null,
 		id: 'unassignedPassengers',
-		passengers: [{name: 'pass3', id: 'pass3'}, {name: 'pass4', id: 'pass4'}]
+		passengers: [{name: 'pass3', nickname: null, id: 'pass3'}, {name: 'pass4', nickname: null, id: 'pass4'}]
 	}
 ];
 

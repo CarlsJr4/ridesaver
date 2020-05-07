@@ -14,7 +14,8 @@ const Passengers = () => {
 		e.target.reset();
 		return updateDriverList({
 			type: 'ADD_PASSENGER', 
-			name: formData.passengerName 
+			name: formData.passengerName, 
+			nickname: formData.passengerNickname
 		});
 	}
 
@@ -37,6 +38,15 @@ const Passengers = () => {
 						onChange={handleInputChange}
 						maxLength="20"
 						required
+					/>
+					<input 
+						type="text" 
+						name="passengerNickname" 
+						id="passengerNickname" 
+						placeholder="Nickname (optional)"
+						value={formData.nickname}
+						onChange={handleInputChange}
+						maxLength="20"
 					/>
 					<button type="submit">Add</button>
 				</form>
