@@ -23,7 +23,7 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 					<input 
 						type="text" 
 						name="driverName" 
-						id="driverName" 
+						id="driverName_Add" 
 						value={formData.driverName || ''} 
 						onChange={(e) => handleInputChange(e)} 
 						required
@@ -33,7 +33,7 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 					<input 
 						type="text" 
 						name="driverNickname" 
-						id="driverNickname"
+						id="driverNickname_Add"
 						value={formData.driverNickname || ''}
 						onChange={(e) => handleInputChange(e)}
 						maxLength="20"
@@ -41,7 +41,7 @@ const AddDriverModal = ({isVisible, handleVisibility, handleAdd}) => {
 					<label htmlFor="driverSeats">Number of available seats: </label>
 					<select 
 						name="driverSeats" 
-						id="driverSeats" 
+						id="driverSeats_Add" 
 						value={formData.driverSeats} 
 						onChange={(e) => handleInputChange(e)} 
 						required

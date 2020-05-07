@@ -51,7 +51,7 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 				<input 
 					type="text" 
 					name="driverName" 
-					id="driverName" 
+					id="driverName__Edit" 
 					value={formData.driverName || ''} // There is an || operator here to keep the component controlled
 					onChange={handleInputChange}
 					maxLength="20"
@@ -63,7 +63,7 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 				<input 
 					type="text" 
 					name="driverNickname" 
-					id="driverNickname" 
+					id="driverNickname__Edit" 
 					value={formData.driverNickname || ''} // There is an || operator here to keep the component controlled
 					onChange={handleInputChange}
 					maxLength="20"
@@ -75,7 +75,7 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 				</label>
 				<select 
 					name="driverSeats" 
-					id="driverSeats"
+					id="driverSeats__Edit"
 					defaultValue={driver.totalSeats}
 					value={formData.driverSeats}
 					onChange={handleInputChange}
