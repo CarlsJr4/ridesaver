@@ -13,7 +13,7 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 		} else {
 			setCapacityStatus(false)
 		}
-	})
+	}, [formData.driverSeats, driver.totalSeats])
 
 	// This block is used for conditional rendering of the delete button
 	let occupied;
