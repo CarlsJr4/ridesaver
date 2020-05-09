@@ -49,17 +49,16 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 									})} 
 								icon="trash" 
 								/>
-								{passenger.nickname &&
-									<textarea
-										rows="1"
-										defaultValue={passenger.nickname}
-										spellCheck={false}
-										maxLength="20"
-										name="nickname"
-										onBlur={(e) => handleBlurEdit(e, passenger.nickname, 'EDIT_PASSENGER', driverId, passenger.id)}
-										onKeyDown={handleKeyEdit}
-									/>
-								}
+								<textarea
+									rows="1"
+									defaultValue={passenger.nickname}
+									spellCheck={false}
+									maxLength="20"
+									name="nickname"
+									placeholder="(no nickname)"
+									onBlur={(e) => handleBlurEdit(e, passenger.nickname, 'EDIT_PASSENGER', driverId, passenger.id)}
+									onKeyDown={handleKeyEdit}
+								/>
 							</div> 
 						)}
 					</Draggable>

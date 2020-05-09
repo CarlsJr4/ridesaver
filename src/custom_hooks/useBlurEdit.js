@@ -10,8 +10,11 @@ export default function useBlurEdit() {
 	const handleBlurEdit = (e, original, type, columnId, itemId) => {
 		// To prevent accidental deletion
 		if (e.target.value.length === 0) {
-			e.target.value = original;
-			return
+			// To be able to clear nicknames
+			if (e.target.name !== "nickname") {
+				e.target.value = original;
+				return
+			}
 		}
 		updateDriverList({
 			type,

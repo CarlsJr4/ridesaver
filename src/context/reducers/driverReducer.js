@@ -48,7 +48,7 @@ export default function driverReducer(state, action) {
 			const newPassenger = {
 				id,
 				name: action.name,
-				nickname: action.nickname
+				nickname: action.nickname || null
 			}
 			// Add to passenger pool
 			drivers.passengerRows = {
@@ -109,8 +109,9 @@ export default function driverReducer(state, action) {
 			let passenger = drivers.passengerRows[action.itemId];
 			passenger = {
 				...passenger,
-				[action.fieldName]: action.value
+				[action.fieldName]: action.value || null
 			}
+			console.log('foo');
 			drivers.passengerRows = {
 				...drivers.passengerRows,
 				[action.itemId]: passenger
