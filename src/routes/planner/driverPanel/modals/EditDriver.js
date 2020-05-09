@@ -1,10 +1,19 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Modal from '../../../../reusable_components/Modal';
 import useFormData from '../../../../custom_hooks/useFormData';
 import { CarpoolContext } from '../../../../context/GlobalState';
 
 const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 	const {formData, setFormData, handleInputChange} = useFormData();
+	const [ isOverCapacity, setCapacityStatus ] = useState(false);
+
+	useEffect(() => {
+		if (formData.driverSeats < driver.totalSeats) {
+			setCapacityStatus(true)
+		} else {
+			setCapacityStatus(false)
+		}
+	})
 
 	// This block is used for conditional rendering of the delete button
 	let occupied;
@@ -23,7 +32,7 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 		e.preventDefault();
 		setFormData({});
 		handleVisibility(false);
-		updateDriverList({type: 'EDIT_DRIVER', driverId: driver.id, formData})
+		updateDriverList({type: 'EDIT_DRIVER_SEATS', driverId: driver.id, formData})
 	}
 
 	function handleDeleteDriver() {
@@ -63,9 +72,11 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 					<option value="6">6</option>
 					<option value="7">7</option>
 				</select>
+				{isOverCapacity && <p>You can't have less seats than passengers.</p>}
 				<input 
 					type="submit" 
 					value="Update"
+					disabled={isOverCapacity}
 				/>
 				{occupied ? 
 				<p>To delete this driver, remove their passengers first.</p> :
