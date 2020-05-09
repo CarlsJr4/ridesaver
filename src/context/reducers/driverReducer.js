@@ -85,7 +85,9 @@ export default function driverReducer(state, action) {
 			return drivers;
 		}
 
-		case 'EDIT': {
+		case 'EDIT_DRIVER': {
+			// Currently the values are being taken from the formData, 
+			// But could change the source to a blur target's value if formData doesn't exist
 			let {driverName, driverNickname, driverSeats} = action.formData; 
 			let updatedDriver = drivers.driverColumns[action.driverId];
 			// Update driver
@@ -103,7 +105,20 @@ export default function driverReducer(state, action) {
 			return drivers;
 		}
 
-		case 'DELETE': {
+		case 'EDIT_PASSENGER': {
+			let passenger = drivers.passengerRows[action.itemId];
+			passenger = {
+				...passenger,
+				[action.fieldName]: action.value
+			}
+			drivers.passengerRows = {
+				...drivers.passengerRows,
+				[action.itemId]: passenger
+			}
+			return drivers;
+		}
+
+		case 'DELETE_DRIVER': {
 			drivers.columnOrder = drivers.columnOrder.filter(id => id !== action.driverId);
 			delete drivers.driverColumns[action.driverId]
 			// We still have the passengers stored in the passengerRows and we could probably reassign them to the passenger pool

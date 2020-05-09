@@ -25,13 +25,13 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 		e.preventDefault();
 		setFormData({});
 		handleVisibility(false);
-		updateDriverList({type: 'EDIT', driverId: driver.id, formData})
+		updateDriverList({type: 'EDIT_DRIVER', driverId: driver.id, formData})
 	}
 
 	function handleDeleteDriver() {
 		setFormData({});
 		handleVisibility(false); // Immediately close the modal for better UX
-		updateDriverList({type: 'DELETE', driverId: driver.id})
+		updateDriverList({type: 'DELETE_DRIVER', driverId: driver.id})
 	}
 
 	return (

@@ -1,9 +1,11 @@
 import React from 'react';
 import IconButton from '../../reusable_components/IconButton';
 import { Draggable } from 'react-beautiful-dnd';
+import useBlurEdit from '../../custom_hooks/useBlurEdit';
 
 // NOTE: This component is shared beteen the DriverContainer and UnassignedContainer components
 const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passengers, innerRef, placeholder}) => {
+	const { handleBlurEdit, handleKeyEdit } = useBlurEdit();
 
 	return (
 		<div 
@@ -11,6 +13,7 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 			ref={innerRef}
 		>
 				{passengers.map((passenger, i) =>
+					// Each of these draggables is an individual passenger tile
 					<Draggable
 						draggableId={passenger.id.toString()}
 						index={i}
@@ -29,9 +32,15 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 									className="grippy"
 									/>
 							</div>
-								<p>
-									{passenger.name}
-								</p>
+								<textarea
+									rows="1"
+									defaultValue={passenger.name}
+									spellCheck={false}
+									maxLength="20"
+									name="name"
+									onBlur={(e) => handleBlurEdit(e, passenger.name, 'EDIT_PASSENGER', driverId, passenger.id )} // Need columnID, itemID
+									onKeyDown={handleKeyEdit}
+								/>
 								<IconButton
 								handleClick={() => handleUpdate({
 									type: 'DELETE_PASSENGER', 
@@ -41,9 +50,15 @@ const PassengerTileContainer = ({isDraggingOver, handleUpdate, driverId, passeng
 								icon="trash" 
 								/>
 								{passenger.nickname &&
-									<p>
-										{passenger.nickname}
-									</p>
+									<textarea
+										rows="1"
+										defaultValue={passenger.nickname}
+										spellCheck={false}
+										maxLength="20"
+										name="nickname"
+										onBlur={(e) => handleBlurEdit(e, passenger.nickname, 'EDIT_PASSENGER', driverId, passenger.id)}
+										onKeyDown={handleKeyEdit}
+									/>
 								}
 							</div> 
 						)}

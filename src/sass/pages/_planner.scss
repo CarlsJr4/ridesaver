@@ -83,19 +83,13 @@ span.grippy::after {
 			padding: 5px;
 		}
 
-		p:nth-child(2) {
+		textarea:nth-child(2) {
 			grid-area: name;
 		}
 
-		p:last-child {
+		textarea:last-child {
 			grid-area: nickname;
 			opacity: 50%;
-		}
-
-		p {
-			margin: 0;
-			overflow: hidden;
-			margin-left: 0;
 		}
 
 		// Hide trash by default
