@@ -86,15 +86,13 @@ export default function driverReducer(state, action) {
 		}
 
 		case 'EDIT_DRIVER': {
-			// Currently the values are being taken from the formData, 
-			// But could change the source to a blur target's value if formData doesn't exist
-			let {driverName, driverNickname, driverSeats} = action.formData; 
-			let updatedDriver = drivers.driverColumns[action.driverId];
+			// Edit seats through form (because it should be validated)
+			if (action.formData) {
+				let { driverSeats } = action.formData; 
+				let updatedDriver = drivers.driverColumns[action.driverId];
 			// Update driver
 			updatedDriver = {
 				...updatedDriver,
-				name: driverName,
-				nickname: driverNickname,
 				seats: parseInt(driverSeats)
 			}
 			// Update state
@@ -102,6 +100,17 @@ export default function driverReducer(state, action) {
 				...drivers.driverColumns,
 				[action.driverId]: updatedDriver
 			}
+		} else {
+			let driver = drivers.driverColumns[action.itemId];
+			driver = {
+				...driver,
+				[action.fieldName]: action.value || null 
+			}
+			drivers.driverColumns = {
+				...drivers.driverColumns,
+				[action.itemId]: driver
+			}
+		}
 			return drivers;
 		}
 
@@ -111,7 +120,6 @@ export default function driverReducer(state, action) {
 				...passenger,
 				[action.fieldName]: action.value || null
 			}
-			console.log('foo');
 			drivers.passengerRows = {
 				...drivers.passengerRows,
 				[action.itemId]: passenger

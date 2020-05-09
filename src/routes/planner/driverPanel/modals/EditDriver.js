@@ -14,8 +14,6 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 
 	// Auto-fill the form with the selected driver's data
 	useEffect(() => setFormData({
-		driverName: driver.name,
-		driverNickname: driver.nickname,
 		driverSeats: driver.totalSeats
 	}), [driver, setFormData])
 
@@ -40,34 +38,11 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 			handleVisibility={handleVisibility}
 			>
 			<h1>
-				Edit Driver
+				Edit seat count
 			</h1>
 			<form
 				onSubmit={(e) => handleSubmit(e)}
 			>
-				<label htmlFor="driverName">
-					Name: 
-				</label>
-				<input 
-					type="text" 
-					name="driverName" 
-					id="driverName__Edit" 
-					value={formData.driverName || ''} // There is an || operator here to keep the component controlled
-					onChange={handleInputChange}
-					maxLength="20"
-					required
-				/>
-				<label htmlFor="driverNickname">
-					Nickname (optional): 
-				</label>
-				<input 
-					type="text" 
-					name="driverNickname" 
-					id="driverNickname__Edit" 
-					value={formData.driverNickname || ''} // There is an || operator here to keep the component controlled
-					onChange={handleInputChange}
-					maxLength="20"
-				/>
 				<label 
 					htmlFor="driverSeats"
 				>

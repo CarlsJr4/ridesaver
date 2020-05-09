@@ -40,6 +40,11 @@
 	flex-direction: column;
 	width: 250px;
 
+	&__name {
+		font-weight: bold;
+		white-space: nowrap;
+	}
+
 	// We can probably refactor this to be even cleaner if we can figure out CSS grid
 	&__headerTop {
 		display: grid;
