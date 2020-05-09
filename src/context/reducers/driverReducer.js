@@ -85,22 +85,23 @@ export default function driverReducer(state, action) {
 			return drivers;
 		}
 
-		case 'EDIT_DRIVER': {
-			// Edit seats through form (because it should be validated)
-			if (action.formData) {
-				let { driverSeats } = action.formData; 
-				let updatedDriver = drivers.driverColumns[action.driverId];
-			// Update driver
+		case 'EDIT_DRIVER_SEATS': {
+			let { driverSeats } = action.formData; 
+			let updatedDriver = drivers.driverColumns[action.driverId];
+			
 			updatedDriver = {
 				...updatedDriver,
 				seats: parseInt(driverSeats)
 			}
-			// Update state
+
 			drivers.driverColumns = {
 				...drivers.driverColumns,
 				[action.driverId]: updatedDriver
 			}
-		} else {
+			return drivers;
+		}
+
+		case 'EDIT_DRIVER_NAME': {
 			let driver = drivers.driverColumns[action.itemId];
 			driver = {
 				...driver,
@@ -110,8 +111,7 @@ export default function driverReducer(state, action) {
 				...drivers.driverColumns,
 				[action.itemId]: driver
 			}
-		}
-			return drivers;
+			return drivers
 		}
 
 		case 'EDIT_PASSENGER': {

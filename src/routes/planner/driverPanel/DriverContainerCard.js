@@ -36,7 +36,7 @@ const DriverCard = ({name, nickname, id, passengers, totalSeats, toggleEditDrive
 					spellCheck={false}
 					maxLength="20"
 					onKeyDown={handleKeyEdit}
-					onBlur={(e) => handleBlurEdit(e, name, 'EDIT_DRIVER', id, id)}
+					onBlur={(e) => handleBlurEdit(e, name, 'EDIT_DRIVER_NAME', id, id)}
 				/>
 				<IconButton
 					icon="user-edit"
@@ -50,7 +50,7 @@ const DriverCard = ({name, nickname, id, passengers, totalSeats, toggleEditDrive
 					rows="1"
 					maxLength="20"
 					onKeyDown={handleKeyEdit}
-					onBlur={(e) => handleBlurEdit(e, nickname, 'EDIT_DRIVER', id, id)}
+					onBlur={(e) => handleBlurEdit(e, nickname, 'EDIT_DRIVER_NAME', id, id)}
 				/>
 			</div>
 			<div className="driversCard__headerBottom">
