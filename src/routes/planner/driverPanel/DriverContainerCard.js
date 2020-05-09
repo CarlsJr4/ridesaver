@@ -55,11 +55,13 @@ const DriverCard = ({name, nickname, id, passengers, totalSeats, toggleEditDrive
 			</div>
 			<div className="driversCard__headerBottom">
 				<p>({passengers.length}/{totalSeats})</p>
-				<div 
-					className={`${seatCapacityBar} ` < 100 ? 'driversCard__percentBar--incomplete' : 'driversCard__percentBar--complete' }
-					style={{
-						width: `${seatCapacityBar}%`,
-					}}>
+				<div className="driversCard__percentBarContainer">
+					<div 
+						className={`${seatCapacityBar} ` < 100 ? 'driversCard__percentBar--incomplete' : 'driversCard__percentBar--complete' }
+						style={{
+							width: `${seatCapacityBar}%`,
+						}}>
+					</div>
 				</div>
 			</div>
 			<Droppable

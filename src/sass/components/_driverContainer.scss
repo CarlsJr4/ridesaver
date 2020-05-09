@@ -65,15 +65,19 @@
 		}
 	}
 
+	&__percentBarContainer {
+		display: flex;
+		align-items: center;
+		height: 10%;
+		background-color: rgb(221, 221, 221);
+		border-radius: 5px;
+	}
+
 	&__headerBottom {
 		display: grid;
 		grid-template-columns: auto 1fr;
 		align-items: center;
 		grid-gap: 10px;
-
-		div {
-			height: 10%;
-		}
 	}
 
 
