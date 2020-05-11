@@ -5,6 +5,12 @@
 	flex-direction: column;
 	width: 250px;
 
+	&__header {
+		display: grid;
+		align-items: center;
+		grid-template-columns: 1fr auto;
+	}
+
 	form {
 	margin: 1rem 0;
 

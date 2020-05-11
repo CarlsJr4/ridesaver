@@ -1,23 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PassengerContainer from '../PassengerContainer';
-import useFormData from '../../../custom_hooks/useFormData';
 import { CarpoolContext } from '../../../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
+import IconButton from '../../../reusable_components/IconButton';
+import AddPassengerModal from './AddPassengerModal';
 
 const Passengers = () => {
-	const { formData, setFormData, handleInputChange } = useFormData();
 	const { updateDriverList, driverList } = useContext(CarpoolContext);
-
-	function handleAdd(e) {
-		setFormData({});
-		e.preventDefault();
-		e.target.reset();
-		return updateDriverList({
-			type: 'ADD_PASSENGER', 
-			name: formData.passengerName, 
-			nickname: formData.passengerNickname
-		});
-	}
+	const [isAddingPassenger, toggleAddPassenger] = useState(false);
 
 	const passengerIds = driverList.driverColumns.unassignedPassengers.passengerIds;
 	const passengerData = passengerIds.map(id => driverList.passengerRows[id]);
@@ -25,31 +15,17 @@ const Passengers = () => {
 
 	return ( 
 		<div className="passengersContainer">
-			<h3>Unassigned Passengers</h3>
-				<form
-					onSubmit={(e) => handleAdd(e)}
-				>
-					<input 
-						type="text" 
-						name="passengerName" 
-						id="passengerName" 
-						placeholder="Passenger's name..."
-						value={formData.name}
-						onChange={handleInputChange}
-						maxLength="20"
-						required
-					/>
-					<input 
-						type="text" 
-						name="passengerNickname" 
-						id="passengerNickname" 
-						placeholder="Nickname (optional)"
-						value={formData.nickname}
-						onChange={handleInputChange}
-						maxLength="20"
-					/>
-					<button type="submit">Add</button>
-				</form>
+			<AddPassengerModal
+				isVisible={isAddingPassenger}
+				handleVisibility={toggleAddPassenger}
+			/>
+			<div className="passengersContainer__header">
+				<h3>Unassigned Riders</h3>
+				<IconButton 
+					icon="plus"
+					handleClick={() => toggleAddPassenger(true)}	
+				/>
+			</div>
 				<Droppable
 					droppableId={columnId}
 				>

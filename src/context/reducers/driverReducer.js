@@ -43,20 +43,27 @@ export default function driverReducer(state, action) {
 
 		case 'ADD_PASSENGER': {
 			const id = uuidv4();
-			const unassignedPassengers = drivers.driverColumns.unassignedPassengers;
-
 			const newPassenger = {
 				id,
 				name: action.name,
 				nickname: action.nickname || null
 			}
-			// Add to passenger pool
+
+			// Add to combined passenger pool
 			drivers.passengerRows = {
 				...drivers.passengerRows, 
 				[id]: newPassenger
 			}
-			// Append to passenger column IDs
-			unassignedPassengers.passengerIds.push(id);
+
+			// Add to a specific passenger column
+			if (!action.driverId) {
+				const unassignedPassengers = drivers.driverColumns.unassignedPassengers;
+				unassignedPassengers.passengerIds.push(id);
+			} else {
+				const driver = drivers.driverColumns[action.driverId];
+				driver.passengerIds.push(id);
+			}
+
 			return drivers
 		}
 
