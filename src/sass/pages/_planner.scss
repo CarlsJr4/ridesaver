@@ -111,9 +111,20 @@ span.grippy::after {
 @media (max-width: 800px) {
 	.longTermPlanner {
 		margin: 0;
+		padding: 0;
+		margin-bottom: 75vh; // This is here so the user can scroll down and edit nicknames, without their keyboard blocking the view
+
+		// The event info specifically
+		 > p {
+			padding: 1rem;
+		}
 
 		&__cards {
 			grid-template-columns: auto;
 		}
+	}
+
+	.planner__left {
+		border: 0;
 	}
 }

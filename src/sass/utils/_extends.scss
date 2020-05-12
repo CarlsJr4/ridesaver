@@ -6,7 +6,8 @@
 
 %placeholder-card-styling {
 	background-color: white;
-	border: 1px solid gray;
+	// border: 1px solid gray;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 	border-radius: 5px;
 	padding: 1rem;
 }
