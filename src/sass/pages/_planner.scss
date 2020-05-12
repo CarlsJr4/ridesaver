@@ -107,3 +107,13 @@ span.grippy::after {
 		}
 	}
 }
+
+@media (max-width: 800px) {
+	.longTermPlanner {
+		margin: 0;
+
+		&__cards {
+			grid-template-columns: auto;
+		}
+	}
+}

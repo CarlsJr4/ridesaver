@@ -93,3 +93,29 @@
 		}
 	}
 }
+
+
+@media (max-width: 590px) {
+	.drivers {
+		&__container {
+			grid-template-columns: auto;
+		}
+	}
+
+	.driversCard {
+		width: auto;
+	}
+}
+
+@media (max-width: 480px) {
+.drivers {
+	&__statusBar {
+		display: block;
+
+		li {
+			padding: 0;
+			margin: 10px 0;
+		}
+	}
+}
+}

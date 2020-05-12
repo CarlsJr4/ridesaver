@@ -55,3 +55,19 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+@media (max-width: 800px) {
+	.modal {
+		&__content {
+			margin: 5%;
+
+			form {
+				padding: 0;
+			}
+		}
+
+		&--visible {
+			display: inherit;
+		}
+	}
+}
