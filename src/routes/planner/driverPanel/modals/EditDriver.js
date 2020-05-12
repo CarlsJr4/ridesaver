@@ -8,12 +8,13 @@ const EditDriverModal = ({isVisible, handleVisibility, driver}) => {
 	const [ isOverCapacity, setCapacityStatus ] = useState(false);
 
 	useEffect(() => {
-		if (formData.driverSeats < driver.totalSeats) {
+		// I use a && because the driver object is empty at first and causes an error if I dont include it
+		if (driver.passengers && formData.driverSeats < driver.passengers.length) {
 			setCapacityStatus(true)
 		} else {
 			setCapacityStatus(false)
 		}
-	}, [formData.driverSeats, driver.totalSeats])
+	}, [formData.driverSeats, driver.passengers])
 
 	// This block is used for conditional rendering of the delete button
 	let occupied;

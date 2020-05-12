@@ -49,6 +49,7 @@ export default function AddPassengerModal({isVisible, handleVisibility}) {
 				</option>
 			)
 		}
+		return
 	});
 
 	return (
