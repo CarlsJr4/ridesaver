@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/carpool-manager/static/css/main.a513836b.chunk.css",
+    "main.css": "/carpool-manager/static/css/main.8cfc4c6f.chunk.css",
     "main.js": "/carpool-manager/static/js/main.72cecb8e.chunk.js",
     "main.js.map": "/carpool-manager/static/js/main.72cecb8e.chunk.js.map",
     "runtime-main.js": "/carpool-manager/static/js/runtime-main.29d7a4bf.js",
@@ -8,15 +8,15 @@
     "static/js/2.5d746db8.chunk.js": "/carpool-manager/static/js/2.5d746db8.chunk.js",
     "static/js/2.5d746db8.chunk.js.map": "/carpool-manager/static/js/2.5d746db8.chunk.js.map",
     "index.html": "/carpool-manager/index.html",
-    "precache-manifest.6fa7a949d83ee21abff174df3ddd7c1b.js": "/carpool-manager/precache-manifest.6fa7a949d83ee21abff174df3ddd7c1b.js",
+    "precache-manifest.ddc582062b0e28c5e54cf34e22b4c607.js": "/carpool-manager/precache-manifest.ddc582062b0e28c5e54cf34e22b4c607.js",
     "service-worker.js": "/carpool-manager/service-worker.js",
-    "static/css/main.a513836b.chunk.css.map": "/carpool-manager/static/css/main.a513836b.chunk.css.map",
+    "static/css/main.8cfc4c6f.chunk.css.map": "/carpool-manager/static/css/main.8cfc4c6f.chunk.css.map",
     "static/js/2.5d746db8.chunk.js.LICENSE.txt": "/carpool-manager/static/js/2.5d746db8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.29d7a4bf.js",
     "static/js/2.5d746db8.chunk.js",
-    "static/css/main.a513836b.chunk.css",
+    "static/css/main.8cfc4c6f.chunk.css",
     "static/js/main.72cecb8e.chunk.js"
   ]
 }
