@@ -109,6 +109,14 @@
 
 @media (max-width: 480px) {
 .drivers {
+	&__header {
+		padding: 0 1rem; 
+
+		h3 {
+			margin: 0.5rem 0;
+		}
+	}
+
 	&__statusBar {
 		display: block;
 
