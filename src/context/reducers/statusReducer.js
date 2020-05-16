@@ -1,10 +1,16 @@
 export default function statusReducer(state, action) {
 	const drivers = action.drivers;
+	const unassignedPassengers = drivers.driverColumns.unassignedPassengers.passengerIds.length;
 	switch(action.type) {
 		case 'UPDATE':
 			// Handle the case for 0 drivers
 			if (drivers.columnOrder.length === 0) {
-				return state
+				return {
+					usedSeatCount: 0,
+					maxSeats: 0,
+					emptyCars: false,
+					unassignedPassengers
+				}
 			} 
 
 			// Calculate the number of used and max seats
@@ -26,9 +32,6 @@ export default function statusReducer(state, action) {
 					break
 				}
 			}
-
-			// Count number of unoccupied seats
-			const unassignedPassengers = drivers.driverColumns.unassignedPassengers.passengerIds.length;
 
 			let usedSeatCount = usedSeatsArray.reduce(reducer);
 			let maxSeats = seatCountArray.reduce(reducer);
