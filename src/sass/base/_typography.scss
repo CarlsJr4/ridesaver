@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto:wght@700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	h1, h2, h3, textarea { 
+		font-family: 'Roboto', sans-serif;
+	}
+
+	textarea:last-child, ::placeholder {
+		font-family: 'Cabin', sans-serif;
+		color: rgb(194, 194, 194);
+	}
+
+}
+
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	border: 0;
+	resize: none;
+	overflow: hidden;
+	white-space: nowrap;
+}

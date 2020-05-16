@@ -6,7 +6,7 @@ export const CarpoolContext = React.createContext();
 const initialData = [
 	{
 	name: 'Jim Halpert',
-	nickname: 'William M. Buttlicker',
+	nickname: null,
 	seats: 3,
 	id: 'driver1',
 	passengers: [{name: 'Michael Scott', nickname: 'Prison Mike', id: 'pass1'}, {name: 'Dwight Schrute', nickname: null, id: 'pass2'}]
