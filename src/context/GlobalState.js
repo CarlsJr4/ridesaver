@@ -51,7 +51,7 @@ const GlobalState = ({ children }) => {
   });
 
   useEffect(() => {
-    async function fakeApiCall() {
+    async function retrieveData() {
       const event = await axios.get(
         'http://localhost:3000/api/events/5ef538186635ff06cc86258b'
       );
@@ -60,7 +60,7 @@ const GlobalState = ({ children }) => {
         drivers: event.data.drivers,
       });
     }
-    fakeApiCall();
+    retrieveData();
   }, []);
 
   return (

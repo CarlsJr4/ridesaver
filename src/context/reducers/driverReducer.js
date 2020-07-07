@@ -1,15 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export default function driverReducer(state, action) {
-  let drivers = { ...state };
+  let drivers = { ...state }; // The global state of the app
   switch (action.type) {
     case 'INIT': {
-      const driverList = [...action.drivers];
+      const driverList = [...action.drivers]; // Retrieved list of drivers
       // These will hold the values needed for our datastructure
       let passengerData = [];
       let passengerRows = {};
       let driverColumns = {};
 
+      // Map each retrieved driver to a new object
       driverList.forEach(driver => {
         passengerData.push(...driver.passengers);
         driverColumns = {
@@ -28,6 +29,7 @@ export default function driverReducer(state, action) {
         };
       });
 
+      // Extract all passenger IDs
       passengerData.forEach(passenger => {
         passengerRows = {
           ...passengerRows,
@@ -40,7 +42,7 @@ export default function driverReducer(state, action) {
       });
 
       const columnOrder = Array.from(driverList, driver => driver._id);
-      columnOrder.pop(); // So the column of passengers is not included in the driverList
+      columnOrder.splice(0, 1); // To remove the column of passengers
 
       const driverData = {
         passengerRows,
@@ -48,7 +50,7 @@ export default function driverReducer(state, action) {
         columnOrder,
       };
 
-      console.log(driverData);
+      console.log('Driver data', driverData);
 
       return driverData;
     }
