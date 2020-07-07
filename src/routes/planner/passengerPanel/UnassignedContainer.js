@@ -4,24 +4,15 @@ import { CarpoolContext } from '../../../context/GlobalState';
 import { Droppable } from 'react-beautiful-dnd';
 import IconButton from '../../../reusable_components/IconButton';
 import AddPassengerModal from './AddPassengerModal';
+import findPassengerColumnId from '../../../helpers/findPassengerColumnId';
 
 const Passengers = () => {
   const { updateDriverList, driverList } = useContext(CarpoolContext);
   const [isAddingPassenger, toggleAddPassenger] = useState(false);
   const drivers = driverList.driverColumns;
-
-  let passengerPoolId;
-
-  for (const driverId in drivers) {
-    if (drivers[driverId].isPassengerPool) {
-      passengerPoolId = driverId;
-    }
-  }
-
+  const passengerPoolId = findPassengerColumnId(drivers);
   const passengerIds = driverList.driverColumns[passengerPoolId].passengerIds;
-
   const passengerData = passengerIds.map(id => driverList.passengerRows[id]);
-  const columnId = passengerPoolId;
 
   return (
     <div className="passengersContainer">
@@ -33,7 +24,7 @@ const Passengers = () => {
         <h3>Unassigned Riders</h3>
         <IconButton icon="plus" handleClick={() => toggleAddPassenger(true)} />
       </div>
-      <Droppable droppableId={columnId}>
+      <Droppable droppableId={passengerPoolId}>
         {(provided, snapshot) => (
           <PassengerContainer
             {...provided.droppableProps}
@@ -41,7 +32,7 @@ const Passengers = () => {
             handleUpdate={updateDriverList}
             passengers={passengerData}
             placeholder={provided.placeholder}
-            driverId={columnId}
+            driverId={passengerPoolId}
             isDraggingOver={snapshot.isDraggingOver}
           />
         )}
