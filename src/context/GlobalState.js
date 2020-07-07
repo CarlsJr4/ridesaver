@@ -4,36 +4,6 @@ import axios from 'axios';
 
 export const CarpoolContext = React.createContext();
 
-// const initialData = [
-//   {
-//     name: 'Jim Halpert',
-//     nickname: null,
-//     seats: 3,
-//     id: 'driver1',
-//     passengers: [
-//       { name: 'Michael Scott', nickname: 'Prison Mike', id: 'pass1' },
-//       { name: 'Dwight Schrute', nickname: null, id: 'pass2' },
-//     ],
-//   },
-//   {
-//     name: 'driver2',
-//     nickname: null,
-//     seats: 3,
-//     id: 'driver2',
-//     passengers: [{ name: 'passX', nickname: null, id: 'passX' }],
-//   },
-//   // This is a unique column. Handle with care!
-//   {
-//     name: 'unassignedPassengers',
-//     seats: null,
-//     id: 'unassignedPassengers',
-//     passengers: [
-//       { name: 'pass3', nickname: null, id: 'pass3' },
-//       { name: 'pass4', nickname: null, id: 'pass4' },
-//     ],
-//   },
-// ];
-
 // Only includes state that is read at multiple levels of the app
 const GlobalState = ({ children }) => {
   const [driverList, updateDriverList] = useReducer(driverReducer, {

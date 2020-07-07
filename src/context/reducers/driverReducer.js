@@ -82,11 +82,10 @@ export default function driverReducer(state, action) {
     }
 
     case 'ADD_DRIVER': {
-      // Normally, we would get the ID from mongoDB (perform a POST request, and get the driver's ID, then assign it to the new driver)
       let { driverName, driverNickname, driverSeats } = action.formData; // Destructure the form data
+      let id = action.driverId;
       let allDrivers = drivers.driverColumns; // Get the drivers object of the state
       let columnOrder = drivers.columnOrder;
-      let id = uuidv4();
       allDrivers = {
         ...allDrivers,
         [id]: {
