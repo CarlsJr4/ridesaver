@@ -1,7 +1,9 @@
-import { v4 as uuidv4 } from 'uuid';
+import findPassengerColumnId from '../../helpers/findPassengerColumnId';
 
 export default function driverReducer(state, action) {
   let drivers = { ...state }; // The global state of the app
+  const passengerColumnId = findPassengerColumnId(drivers.driverColumns);
+  const passengerColumn = drivers.driverColumns[passengerColumnId];
   switch (action.type) {
     case 'INIT': {
       const driverList = [...action.drivers]; // Retrieved list of drivers
@@ -56,7 +58,7 @@ export default function driverReducer(state, action) {
     }
 
     case 'ADD_PASSENGER': {
-      const id = uuidv4();
+      const id = action.passengerId;
       const newPassenger = {
         id,
         name: action.name,
@@ -71,8 +73,7 @@ export default function driverReducer(state, action) {
 
       // Add to a specific passenger column
       if (!action.driverId) {
-        const unassignedPassengers = drivers.driverColumns.unassignedPassengers;
-        unassignedPassengers.passengerIds.push(id);
+        passengerColumn.passengerIds.push(id);
       } else {
         const driver = drivers.driverColumns[action.driverId];
         driver.passengerIds.push(id);
