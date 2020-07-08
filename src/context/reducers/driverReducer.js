@@ -52,8 +52,6 @@ export default function driverReducer(state, action) {
         columnOrder,
       };
 
-      console.log('Driver data', driverData);
-
       return driverData;
     }
 
@@ -165,15 +163,10 @@ export default function driverReducer(state, action) {
       passengers = passengers.filter(item => item !== passengerId);
       driver.passengerIds = passengers;
 
-      // Return passenger to list if they came from a driver
-      if (driver.id !== 'unassignedPassengers') {
-        const unassignedColumn = drivers.driverColumns.unassignedPassengers;
-        const passengerPool = unassignedColumn.passengerIds;
+      if (!driver.isPassengerPool) {
+        const passengerPool = passengerColumn.passengerIds;
         passengerPool.push(passengerId);
-      }
-
-      // Permanent passenger delete if the source is the unassigned passengers column
-      if (driver.id === 'unassignedPassengers') {
+      } else {
         const passengerRows = drivers.passengerRows;
         delete passengerRows[passengerId];
       }

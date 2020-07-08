@@ -30,7 +30,7 @@ export default function AddPassengerModal({ isVisible, handleVisibility }) {
     nicknameRef.current.value = '';
 
     if (driverId) {
-      // Endpoint 1
+      // TODO: Endpoint 1
     } else {
       response = await axios.post(
         'http://localhost:3000/api/events/5ef538186635ff06cc86258b/newpassenger',
