@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import IconButton from '../../reusable_components/IconButton';
 import { Draggable } from 'react-beautiful-dnd';
 import useBlurEdit from '../../custom_hooks/useBlurEdit';
 import axios from 'axios';
+import { CarpoolContext } from '../../context/GlobalState';
 
 // NOTE: This component is shared beteen the DriverContainer and UnassignedContainer components
 const PassengerTileContainer = ({
@@ -14,6 +15,7 @@ const PassengerTileContainer = ({
   placeholder,
 }) => {
   const { handleBlurEdit, handleKeyEdit } = useBlurEdit();
+  const { driverList } = useContext(CarpoolContext);
 
   return (
     <div
@@ -60,9 +62,12 @@ const PassengerTileContainer = ({
               <IconButton
                 handleClick={async () => {
                   // Do a transfer API call if deleting from driver
-                  axios.delete(
-                    `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`
-                  );
+                  // Only send this delete request if the column is the passenger pool
+                  if (driverList.driverColumns[driverId].isPassengerPool) {
+                    axios.delete(
+                      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`
+                    );
+                  }
                   return handleUpdate({
                     type: 'DELETE_PASSENGER',
                     driverId: driverId,
