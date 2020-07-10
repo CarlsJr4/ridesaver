@@ -1,7 +1,5 @@
 import findPassengerColumnId from '../../helpers/findPassengerColumnId';
 
-// How can we reduce the size of this file?
-
 export default function driverReducer(state, action) {
   let drivers = { ...state }; // The global state of the app
   const passengerColumnId = findPassengerColumnId(drivers.driverColumns);
@@ -186,7 +184,23 @@ export default function driverReducer(state, action) {
     }
 
     case 'TRANSFER': {
-      return action.state;
+      const { source, destination, draggableId } = action;
+
+      const sourceColumn = drivers.driverColumns[source.droppableId];
+      const endColumn = drivers.driverColumns[destination.droppableId];
+
+      if (
+        destination.droppableId !== 'unassignedPassengers' &&
+        endColumn.passengerIds.length === endColumn.seats
+      ) {
+        alert('This car is full!');
+        return drivers;
+      }
+
+      sourceColumn.passengerIds.splice(source.index, 1);
+      endColumn.passengerIds.splice(destination.index, 0, draggableId);
+
+      return drivers;
     }
 
     default:
