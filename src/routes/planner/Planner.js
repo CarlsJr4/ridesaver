@@ -52,8 +52,6 @@ const Planner = () => {
         }
       );
 
-      // Call API request here
-      // Need: startId, endId, startArray, endArray
       return;
     }
 

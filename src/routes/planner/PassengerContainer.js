@@ -4,6 +4,8 @@ import { Draggable } from 'react-beautiful-dnd';
 import useBlurEdit from '../../custom_hooks/useBlurEdit';
 import axios from 'axios';
 import { CarpoolContext } from '../../context/GlobalState';
+import passengerArray from '../../helpers/passengerArray';
+import findPassengerColumnId from '../../helpers/findPassengerColumnId';
 
 // NOTE: This component is shared beteen the DriverContainer and UnassignedContainer components
 const PassengerTileContainer = ({
@@ -61,18 +63,35 @@ const PassengerTileContainer = ({
               />
               <IconButton
                 handleClick={async () => {
-                  // Do a transfer API call if deleting from driver
                   // Only send this delete request if the column is the passenger pool
                   if (driverList.driverColumns[driverId].isPassengerPool) {
                     axios.delete(
                       `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`
                     );
+                  } else {
+                    handleUpdate({
+                      type: 'DELETE_PASSENGER',
+                      driverId: driverId,
+                      passengerId: passenger.id,
+                    });
+                    const passengerPoolId = findPassengerColumnId(
+                      driverList.driverColumns
+                    );
+                    const { sourcePassengers, destPassengers } = passengerArray(
+                      driverId,
+                      passengerPoolId,
+                      driverList
+                    );
+                    axios.put(
+                      'http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/transfer',
+                      {
+                        sourcePassengers,
+                        destPassengers,
+                        startId: driverId,
+                        destId: passengerPoolId,
+                      }
+                    );
                   }
-                  return handleUpdate({
-                    type: 'DELETE_PASSENGER',
-                    driverId: driverId,
-                    passengerId: passenger.id,
-                  });
                 }}
                 icon="trash"
               />
