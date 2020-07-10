@@ -50,15 +50,21 @@ const PassengerTileContainer = ({
                 spellCheck={false}
                 maxLength="20"
                 name="name"
-                onBlur={e =>
+                onBlur={e => {
+                  axios.put(
+                    `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`,
+                    {
+                      name: e.target.value,
+                    }
+                  );
                   handleBlurEdit(
                     e,
                     passenger.name,
                     'EDIT_PASSENGER',
                     driverId,
                     passenger.id
-                  )
-                } // Need columnID, itemID
+                  );
+                }}
                 onKeyDown={handleKeyEdit}
               />
               <IconButton
@@ -101,15 +107,19 @@ const PassengerTileContainer = ({
                 maxLength="20"
                 name="nickname"
                 placeholder="(no nickname)"
-                onBlur={e =>
+                onBlur={e => {
+                  axios.put(
+                    `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`,
+                    { nickname: e.target.value }
+                  );
                   handleBlurEdit(
                     e,
                     passenger.nickname,
                     'EDIT_PASSENGER',
                     driverId,
                     passenger.id
-                  )
-                }
+                  );
+                }}
                 onKeyDown={handleKeyEdit}
               />
             </div>
