@@ -3,6 +3,8 @@ import DriverContainer from './driverPanel/DriverContainer';
 import UnassignedContainer from './passengerPanel/UnassignedContainer';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { CarpoolContext } from '../../context/GlobalState';
+import axios from 'axios';
+import passengerArray from '../../helpers/passengerArray';
 // import IconButton from '../reusable/IconButton';
 // import Navbar from '../reusable/Navbar';
 
@@ -10,7 +12,7 @@ import { CarpoolContext } from '../../context/GlobalState';
 // Clean up the code and organization
 
 const Planner = () => {
-  const { updateDriverList } = useContext(CarpoolContext);
+  const { driverList, updateDriverList } = useContext(CarpoolContext);
 
   const onDragEnd = result => {
     const { source, destination, draggableId } = result;
@@ -35,6 +37,23 @@ const Planner = () => {
         destination,
         draggableId,
       });
+      const { sourcePassengers, destPassengers } = passengerArray(
+        start,
+        end,
+        driverList
+      );
+      axios.put(
+        'http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/transfer',
+        {
+          sourcePassengers,
+          destPassengers,
+          startId: start,
+          destId: end,
+        }
+      );
+
+      // Call API request here
+      // Need: startId, endId, startArray, endArray
       return;
     }
 
