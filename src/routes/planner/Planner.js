@@ -51,7 +51,6 @@ const Planner = () => {
           destId: end,
         }
       );
-
       return;
     }
 
