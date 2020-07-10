@@ -36,6 +36,12 @@ const EditDriverModal = ({ isVisible, handleVisibility, driver }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    axios.put(
+      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driver.id}`,
+      {
+        seats: formData.driverSeats,
+      }
+    );
     setFormData({});
     handleVisibility(false);
     updateDriverList({
