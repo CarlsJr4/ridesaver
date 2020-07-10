@@ -17,7 +17,7 @@ const Planner = () => {
   const onDragEnd = result => {
     const { source, destination, draggableId } = result;
     const start = source.droppableId;
-    const end = destination.droppableId;
+    const end = destination && destination.droppableId;
 
     // Outside drops
     if (!destination) {
