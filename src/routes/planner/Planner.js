@@ -10,6 +10,7 @@ import passengerArray from '../../helpers/passengerArray';
 
 // TODO:
 // Clean up the code and organization
+// DRY
 
 const Planner = () => {
   const { driverList, updateDriverList } = useContext(CarpoolContext);
@@ -60,6 +61,22 @@ const Planner = () => {
       destination,
       draggableId,
     });
+
+    const { sourcePassengers, destPassengers } = passengerArray(
+      start,
+      end,
+      driverList
+    );
+
+    axios.put(
+      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${start}/reorder`,
+      {
+        sourcePassengers,
+        destPassengers,
+        startId: start,
+        destId: end,
+      }
+    );
   };
 
   return (
