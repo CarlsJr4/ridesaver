@@ -10,62 +10,59 @@ import { CarpoolContext } from '../../context/GlobalState';
 // Clean up the code and organization
 
 const Planner = () => {
-	const { updateDriverList } = useContext(CarpoolContext);
+  const { updateDriverList } = useContext(CarpoolContext);
 
-	const onDragEnd = (result) => {
-		const {source, destination, draggableId} = result;
-	
-		// Outside drops
-		if (!destination) {
-			return
-		}
+  const onDragEnd = result => {
+    const { source, destination, draggableId } = result;
+    const start = source.droppableId;
+    const end = destination.droppableId;
 
-		// Drop in same place
-		if (
-				destination.droppableId === source.droppableId &&
-				destination.index === source.index
-			) {
-				return;
-			}
+    // Outside drops
+    if (!destination) {
+      return;
+    }
 
-		const start = source.droppableId;
-		const end = destination.droppableId;
+    // Drop in same place
+    if (end === start && destination.index === source.index) {
+      return;
+    }
 
-		// Drop in a different list
-		if (start !== end) {
-				updateDriverList({
-					type: 'TRANSFER',
-					source, 
-					destination,
-					draggableId
-				})
-				return
-		}
+    // Drop in a different list
+    if (start !== end) {
+      updateDriverList({
+        type: 'TRANSFER',
+        source,
+        destination,
+        draggableId,
+      });
+      return;
+    }
 
-		updateDriverList({
-			type: 'REORDER_PASSENGERS', 
-			source, 
-			destination,
-			draggableId
-		})
-	}
+    updateDriverList({
+      type: 'REORDER_PASSENGERS',
+      source,
+      destination,
+      draggableId,
+    });
+  };
 
-	return (
-		<>
-			{/* <Navbar /> */}
-			<div className="longTermPlanner">
-				<p>Ice Skating With Friends | February 12th, 2020 | 6:00pm {/* <span><IconButton icon="user-edit"/></span> */}</p>
-				<div className="longTermPlanner__cards">
-					<DragDropContext
-						onDragEnd={onDragEnd}
-					>
-						<DriverContainer />
-						<UnassignedContainer />
-					</DragDropContext>
-				</div>
-			</div>
-		</>
-	);
-}
+  return (
+    <>
+      {/* <Navbar /> */}
+      <div className="longTermPlanner">
+        <p>
+          Ice Skating With Friends | February 12th, 2020 | 6:00pm{' '}
+          {/* <span><IconButton icon="user-edit"/></span> */}
+        </p>
+        <div className="longTermPlanner__cards">
+          <DragDropContext onDragEnd={onDragEnd}>
+            <DriverContainer />
+            <UnassignedContainer />
+          </DragDropContext>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Planner;
