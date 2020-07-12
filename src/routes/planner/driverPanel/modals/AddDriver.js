@@ -12,7 +12,7 @@ const AddDriverModal = ({ isVisible, handleVisibility, handleAdd }) => {
     e.target.reset();
     // TODO: Replace ID with template string
     const res = await axios.post(
-      'http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers',
+      `http://${process.env.REACT_APP_HOST}/api/events/${process.env.REACT_APP_EVENT_ID}/drivers`,
       {
         name: driverName,
         nickname: driverNickname,

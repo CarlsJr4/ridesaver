@@ -6,6 +6,8 @@ import axios from 'axios';
 import { CarpoolContext } from '../../context/GlobalState';
 import passengerArray from '../../helpers/passengerArray';
 import findPassengerColumnId from '../../helpers/findPassengerColumnId';
+const host = process.env.REACT_APP_HOST;
+const eventId = process.env.REACT_APP_EVENT_ID;
 
 // NOTE: This component is shared beteen the DriverContainer and UnassignedContainer components
 const PassengerTileContainer = ({
@@ -52,7 +54,7 @@ const PassengerTileContainer = ({
                 name="name"
                 onBlur={e => {
                   axios.put(
-                    `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`,
+                    `http://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`,
                     {
                       name: e.target.value,
                     }
@@ -76,7 +78,7 @@ const PassengerTileContainer = ({
                   });
                   if (driverList.driverColumns[driverId].isPassengerPool) {
                     axios.delete(
-                      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`
+                      `http://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`
                     );
                   } else {
                     const passengerPoolId = findPassengerColumnId(
@@ -88,7 +90,7 @@ const PassengerTileContainer = ({
                       driverList
                     );
                     axios.put(
-                      'http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/transfer',
+                      `http://${host}/api/events/${eventId}/drivers/transfer`,
                       {
                         sourcePassengers,
                         destPassengers,
@@ -109,7 +111,7 @@ const PassengerTileContainer = ({
                 placeholder="(no nickname)"
                 onBlur={e => {
                   axios.put(
-                    `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}/passengers/${passenger.id}`,
+                    `http://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`,
                     { nickname: e.target.value }
                   );
                   handleBlurEdit(

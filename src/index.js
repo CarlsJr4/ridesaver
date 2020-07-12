@@ -5,15 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash, faUserEdit, faLink, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrash,
+  faUserEdit,
+  faLink,
+  faPlus,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 
-library.add(
-	faTrash, 
-	faUserEdit, 
-	faLink,
-	faPlus,
-	faTimes
-	);
+console.log(process.env.REACT_APP_TEST);
+
+library.add(faTrash, faUserEdit, faLink, faPlus, faTimes);
 
 ReactDOM.render(
   <React.StrictMode>

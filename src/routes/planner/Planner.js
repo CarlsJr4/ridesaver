@@ -5,6 +5,9 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { CarpoolContext } from '../../context/GlobalState';
 import axios from 'axios';
 import passengerArray from '../../helpers/passengerArray';
+const host = process.env.REACT_APP_HOST;
+const eventId = process.env.REACT_APP_EVENT_ID;
+
 // import IconButton from '../reusable/IconButton';
 // import Navbar from '../reusable/Navbar';
 
@@ -43,15 +46,12 @@ const Planner = () => {
         end,
         driverList
       );
-      axios.put(
-        'http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/transfer',
-        {
-          sourcePassengers,
-          destPassengers,
-          startId: start,
-          destId: end,
-        }
-      );
+      axios.put(`http://${host}/api/events/${eventId}/drivers/transfer`, {
+        sourcePassengers,
+        destPassengers,
+        startId: start,
+        destId: end,
+      });
       return;
     }
 
@@ -68,15 +68,12 @@ const Planner = () => {
       driverList
     );
 
-    axios.put(
-      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${start}/reorder`,
-      {
-        sourcePassengers,
-        destPassengers,
-        startId: start,
-        destId: end,
-      }
-    );
+    axios.put(`http://${host}/api/events/${eventId}/drivers/${start}/reorder`, {
+      sourcePassengers,
+      destPassengers,
+      startId: start,
+      destId: end,
+    });
   };
 
   return (

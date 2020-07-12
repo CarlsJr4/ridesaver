@@ -6,6 +6,8 @@ import { Droppable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import useBlurEdit from '../../../custom_hooks/useBlurEdit';
 import axios from 'axios';
+const host = process.env.REACT_APP_HOST;
+const eventId = process.env.REACT_APP_EVENT_ID;
 
 const DriverCard = ({
   name,
@@ -49,12 +51,9 @@ const DriverCard = ({
           maxLength="20"
           onKeyDown={handleKeyEdit}
           onBlur={e => {
-            axios.put(
-              `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${id}`,
-              {
-                name: e.target.value,
-              }
-            );
+            axios.put(`http://${host}/api/events/${eventId}/drivers/${id}`, {
+              name: e.target.value,
+            });
             handleBlurEdit(e, name, 'EDIT_DRIVER_NAME', id, id);
           }}
         />
@@ -68,12 +67,9 @@ const DriverCard = ({
           maxLength="20"
           onKeyDown={handleKeyEdit}
           onBlur={e => {
-            axios.put(
-              `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${id}`,
-              {
-                nickname: e.target.value,
-              }
-            );
+            axios.put(`http://${host}/api/events/${eventId}/drivers/${id}`, {
+              nickname: e.target.value,
+            });
             handleBlurEdit(e, nickname, 'EDIT_DRIVER_NAME', id, id);
           }}
         />

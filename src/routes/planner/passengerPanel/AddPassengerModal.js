@@ -3,6 +3,8 @@ import Modal from '../../../reusable_components/Modal';
 import useFormData from '../../../custom_hooks/useFormData';
 import { CarpoolContext } from '../../../context/GlobalState';
 import axios from 'axios';
+const host = process.env.REACT_APP_HOST;
+const eventId = process.env.REACT_APP_EVENT_ID;
 
 export default function AddPassengerModal({ isVisible, handleVisibility }) {
   const { formData, setFormData, handleInputChange } = useFormData();
@@ -31,7 +33,7 @@ export default function AddPassengerModal({ isVisible, handleVisibility }) {
 
     if (driverId) {
       response = await axios.post(
-        `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driverId}`,
+        `http://${host}/api/events/${eventId}/drivers/${driverId}`,
         {
           name: formData.passengerName,
           nickname: formData.passengerNickname,
@@ -39,7 +41,7 @@ export default function AddPassengerModal({ isVisible, handleVisibility }) {
       );
     } else {
       response = await axios.post(
-        'http://localhost:3000/api/events/5ef538186635ff06cc86258b/newpassenger',
+        `http://${host}/api/events/${eventId}/newpassenger`,
         {
           name: formData.passengerName,
           nickname: formData.passengerNickname,

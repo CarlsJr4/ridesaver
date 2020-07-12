@@ -3,6 +3,8 @@ import Modal from '../../../../reusable_components/Modal';
 import useFormData from '../../../../custom_hooks/useFormData';
 import { CarpoolContext } from '../../../../context/GlobalState';
 import axios from 'axios';
+const host = process.env.REACT_APP_HOST;
+const eventId = process.env.REACT_APP_EVENT_ID;
 
 const EditDriverModal = ({ isVisible, handleVisibility, driver }) => {
   const { formData, setFormData, handleInputChange } = useFormData();
@@ -36,12 +38,9 @@ const EditDriverModal = ({ isVisible, handleVisibility, driver }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.put(
-      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driver.id}`,
-      {
-        seats: formData.driverSeats,
-      }
-    );
+    axios.put(`http://${host}/api/events/${eventId}/drivers/${driver.id}`, {
+      seats: formData.driverSeats,
+    });
     setFormData({});
     handleVisibility(false);
     updateDriverList({
@@ -55,9 +54,7 @@ const EditDriverModal = ({ isVisible, handleVisibility, driver }) => {
     setFormData({});
     handleVisibility(false); // Immediately close the modal for better UX
     // TODO: Replace event_id with template string
-    axios.delete(
-      `http://localhost:3000/api/events/5ef538186635ff06cc86258b/drivers/${driver.id}`
-    );
+    axios.delete(`http://${host}/api/events/${eventId}/drivers/${driver.id}`);
     updateDriverList({ type: 'DELETE_DRIVER', driverId: driver.id });
   }
 
