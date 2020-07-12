@@ -46,7 +46,7 @@ const Planner = () => {
         end,
         driverList
       );
-      axios.put(`http://${host}/api/events/${eventId}/drivers/transfer`, {
+      axios.put(`https://${host}/api/events/${eventId}/drivers/transfer`, {
         sourcePassengers,
         destPassengers,
         startId: start,
@@ -68,12 +68,15 @@ const Planner = () => {
       driverList
     );
 
-    axios.put(`http://${host}/api/events/${eventId}/drivers/${start}/reorder`, {
-      sourcePassengers,
-      destPassengers,
-      startId: start,
-      destId: end,
-    });
+    axios.put(
+      `https://${host}/api/events/${eventId}/drivers/${start}/reorder`,
+      {
+        sourcePassengers,
+        destPassengers,
+        startId: start,
+        destId: end,
+      }
+    );
   };
 
   return (

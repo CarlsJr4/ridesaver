@@ -51,7 +51,7 @@ const DriverCard = ({
           maxLength="20"
           onKeyDown={handleKeyEdit}
           onBlur={e => {
-            axios.put(`http://${host}/api/events/${eventId}/drivers/${id}`, {
+            axios.put(`https://${host}/api/events/${eventId}/drivers/${id}`, {
               name: e.target.value,
             });
             handleBlurEdit(e, name, 'EDIT_DRIVER_NAME', id, id);
@@ -67,7 +67,7 @@ const DriverCard = ({
           maxLength="20"
           onKeyDown={handleKeyEdit}
           onBlur={e => {
-            axios.put(`http://${host}/api/events/${eventId}/drivers/${id}`, {
+            axios.put(`https://${host}/api/events/${eventId}/drivers/${id}`, {
               nickname: e.target.value,
             });
             handleBlurEdit(e, nickname, 'EDIT_DRIVER_NAME', id, id);

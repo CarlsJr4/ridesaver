@@ -33,7 +33,7 @@ export default function AddPassengerModal({ isVisible, handleVisibility }) {
 
     if (driverId) {
       response = await axios.post(
-        `http://${host}/api/events/${eventId}/drivers/${driverId}`,
+        `https://${host}/api/events/${eventId}/drivers/${driverId}`,
         {
           name: formData.passengerName,
           nickname: formData.passengerNickname,
@@ -41,7 +41,7 @@ export default function AddPassengerModal({ isVisible, handleVisibility }) {
       );
     } else {
       response = await axios.post(
-        `http://${host}/api/events/${eventId}/newpassenger`,
+        `https://${host}/api/events/${eventId}/newpassenger`,
         {
           name: formData.passengerName,
           nickname: formData.passengerNickname,

@@ -54,7 +54,7 @@ const PassengerTileContainer = ({
                 name="name"
                 onBlur={e => {
                   axios.put(
-                    `http://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`,
+                    `https://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`,
                     {
                       name: e.target.value,
                     }
@@ -78,7 +78,7 @@ const PassengerTileContainer = ({
                   });
                   if (driverList.driverColumns[driverId].isPassengerPool) {
                     axios.delete(
-                      `http://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`
+                      `https://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`
                     );
                   } else {
                     const passengerPoolId = findPassengerColumnId(
@@ -90,7 +90,7 @@ const PassengerTileContainer = ({
                       driverList
                     );
                     axios.put(
-                      `http://${host}/api/events/${eventId}/drivers/transfer`,
+                      `https://${host}/api/events/${eventId}/drivers/transfer`,
                       {
                         sourcePassengers,
                         destPassengers,
@@ -111,7 +111,7 @@ const PassengerTileContainer = ({
                 placeholder="(no nickname)"
                 onBlur={e => {
                   axios.put(
-                    `http://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`,
+                    `https://${host}/api/events/${eventId}/drivers/${driverId}/passengers/${passenger.id}`,
                     { nickname: e.target.value }
                   );
                   handleBlurEdit(

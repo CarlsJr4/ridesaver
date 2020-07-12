@@ -23,7 +23,7 @@ const GlobalState = ({ children }) => {
   useEffect(() => {
     async function retrieveData() {
       const event = await axios.get(
-        `http://${process.env.REACT_APP_HOST}/api/events/${process.env.REACT_APP_EVENT_ID}`
+        `https://${process.env.REACT_APP_HOST}/api/events/${process.env.REACT_APP_EVENT_ID}`
       );
       updateDriverList({
         type: 'INIT',

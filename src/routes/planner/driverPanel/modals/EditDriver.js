@@ -38,7 +38,7 @@ const EditDriverModal = ({ isVisible, handleVisibility, driver }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.put(`http://${host}/api/events/${eventId}/drivers/${driver.id}`, {
+    axios.put(`https://${host}/api/events/${eventId}/drivers/${driver.id}`, {
       seats: formData.driverSeats,
     });
     setFormData({});
@@ -54,7 +54,7 @@ const EditDriverModal = ({ isVisible, handleVisibility, driver }) => {
     setFormData({});
     handleVisibility(false); // Immediately close the modal for better UX
     // TODO: Replace event_id with template string
-    axios.delete(`http://${host}/api/events/${eventId}/drivers/${driver.id}`);
+    axios.delete(`https://${host}/api/events/${eventId}/drivers/${driver.id}`);
     updateDriverList({ type: 'DELETE_DRIVER', driverId: driver.id });
   }
 
