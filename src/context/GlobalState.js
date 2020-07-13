@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import driverReducer from '../context/reducers/driverReducer';
 import axios from 'axios';
+import { trackPromise } from 'react-promise-tracker';
 
 export const CarpoolContext = React.createContext();
 
@@ -30,7 +31,7 @@ const GlobalState = ({ children }) => {
         drivers: event.data.drivers,
       });
     }
-    retrieveData();
+    trackPromise(retrieveData());
   }, []);
 
   return (

@@ -6,6 +6,9 @@ import axios from 'axios';
 import { CarpoolContext } from '../../context/GlobalState';
 import passengerArray from '../../helpers/passengerArray';
 import findPassengerColumnId from '../../helpers/findPassengerColumnId';
+import Spinner from '../../reusable_components/Spinner';
+import { usePromiseTracker } from 'react-promise-tracker';
+
 const host = process.env.REACT_APP_HOST;
 const eventId = process.env.REACT_APP_EVENT_ID;
 
@@ -20,6 +23,7 @@ const PassengerTileContainer = ({
 }) => {
   const { handleBlurEdit, handleKeyEdit } = useBlurEdit();
   const { driverList } = useContext(CarpoolContext);
+  const { promiseInProgress } = usePromiseTracker();
 
   return (
     <div
@@ -28,6 +32,18 @@ const PassengerTileContainer = ({
       }
       ref={innerRef}
     >
+      {promiseInProgress && (
+        <div
+          style={{
+            paddingTop: '1rem',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </div>
+      )}
+
       {passengers.map((passenger, i) => (
         // Each of these draggables is an individual passenger tile
         <Draggable
