@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/carpool-manager/precache-manifest.6f1eb38d297fc7fb2edfffe47144ba3d.js"
+  "/carpool-manager/precache-manifest.7e73bd22f4eb301921957104b22ef202.js"
 );
 
 self.addEventListener('message', (event) => {
