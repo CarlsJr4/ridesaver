@@ -1,8 +1,8 @@
 ## Minimum Viable Product: [Carpool Manager](https://carlsjr4.github.io/carpool-manager/)
 
-See [custom React hooks](https://github.com/CarlsJr4/carpool-manager/tree/master/src/custom_hooks)
-See [reducer logic for the React Context API](https://github.com/CarlsJr4/carpool-manager/tree/master/src/context/reducers)
-See [main React components](https://github.com/CarlsJr4/carpool-manager/tree/master/src/routes/planner)
+See [custom React hooks](https://github.com/CarlsJr4/carpool-manager/tree/master/src/custom_hooks) \
+See [reducer logic for the React Context API](https://github.com/CarlsJr4/carpool-manager/tree/master/src/context/reducers) \
+See [main React components](https://github.com/CarlsJr4/carpool-manager/tree/master/src/routes/planner) \
 
 This app was designed for college students who run on-campus organizations and host social events. To simplify the hassle of micromanaging drivers and passengers, I developed a drag-and-drop interface with CRUD functionalities. This repository holds all the front-end logic. This app is a large project, and many more features are planned or in-progress.   
 
