@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/carpool-manager/static/css/main.622bef77.chunk.css",
-    "main.js": "/carpool-manager/static/js/main.78cdc13a.chunk.js",
-    "main.js.map": "/carpool-manager/static/js/main.78cdc13a.chunk.js.map",
-    "runtime-main.js": "/carpool-manager/static/js/runtime-main.29d7a4bf.js",
-    "runtime-main.js.map": "/carpool-manager/static/js/runtime-main.29d7a4bf.js.map",
-    "static/js/2.62f84312.chunk.js": "/carpool-manager/static/js/2.62f84312.chunk.js",
-    "static/js/2.62f84312.chunk.js.map": "/carpool-manager/static/js/2.62f84312.chunk.js.map",
-    "index.html": "/carpool-manager/index.html",
-    "precache-manifest.cd2f7654d32e8dc99df891657064f09a.js": "/carpool-manager/precache-manifest.cd2f7654d32e8dc99df891657064f09a.js",
-    "service-worker.js": "/carpool-manager/service-worker.js",
-    "static/css/main.622bef77.chunk.css.map": "/carpool-manager/static/css/main.622bef77.chunk.css.map",
-    "static/js/2.62f84312.chunk.js.LICENSE.txt": "/carpool-manager/static/js/2.62f84312.chunk.js.LICENSE.txt"
+    "main.css": "/ridesaver/static/css/main.622bef77.chunk.css",
+    "main.js": "/ridesaver/static/js/main.ba4b2126.chunk.js",
+    "main.js.map": "/ridesaver/static/js/main.ba4b2126.chunk.js.map",
+    "runtime-main.js": "/ridesaver/static/js/runtime-main.3334ef6e.js",
+    "runtime-main.js.map": "/ridesaver/static/js/runtime-main.3334ef6e.js.map",
+    "static/js/2.e76250ea.chunk.js": "/ridesaver/static/js/2.e76250ea.chunk.js",
+    "static/js/2.e76250ea.chunk.js.map": "/ridesaver/static/js/2.e76250ea.chunk.js.map",
+    "index.html": "/ridesaver/index.html",
+    "precache-manifest.c0e2b48fb8b86a03afe2d41396721c28.js": "/ridesaver/precache-manifest.c0e2b48fb8b86a03afe2d41396721c28.js",
+    "service-worker.js": "/ridesaver/service-worker.js",
+    "static/css/main.622bef77.chunk.css.map": "/ridesaver/static/css/main.622bef77.chunk.css.map",
+    "static/js/2.e76250ea.chunk.js.LICENSE.txt": "/ridesaver/static/js/2.e76250ea.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.29d7a4bf.js",
-    "static/js/2.62f84312.chunk.js",
+    "static/js/runtime-main.3334ef6e.js",
+    "static/js/2.e76250ea.chunk.js",
     "static/css/main.622bef77.chunk.css",
-    "static/js/main.78cdc13a.chunk.js"
+    "static/js/main.ba4b2126.chunk.js"
   ]
 }
