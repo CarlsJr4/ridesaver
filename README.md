@@ -10,7 +10,6 @@ This app was designed for college students who run on-campus organizations and h
 
  Users can add, edit, and delete driver information using clickable buttons on-screen. Quick edits can be made by clicking the names of drivers and passengers. Passengers can be moved by dragging and dropping them. 
 
-## Contributions
 - Designed, developed, and deployed the entire app using React.js and SCSS 
 -	Managed shared state across several components by using the React Context API  
 -	Developed several reusable components by using custom hooks and props 
