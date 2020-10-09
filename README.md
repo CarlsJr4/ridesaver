@@ -1,6 +1,6 @@
 ![Carpool Manager Preview](https://cdn.sanity.io/images/nof1t6y8/projects/cb55df0c2f08c96e1bbe9e94eb2d1d5de37d20bc-1914x630.jpg)
 
-## Minimum Viable Product: [Carpool Manager](https://carlsjr4.github.io/carpool-manager/)
+## Minimum Viable Product: [Ridesaver](https://carlsjr4.github.io/carpool-manager/)
 
 See [**custom React hooks**](https://github.com/CarlsJr4/carpool-manager/tree/master/src/custom_hooks) \
 See [**reducer logic for the React Context API**](https://github.com/CarlsJr4/carpool-manager/tree/master/src/context/reducers) \
