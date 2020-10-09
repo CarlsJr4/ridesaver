@@ -15,3 +15,4 @@ This app was designed for college students who run on-campus organizations and h
 -	Managed shared state across several components by using the React Context API  
 -	Developed several reusable components by using custom hooks and props 
 -	Designed drag and drop features by working with the React-Beautiful-DnD API 
+- Configured environment variables for development and production using the dotenv package
