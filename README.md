@@ -12,5 +12,4 @@ This app was designed for college students who run on-campus organizations and h
 • Designed, developed, and deployed the entire app using React.js and SCSS \
 •	Managed shared state across several components by using the React Context API \ 
 •	Developed several reusable components by using custom hooks and props \
-•	Designed drag and drop features by working with the React-Beautiful-DnD API
-
+•	Designed drag and drop features by working with the React-Beautiful-DnD API \
