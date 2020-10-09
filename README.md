@@ -1,7 +1,16 @@
-## About this app
+## Minimum Viable Product: [Carpool Manager](https://carlsjr4.github.io/carpool-manager/)
 
-This is a fullstack MERN app focused around planning large events. This app is currently a work in progress and many features are still in development. For now, all users are editing the same data in MongoDB
+See [custom React hooks](https://github.com/CarlsJr4/carpool-manager/tree/master/src/custom_hooks)
+See [reducer logic for the React Context API](https://github.com/CarlsJr4/carpool-manager/tree/master/src/context/reducers)
+See [main React components](https://github.com/CarlsJr4/carpool-manager/tree/master/src/routes/planner)
 
-## How to use
+This app was designed for college students who run on-campus organizations and host social events. To simplify the hassle of micromanaging drivers and passengers, I developed a drag-and-drop interface with CRUD functionalities. This repository holds all the front-end logic. This app is a large project, and many more features are planned or in-progress.   
 
-This is a CRUD app. Click the + buttons to add drivers and passengers to the event. Follow the directions on the modals to customize your event attendees. Drag and drop passengers between cars to change their driver. Click on any name to edit it, click away or press enter to save the name. 
+ Users can add, edit, and delete driver information using clickable buttons on-screen. Quick edits can be made by clicking the names of drivers and passengers. Passengers can be moved by dragging and dropping them. 
+
+## Contributions
+• Designed, developed, and deployed the entire app using React.js and SCSS 
+•	Managed shared state across several components by using the React Context API 
+•	Developed several reusable components by using custom hooks and props
+•	Designed drag and drop features by working with the React-Beautiful-DnD API
+
