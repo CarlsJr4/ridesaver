@@ -1,7 +1,17 @@
-## About this app
+![Carpool Manager Preview](https://cdn.sanity.io/images/nof1t6y8/projects/cb55df0c2f08c96e1bbe9e94eb2d1d5de37d20bc-1914x630.jpg)
 
-This is a fullstack MERN app focused around planning large events. This app is currently a work in progress and many features are still in development. For now, all users are editing the same data in MongoDB
+## Minimum Viable Product: [Carpool Manager](https://carlsjr4.github.io/carpool-manager/)
 
-## How to use
+See [**custom React hooks**](https://github.com/CarlsJr4/carpool-manager/tree/master/src/custom_hooks) \
+See [**reducer logic for the React Context API**](https://github.com/CarlsJr4/carpool-manager/tree/master/src/context/reducers) \
+See [**main React components**](https://github.com/CarlsJr4/carpool-manager/tree/master/src/routes/planner) 
 
-This is a CRUD app. Click the + buttons to add drivers and passengers to the event. Follow the directions on the modals to customize your event attendees. Drag and drop passengers between cars to change their driver. Click on any name to edit it, click away or press enter to save the name. 
+This app was designed for college students who run on-campus organizations and host social events. To simplify the hassle of micromanaging drivers and passengers, I developed a drag-and-drop interface with CRUD functionalities. This repository holds all the front-end logic. This app is a large project, and many more features are planned or in-progress.   
+
+ Users can add, edit, and delete driver information using clickable buttons on-screen. Quick edits can be made by clicking the names of drivers and passengers. Passengers can be moved by dragging and dropping them. 
+
+- Designed, developed, and deployed the entire app using React.js and SCSS 
+-	Managed shared state across several components by using the React Context API  
+-	Developed several reusable components by using custom hooks and props 
+-	Designed drag and drop features by working with the React-Beautiful-DnD API 
+- Configured environment variables for development and production using the dotenv package
