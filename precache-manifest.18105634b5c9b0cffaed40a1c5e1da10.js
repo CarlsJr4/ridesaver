@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "58c940820e341fe7f705af1432ed7271",
+    "revision": "9caddca05be6fb13b786c203dc5a58b7",
     "url": "/ridesaver/index.html"
   },
   {
-    "revision": "45da4ea51ceb3b1321c1",
+    "revision": "6760e2c849a1fc8983f7",
     "url": "/ridesaver/static/css/main.622bef77.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ridesaver/static/js/2.e76250ea.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "45da4ea51ceb3b1321c1",
-    "url": "/ridesaver/static/js/main.ba4b2126.chunk.js"
+    "revision": "6760e2c849a1fc8983f7",
+    "url": "/ridesaver/static/js/main.b045c765.chunk.js"
   },
   {
     "revision": "4ef11299a252db00c2fd",

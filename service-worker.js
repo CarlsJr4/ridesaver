@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ridesaver/precache-manifest.c0e2b48fb8b86a03afe2d41396721c28.js"
+  "/ridesaver/precache-manifest.18105634b5c9b0cffaed40a1c5e1da10.js"
 );
 
 self.addEventListener('message', (event) => {
