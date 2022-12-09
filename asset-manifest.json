@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ridesaver/static/css/main.622bef77.chunk.css",
-    "main.js": "/ridesaver/static/js/main.ba4b2126.chunk.js",
-    "main.js.map": "/ridesaver/static/js/main.ba4b2126.chunk.js.map",
+    "main.js": "/ridesaver/static/js/main.9d201c86.chunk.js",
+    "main.js.map": "/ridesaver/static/js/main.9d201c86.chunk.js.map",
     "runtime-main.js": "/ridesaver/static/js/runtime-main.3334ef6e.js",
     "runtime-main.js.map": "/ridesaver/static/js/runtime-main.3334ef6e.js.map",
     "static/js/2.e76250ea.chunk.js": "/ridesaver/static/js/2.e76250ea.chunk.js",
     "static/js/2.e76250ea.chunk.js.map": "/ridesaver/static/js/2.e76250ea.chunk.js.map",
     "index.html": "/ridesaver/index.html",
-    "precache-manifest.c0e2b48fb8b86a03afe2d41396721c28.js": "/ridesaver/precache-manifest.c0e2b48fb8b86a03afe2d41396721c28.js",
+    "precache-manifest.d33cb08b630b099f09b0419eaf417008.js": "/ridesaver/precache-manifest.d33cb08b630b099f09b0419eaf417008.js",
     "service-worker.js": "/ridesaver/service-worker.js",
     "static/css/main.622bef77.chunk.css.map": "/ridesaver/static/css/main.622bef77.chunk.css.map",
     "static/js/2.e76250ea.chunk.js.LICENSE.txt": "/ridesaver/static/js/2.e76250ea.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3334ef6e.js",
     "static/js/2.e76250ea.chunk.js",
     "static/css/main.622bef77.chunk.css",
-    "static/js/main.ba4b2126.chunk.js"
+    "static/js/main.9d201c86.chunk.js"
   ]
 }
