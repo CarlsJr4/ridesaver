@@ -24,7 +24,7 @@ const GlobalState = ({ children }) => {
   useEffect(() => {
     async function retrieveData() {
       const event = await axios.get(
-        `https://secret-cove-37400.herokuapp.com/https://${process.env.REACT_APP_HOST}/api/events/${process.env.REACT_APP_EVENT_ID}`
+        `https://${process.env.REACT_APP_HOST}/api/events/${process.env.REACT_APP_EVENT_ID}`
       );
       updateDriverList({
         type: 'INIT',
